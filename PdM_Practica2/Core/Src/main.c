@@ -108,8 +108,6 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int k=0;
-
   while (1)
   {
 	  if(delayRead(&MyDelay))
