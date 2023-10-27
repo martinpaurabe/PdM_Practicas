@@ -366,7 +366,7 @@ int main(void)
   uint8_t PerPointer=0;				    //Pointer to the actual period of cycle
  80004d6:	2300      	movs	r3, #0
  80004d8:	77fb      	strb	r3, [r7, #31]
-  uint32_t Periodos[]={2000,1000,500};  //Timers vector in usec of period cycle
+  uint32_t Periodos[]={1000,200,100};  //Timers vector in usec of period cycle
  80004da:	4a25      	ldr	r2, [pc, #148]	; (8000570 <main+0xa0>)
  80004dc:	1d3b      	adds	r3, r7, #4
  80004de:	ca07      	ldmia	r2, {r0, r1, r2}

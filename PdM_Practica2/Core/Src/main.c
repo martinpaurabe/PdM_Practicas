@@ -79,7 +79,7 @@ int main(void)
   /* USER CODE BEGIN 1 */
   delay_t MyDelay;						//Declare my Time Delay Structure
   uint8_t PerPointer=0;				    //Pointer to the actual period of cycle
-  uint32_t Periodos[]={2000,1000,500};  //Timers vector in usec of period cycle
+  uint32_t Periodos[]={1000,200,100};  //Timers vector in usec of period cycle
   uint8_t CantRep = 5;				    //Amount of times the we want each blinking period to be repeated
   /* USER CODE END 1 */
 
