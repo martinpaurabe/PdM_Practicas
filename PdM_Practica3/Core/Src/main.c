@@ -77,10 +77,12 @@ static void MX_USART2_UART_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  delay_t MyDelay;						//Declare my Time Delay Structure
-  uint8_t PerPointer=0;				    //Pointer to the actual period of cycle
-  uint32_t Periodos[]={1000,200,100};  //Timers vector in usec of period cycle
-  uint8_t CantRep = 5;				    //Amount of times the we want each blinking period to be repeated
+  delay_t MyDelay;						     //Declare my Time Delay Structure
+  uint8_t PerPointer=0;				         //Pointer to the actual period of cycle
+  uint32_t Periodos[]={4000,1500,1000,500};  //Timers vector in usec of period cycle
+  uint8_t CantRep = 3;				         //Amount of times the we want each blinking period to be repeated
+  float	  Duty_ON = 0.9;
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -114,9 +116,16 @@ int main(void)
 	  {
 		  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin); 						//Toggle the led for blinking cause it has passed the semicycle time
 		  if(HAL_GPIO_ReadPin(LD2_GPIO_Port, LD2_Pin))						//If a complete period has passed (first off an then on) increment de Pointer to
-				  PerPointer++;												//the timer vector.
-		  PerPointer%=(sizeof(Periodos)*CantRep)/sizeof(Periodos[0]);		//Depending on the amount of blinking for each time vector we have to reinitialize
-		  delayWrite(&MyDelay,Periodos[PerPointer/CantRep]/2);				//the pointer position, and then start de timer again. Duration is divided by 2 to
+		  {
+			  PerPointer++;												      //the timer vector.
+			  PerPointer%=(sizeof(Periodos)*CantRep)/sizeof(Periodos[0]);		//Depending on the amount of blinking for each time vector we have to reinitialize
+			  delayWrite(&MyDelay,Periodos[PerPointer/CantRep]*Duty_ON);				//the pointer position, and then start de timer again. Duration is divided by 2 to
+		  }
+		  else
+		  {
+			  PerPointer%=(sizeof(Periodos)*CantRep)/sizeof(Periodos[0]);		//Depending on the amount of blinking for each time vector we have to reinitialize
+			  delayWrite(&MyDelay,Periodos[PerPointer/CantRep]*(1-Duty_ON));				//the pointer position, and then start de timer again. Duration is divided by 2 to
+		  }
 	  }																		//set each state half time of periodo
   }
 	    /* USER CODE END WHILE */

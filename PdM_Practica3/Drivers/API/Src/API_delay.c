@@ -6,6 +6,12 @@
  **********************************************************/
 #include "API_delay.h"
 
+
+
+/***********************************************************/
+#define MAX_DELAY 2000
+#define MIN_DELAY 1
+
 /**********************************************************************
  * delayInit Function:
  * Receive a pointer to a delay_t type and initialize it with the
@@ -15,7 +21,13 @@
 
 void delayInit( delay_t * delay, tick_t duration )
 {
-	delay->duration = duration;
+	if(MAX_DELAY < duration)
+		delay->duration = MAX_DELAY;
+	else if( MIN_DELAY > duration)
+		delay->duration = MIN_DELAY;
+	else
+		delay->duration = duration;
+
 	delay->running = false;
 }
 
@@ -32,18 +44,21 @@ bool_t delayRead( delay_t * delay )
 {
 
 	bool_t TimeArrived = false;
-	if(delay->running)
+	if(delay != NULL)
 	{
-		if(HAL_GetTick()-delay->startTime >= delay->duration)
+		if(delay->running)
 		{
-			TimeArrived = true;
-			delay->running = false;
+			if(HAL_GetTick()-delay->startTime >= delay->duration)
+			{
+				TimeArrived = true;
+				delay->running = false;
+			}
 		}
-	}
-	else
-	{
-		delay->startTime = HAL_GetTick();
-		delay->running = true;
+		else
+		{
+			delay->startTime = HAL_GetTick();
+			delay->running = true;
+		}
 	}
 
 	return TimeArrived;
@@ -55,7 +70,12 @@ bool_t delayRead( delay_t * delay )
 
 void delayWrite( delay_t * delay, tick_t duration )
 {
-	delay->duration = duration;
+	if(MAX_DELAY < duration)
+		delay->duration = MAX_DELAY;
+	else if( MIN_DELAY > duration)
+		delay->duration = MIN_DELAY;
+	else
+		delay->duration = duration;
 }
 
 
