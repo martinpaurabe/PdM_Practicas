@@ -116,8 +116,8 @@ int main(void)
 		  if(HAL_GPIO_ReadPin(LD2_GPIO_Port, LD2_Pin))						//If a complete period has passed (first off an then on) increment de Pointer to
 				  PerPointer++;												//the timer vector.
 		  PerPointer%=(sizeof(Periodos)*CantRep)/sizeof(Periodos[0]);		//Depending on the amount of blinking for each time vector we have to reinitialize
-		  delayWrite(&MyDelay,Periodos[PerPointer/CantRep]/2);				//the pointer position, and then start de timer again.
-	  }
+		  delayWrite(&MyDelay,Periodos[PerPointer/CantRep]/2);				//the pointer position, and then start de timer again. Duration is divided by 2 to
+	  }																		//set each state half time of periodo
   }
 	    /* USER CODE END WHILE */
 
@@ -243,64 +243,6 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-/**********************************************************
- * Practica2.c
- *
- *  Created on: Oct 26, 2023
- *  Author: Royer and Martin
- **********************************************************/
-/**********************************************************************
- * delayInit Function:
- * Receive a pointer to a delay_t type and initialize it with the
- * time duration specify in the duration parameter in usec.
- * Do not initialize the counter and leave the running state on false.
- *********************************************************************/
-
-void delayInit( delay_t * delay, tick_t duration )
-{
-	delay->duration = duration;
-	delay->running = false;
-}
-
-/**********************************************************************
- * delayRead Function:
- * This function is used to start the time counter or to verify if the
- * timer has finished.
- * Receive a pointer to a delay_t type to be analized or that we want to launch counter.
- * Send back true value if the time has been completed or false otherwise
- * (if the time has not been arrived or just start to run)
- *********************************************************************/
-
-bool_t delayRead( delay_t * delay )
-{
-
-	bool_t TimeArrived = false;
-	if(delay->running)
-	{
-		if(HAL_GetTick()-delay->startTime >= delay->duration)
-		{
-			TimeArrived = true;
-			delay->running = false;
-		}
-	}
-	else
-	{
-		delay->startTime = HAL_GetTick();
-		delay->running = true;
-	}
-
-	return TimeArrived;
-}
-/**********************************************************************
- * delayWrite Function:
- * This function is used to set the duration time in usec of a delay structure
- *********************************************************************/
-
-void delayWrite( delay_t * delay, tick_t duration )
-{
-	delay->duration = duration;
-}
-
 
 /* USER CODE END 4 */
 
