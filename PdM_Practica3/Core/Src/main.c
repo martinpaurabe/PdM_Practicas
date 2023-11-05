@@ -78,10 +78,10 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
   delay_t MyDelay;						     //Declare my Time Delay Structure
-  uint8_t PerPointer=0;				         //Pointer to the actual period of cycle
-  uint32_t Periodos[]={4000,1500,1000,500};  //Timers vector in usec of period cycle
+  uint8_t PeriodIndex=0;				     //Pointer to the actual period of cycle
+  uint32_t Periodos[]={4000,1500,1000,500};  //Timers vector in used of period cycle (Maxmum 2000, greater numbers are truncated)
   uint8_t CantRep = 3;				         //Amount of times the we want each blinking period to be repeated
-  float	  Duty_ON = 0.9;
+  float	  Duty_ON = 0.9;					 //Duty cycle for the turned on period of led... its range is from 0.0 to 1.0
 
   /* USER CODE END 1 */
 
@@ -105,7 +105,8 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  delayInit(&MyDelay,Periodos[0]);
+  delayInit(&MyDelay,Periodos[0]*Duty_ON);   					//Initialize the delay timer with the first period of the timers vector
+  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin,GPIO_PIN_SET );  	//and his corresponding duty cycle for on state
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -114,19 +115,18 @@ int main(void)
   {
 	  if(delayRead(&MyDelay))
 	  {
-		  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin); 						//Toggle the led for blinking cause it has passed the semicycle time
-		  if(HAL_GPIO_ReadPin(LD2_GPIO_Port, LD2_Pin))						//If a complete period has passed (first off an then on) increment de Pointer to
-		  {
-			  PerPointer++;												      //the timer vector.
-			  PerPointer%=(sizeof(Periodos)*CantRep)/sizeof(Periodos[0]);		//Depending on the amount of blinking for each time vector we have to reinitialize
-			  delayWrite(&MyDelay,Periodos[PerPointer/CantRep]*Duty_ON);				//the pointer position, and then start de timer again. Duration is divided by 2 to
+		  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin); 						  //Toggle the led for blinking cause it has passed the semicycle time
+		  if(GPIO_PIN_SET == HAL_GPIO_ReadPin(LD2_GPIO_Port, LD2_Pin))		  //If a complete period has passed (first on an then off) increment the index of
+		  {																	  //the timer vector.
+			  PeriodIndex++;												  //Depending on the amount of blinking for each timer, and the amount of timer vector elements, we have to reinitialize
+			  PeriodIndex%=(sizeof(Periodos)*CantRep)/sizeof(Periodos[0]);	  //the index position, sending it back to zero, and then start the timer again. Duration depend on the duty cycle
+			  delayWrite(&MyDelay,Periodos[PeriodIndex/CantRep]*Duty_ON);	  //so, it is set to the corresponding on Time.
 		  }
-		  else
-		  {
-			  PerPointer%=(sizeof(Periodos)*CantRep)/sizeof(Periodos[0]);		//Depending on the amount of blinking for each time vector we have to reinitialize
-			  delayWrite(&MyDelay,Periodos[PerPointer/CantRep]*(1-Duty_ON));				//the pointer position, and then start de timer again. Duration is divided by 2 to
+		  else																  //Else, if it is off, we are not supposed to increment the Index inside
+		  {																	  //the timers vector. We have to set the corresponding off time to the duration's delay, though.
+			  delayWrite(&MyDelay,Periodos[PeriodIndex/CantRep]*(1-Duty_ON)); //then start the timer again. Duration is weighted with the corresponding duty cycle
 		  }
-	  }																		//set each state half time of periodo
+	  }
   }
 	    /* USER CODE END WHILE */
 
