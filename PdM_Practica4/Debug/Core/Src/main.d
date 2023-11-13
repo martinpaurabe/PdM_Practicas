@@ -25,8 +25,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- /home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica\ 4/Drivers/API/Inc/API_delay.h \
- /home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica\ 4/Drivers/API/Inc/API_debounce.h
+ /home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica4/Drivers/API/Inc/API_delay.h \
+ /home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica4/Drivers/API/Inc/API_debounce.h \
+ /home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica4/Drivers/API/Inc/API_delay.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -54,5 +55,6 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica\ 4/Drivers/API/Inc/API_delay.h:
-/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica\ 4/Drivers/API/Inc/API_debounce.h:
+/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica4/Drivers/API/Inc/API_delay.h:
+/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica4/Drivers/API/Inc/API_debounce.h:
+/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica4/Drivers/API/Inc/API_delay.h:

@@ -1,0 +1,10 @@
+17:27:24 **** Incremental Build of configuration Debug for project Adapt_Practic3 ****
+make -j8 all 
+arm-none-eabi-size   Adapt_Practic3.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7900	     20	   1636	   9556	   2554	Adapt_Practic3.elf
+Finished building: default.size.stdout
+ 
+
+17:27:24 Build Finished. 0 errors, 0 warnings. (took 181ms)
+

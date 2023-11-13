@@ -31,7 +31,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define PERIODOE1 100
+#define LED_EDGE_PERIODE 1000  //Amount of miliseconds that will be the led turned on
+							   //after a negative edge read on the user button FSM.
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -65,11 +66,7 @@ static void MX_USART2_UART_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  delay_t MyDelay;						     //Declare my Time Delay Structure
-  uint8_t PeriodIndex=0;				     //Pointer to the actual period of cycle
-  uint32_t Periodos[]={4000,1500,1000,500};  //Timers vector in used of period cycle (Maxmum 2000, greater numbers are truncated)
-  uint8_t CantRep = 3;				         //Amount of times the we want each blinking period to be repeated
-  float	  Duty_ON = 0.9;					 //Duty cycle for the turned on period of led... its range is from 0.0 to 1.0
+  delay_t LedEdge, FSM_Time;                 //Declare my Time Delay Structure
 
   /* USER CODE END 1 */
 
@@ -93,18 +90,25 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  delayInit(&MyDelay,10);   					//Initialize the delay timer with the first period of the timers vector
+  delayInit(&FSM_Time,FSM_PERIODE);   					//Initialize the delay timer with the first period of the timers vector
+  delayInit(&LedEdge,LED_EDGE_PERIODE);   					//Initialize the delay timer with the time that the LED will be on after a positive edge Button
   debounceFSM_init();
-  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin,GPIO_PIN_SET );  	//and his corresponding duty cycle for on state
+  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin,GPIO_PIN_SET );
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(delayRead(&MyDelay))
+	  if(delayRead(&FSM_Time))
 	  {
 		  debounceFSM_update();
+		  if(readKey()){														//Reads if there was a edge on the user button,if so we turn on the LED
+			  delayRead(&LedEdge);												//if so, it keeps the led turned on for "LED_EDGE_PERIODE" miliseconds
+			  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
+		  }
+		  if(delayRead(&LedEdge))
+			  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
 
 	  }
   }
