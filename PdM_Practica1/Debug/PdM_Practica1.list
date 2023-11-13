@@ -428,7 +428,7 @@ int main(void)
  800051a:	e020      	b.n	800055e <main+0x8e>
 	  {
 		case Stt_Idle_Periodo:
-			if(!HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin))
+			if(!HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin)) //Ask if it have to initialize the timer to get the new period of Blinking
  800051c:	f44f 5100 	mov.w	r1, #8192	; 0x2000
  8000520:	4814      	ldr	r0, [pc, #80]	; (8000574 <main+0xa4>)
  8000522:	f000 fce5 	bl	8000ef0 <HAL_GPIO_ReadPin>
@@ -436,7 +436,7 @@ int main(void)
  8000528:	2b00      	cmp	r3, #0
  800052a:	d11b      	bne.n	8000564 <main+0x94>
 			{
-				Gral.Per_Cntr_Init = HAL_GetTick();
+				Gral.Per_Cntr_Init = HAL_GetTick();   //If so, get the initial counter a set new state
  800052c:	f000 fa6a 	bl	8000a04 <HAL_GetTick>
  8000530:	4603      	mov	r3, r0
  8000532:	613b      	str	r3, [r7, #16]
@@ -447,7 +447,7 @@ int main(void)
 			break;
  8000538:	e014      	b.n	8000564 <main+0x94>
 		case Stt_End_Periodo:
-			if(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin))
+			if(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin)) //Ask if it have to end the timer to get the new period of Blinking
  800053a:	f44f 5100 	mov.w	r1, #8192	; 0x2000
  800053e:	480d      	ldr	r0, [pc, #52]	; (8000574 <main+0xa4>)
  8000540:	f000 fcd6 	bl	8000ef0 <HAL_GPIO_ReadPin>
@@ -455,14 +455,14 @@ int main(void)
  8000546:	2b00      	cmp	r3, #0
  8000548:	d00e      	beq.n	8000568 <main+0x98>
 			{
-				Gral.LED2_Wait = (HAL_GetTick() - Gral.Per_Cntr_Init)/2;
+				Gral.LED2_Wait = (HAL_GetTick() - Gral.Per_Cntr_Init)/2; //If so, get the final counter and divide by 2 de difference to stay half time High/low
  800054a:	f000 fa5b 	bl	8000a04 <HAL_GetTick>
  800054e:	4602      	mov	r2, r0
  8000550:	693b      	ldr	r3, [r7, #16]
  8000552:	1ad3      	subs	r3, r2, r3
  8000554:	085b      	lsrs	r3, r3, #1
  8000556:	60bb      	str	r3, [r7, #8]
-				Gral.Stt = Stt_Idle_Periodo;
+				Gral.Stt = Stt_Idle_Periodo;   //Set the new state, to wait for another setting period
  8000558:	2300      	movs	r3, #0
  800055a:	617b      	str	r3, [r7, #20]
 			}

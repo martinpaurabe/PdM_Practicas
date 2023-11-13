@@ -843,7 +843,7 @@ bool_t delayRead( delay_t * delay )
  80007b2:	2b00      	cmp	r3, #0
  80007b4:	d00f      	beq.n	80007d6 <delayRead+0x34>
 	{
-		if(HAL_GetTick()-delay->startTime > delay->duration)
+		if(HAL_GetTick()-delay->startTime >= delay->duration)
  80007b6:	f000 f96b 	bl	8000a90 <HAL_GetTick>
  80007ba:	4602      	mov	r2, r0
  80007bc:	687b      	ldr	r3, [r7, #4]
@@ -852,7 +852,7 @@ bool_t delayRead( delay_t * delay )
  80007c2:	687b      	ldr	r3, [r7, #4]
  80007c4:	685b      	ldr	r3, [r3, #4]
  80007c6:	429a      	cmp	r2, r3
- 80007c8:	d90d      	bls.n	80007e6 <delayRead+0x44>
+ 80007c8:	d30d      	bcc.n	80007e6 <delayRead+0x44>
 		{
 			TimeArrived = true;
  80007ca:	2301      	movs	r3, #1
