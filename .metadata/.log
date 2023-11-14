@@ -6242,3 +6242,30 @@ java.lang.Exception: The project description file (.project) for 'PdM_Practica4'
 
 !ENTRY org.eclipse.cdt.core 1 0 2023-11-12 23:22:30.735
 !MESSAGE Indexed 'PdM_Practica0' (25 sources, 143 headers) in 1.57 sec: 11,257 declarations; 42,779 references; 2 unresolved inclusions; 42 syntax errors; 147 unresolved names (0.27%)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2023-11-12 23:43:11.044
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.gdb.internal.ui.actions.DsfTerminateCommand$3$1@6ff534d): Status OK: unknown code=0 OK' resulted in a rejected execution exception.
+!SESSION 2023-11-14 09:44:06.414 -----------------------------------------------
+eclipse.buildId=Version 1.13.2
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-11-14 09:44:14.281
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-11-14 09:44:14.282
+!MESSAGE Log4j2 initialized with config file /home/martin/Desktop/MESE/PdM_Practicas/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-11-14 09:44:18.870
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-11-14 09:47:19.609
+!MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/updates/release/latest, see CVE-2021-41033. Consider using https instead.
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-11-14 09:47:21.978
+!MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/release/1.2.2/content.xml.xz, see CVE-2021-41033. Consider using https instead.
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-11-14 09:52:04.798
+!MESSAGE Indexed 'PdM_Practica4_2' (25 sources, 143 headers) in 2.38 sec: 11,259 declarations; 42,817 references; 2 unresolved inclusions; 42 syntax errors; 147 unresolved names (0.27%)

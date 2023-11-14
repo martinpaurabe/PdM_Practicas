@@ -16,7 +16,7 @@ S_DEPS += \
 
 # Each subdirectory must supply rules for building sources it contributes
 Core/Startup/%.o: ../Core/Startup/%.s Core/Startup/subdir.mk
-	arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -I"/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica4/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica4/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica4/Drivers/API/Src" -x assembler-with-cpp -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -I"/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica4_2/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica4_2/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica4_2/Drivers/API/Src" -x assembler-with-cpp -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@" "$<"
 
 clean: clean-Core-2f-Startup
 

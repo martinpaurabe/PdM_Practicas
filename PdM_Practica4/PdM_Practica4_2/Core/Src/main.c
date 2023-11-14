@@ -67,6 +67,9 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
   delay_t LedEdge, FSM_Time;                 //Declare my Time Delay Structure
+  uint8_t PeriodIndex=0;				     //Pointer to the actual period of cycle
+  tick_t Periodos[]={500,100};             //Timers vector in used of period cycle (Maxmum 2000, greater numbers are truncated)
+  float	  Duty_ON = 0.5;					 //Duty cycle for the turned on period of led... its range is from 0.0 to 1.0
 
   /* USER CODE END 1 */
 
@@ -91,7 +94,7 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   delayInit(&FSM_Time,FSM_PERIODE);   					//Initialize the delay timer with the first period of the timers vector
-  delayInit(&LedEdge,LED_EDGE_PERIODE);   					//Initialize the delay timer with the time that the LED will be on after a positive edge Button
+  delayInit(&LedEdge,Periodos[PeriodIndex]);   					//Initialize the delay timer with the time that the LED will be on after a positive edge Button
   debounceFSM_init();
   HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin,GPIO_PIN_SET );
   /* USER CODE END 2 */
@@ -103,12 +106,13 @@ int main(void)
 	  if(delayRead(&FSM_Time))
 	  {
 		  debounceFSM_update();
-		  if(readKey()){														//Reads if there was a edge on the user button,if so we turn on the LED
-			  delayRead(&LedEdge);												//if so, it keeps the led turned on for "LED_EDGE_PERIODE" miliseconds
-			  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
+		  if(readKey())														//Reads if there was a edge on the user button,if so we turn on the LED
+			  PeriodIndex ^= 0x01;                                           //if so, it keeps the led turned on for "LED_EDGE_PERIODE" miliseconds
+
+		  if(delayRead(&LedEdge)){
+			  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+			  delayWrite(&LedEdge,Periodos[PeriodIndex]*Duty_ON);
 		  }
-		  if(delayRead(&LedEdge))
-			  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
 
 	  }
   }
