@@ -93,8 +93,8 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  delayInit(&FSM_Time,FSM_PERIODE);   					//Initialize the delay timer with the first period of the timers vector
-  delayInit(&LedEdge,Periodos[PeriodIndex]);   					//Initialize the delay timer with the time that the LED will be on after a positive edge Button
+  delayInit(&FSM_Time,FSM_PERIODE);   					//Initialize the delay timer for updating FSM of the debouncing
+  delayInit(&LedEdge,Periodos[PeriodIndex]);   			//Initialize the delay timer for the period of the blinking led
   debounceFSM_init();
   HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin,GPIO_PIN_SET );
   /* USER CODE END 2 */
@@ -105,12 +105,12 @@ int main(void)
   {
 	  if(delayRead(&FSM_Time))
 	  {
-		  debounceFSM_update();
+		  debounceFSM_update();												//Update the FSM for debouncing
 		  if(readKey())														//Reads if there was a edge on the user button,if so we turn on the LED
-			  PeriodIndex ^= 0x01;                                           //if so, it keeps the led turned on for "LED_EDGE_PERIODE" miliseconds
+			  PeriodIndex ^= 0x01;                                          //if so, it mast switch the period of blinking
 
-		  if(delayRead(&LedEdge)){
-			  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+		  if(delayRead(&LedEdge)){											//if half time of the blinking period has passed toggle de led and
+			  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);					//update the blinking time
 			  delayWrite(&LedEdge,Periodos[PeriodIndex]*Duty_ON);
 		  }
 
