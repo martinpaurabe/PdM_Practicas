@@ -35,6 +35,7 @@ extern "C" {
 /* USER CODE BEGIN Includes */
 #include "API_delay.h"
 #include "API_debounce.h"
+#include "API_uart.h"
 
 /* USER CODE END Includes */
 
