@@ -50,7 +50,6 @@ UART_HandleTypeDef huart2;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 /* USER CODE END PFP */
 
@@ -70,7 +69,7 @@ int main(void)
   uint8_t PeriodIndex=0;				     //Pointer to the actual period of cycle
   tick_t Periodos[]={500,100};             //Timers vector in used of period cycle (Maxmum 2000, greater numbers are truncated)
   float	  Duty_ON = 0.5;					 //Duty cycle for the turned on period of led... its range is from 0.0 to 1.0
-
+  char MSG_Pulsador[]="Se pulsó B1\n\r";
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -91,12 +90,12 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   delayInit(&FSM_Time,FSM_PERIODE);   					//Initialize the delay timer for updating FSM of the debouncing
   delayInit(&LedEdge,Periodos[PeriodIndex]);   			//Initialize the delay timer for the period of the blinking led
   debounceFSM_init();
   HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin,GPIO_PIN_SET );
+  uartInit();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -106,9 +105,11 @@ int main(void)
 	  if(delayRead(&FSM_Time))
 	  {
 		  debounceFSM_update();												//Update the FSM for debouncing
-		  if(readKey())														//Reads if there was a edge on the user button,if so we turn on the LED
-			  PeriodIndex ^= 0x01;                                          //if so, it mast switch the period of blinking
-
+		  if(readKey())
+		  {
+			  uartSendStringSize(MSG_Pulsador,sizeof(MSG_Pulsador));  			//Reads if there was a edge on the user button,if so we turn on the LED
+			  PeriodIndex ^= 0x01;                          //if so, it mast switch the period of blinking and send a msg through UART
+		  }
 		  if(delayRead(&LedEdge)){											//if half time of the blinking period has passed toggle de led and
 			  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);					//update the blinking time
 			  delayWrite(&LedEdge,Periodos[PeriodIndex]*Duty_ON);
@@ -169,38 +170,6 @@ void SystemClock_Config(void)
   }
 }
 
-/**
-  * @brief USART2 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_USART2_UART_Init(void)
-{
-
-  /* USER CODE BEGIN USART2_Init 0 */
-
-  /* USER CODE END USART2_Init 0 */
-
-  /* USER CODE BEGIN USART2_Init 1 */
-
-  /* USER CODE END USART2_Init 1 */
-  huart2.Instance = USART2;
-  huart2.Init.BaudRate = 115200;
-  huart2.Init.WordLength = UART_WORDLENGTH_8B;
-  huart2.Init.StopBits = UART_STOPBITS_1;
-  huart2.Init.Parity = UART_PARITY_NONE;
-  huart2.Init.Mode = UART_MODE_TX_RX;
-  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&huart2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN USART2_Init 2 */
-
-  /* USER CODE END USART2_Init 2 */
-
-}
 
 /**
   * @brief GPIO Initialization Function

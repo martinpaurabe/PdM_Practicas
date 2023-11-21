@@ -35,34 +35,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := PdM_Practica4_2
+BUILD_ARTIFACT_NAME := PdM_Practica0
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-PdM_Practica4_2.elf \
+PdM_Practica0.elf \
 
 MAP_FILES += \
-PdM_Practica4_2.map \
+PdM_Practica0.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-PdM_Practica4_2.list \
+PdM_Practica0.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: PdM_Practica4_2.elf secondary-outputs
+main-build: PdM_Practica0.elf secondary-outputs
 
 # Tool invocations
-PdM_Practica4_2.elf PdM_Practica4_2.map: $(OBJS) $(USER_OBJS) /home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica4_2/STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "PdM_Practica4_2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica4_2/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PdM_Practica4_2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+PdM_Practica0.elf PdM_Practica0.map: $(OBJS) $(USER_OBJS) /home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica5/PdM_Practica5_1/STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "PdM_Practica0.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica5/PdM_Practica5_1/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PdM_Practica0.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -71,14 +71,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-PdM_Practica4_2.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "PdM_Practica4_2.list"
+PdM_Practica0.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "PdM_Practica0.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) PdM_Practica4_2.elf PdM_Practica4_2.list PdM_Practica4_2.map default.size.stdout
+	-$(RM) PdM_Practica0.elf PdM_Practica0.list PdM_Practica0.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

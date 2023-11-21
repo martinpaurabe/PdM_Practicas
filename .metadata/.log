@@ -9743,3 +9743,21 @@ java.io.FileNotFoundException: /home/martin/Desktop/MESE/PdM_Practicas/PdM_Pract
 
 !ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2023-11-21 15:29:31.775
 !MESSAGE Won't launch debug session since we failed to locate the binary.
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-11-21 16:04:48.741
+!MESSAGE Indexed 'PdM_Practica0' (25 sources, 114 headers) in 1.95 sec: 9,445 declarations; 38,339 references; 2 unresolved inclusions; 42 syntax errors; 147 unresolved names (0.31%)
+!SESSION 2023-11-21 16:06:36.248 -----------------------------------------------
+eclipse.buildId=Version 1.13.2
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-11-21 16:06:58.507
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-11-21 16:06:58.508
+!MESSAGE Log4j2 initialized with config file /home/martin/Desktop/MESE/PdM_Practicas/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-11-21 16:07:01.340
+!MESSAGE Started RMI Server, listening on port 41337

@@ -8,6 +8,8 @@
 #ifndef API_INC_API_UART_H_
 #define API_INC_API_UART_H_
 
+#include "main.h"
+
 /**********************************************************************
  * uartInit Function :
  * Function that initialize the UART periferial, and send the initialization
