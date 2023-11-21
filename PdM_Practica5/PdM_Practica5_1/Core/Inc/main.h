@@ -34,6 +34,7 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "API_delay.h"
+#include "API_debounce.h"
 
 /* USER CODE END Includes */
 
