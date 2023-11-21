@@ -1,21 +1,21 @@
-10:10:19 **** Incremental Build of configuration Debug for project PdM_Practica4_2 ****
+16:53:33 **** Incremental Build of configuration Debug for project P4Revision ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica4_2/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica4_2/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica4_2/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "PdM_Practica4_2.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica4_2/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PdM_Practica4_2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PdM_Practica4_2.elf
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/P4Revision/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/P4Revision/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/P4Revision/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "P4Revision.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/P4Revision/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="P4Revision.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: P4Revision.elf
  
-arm-none-eabi-size   PdM_Practica4_2.elf 
-arm-none-eabi-objdump -h -S  PdM_Practica4_2.elf  > "PdM_Practica4_2.list"
+arm-none-eabi-size   P4Revision.elf 
+arm-none-eabi-objdump -h -S  P4Revision.elf  > "P4Revision.list"
    text	   data	    bss	    dec	    hex	filename
-   8512	     20	   1652	  10184	   27c8	PdM_Practica4_2.elf
+   8572	     24	   1680	  10276	   2824	P4Revision.elf
 Finished building: default.size.stdout
  
-Finished building: PdM_Practica4_2.list
+Finished building: P4Revision.list
  
-10:11:26 **** Incremental Build of configuration Debug for project PdM_Practica4_2 ****
+16:53:39 **** Incremental Build of configuration Debug for project P4Revision ****
 make -j8 all 
-arm-none-eabi-size   PdM_Practica4_2.elf 
+arm-none-eabi-size   P4Revision.elf 
    text	   data	    bss	    dec	    hex	filename
-   8512	     20	   1652	  10184	   27c8	PdM_Practica4_2.elf
+   8572	     24	   1680	  10276	   2824	P4Revision.elf
 Finished building: default.size.stdout
  
