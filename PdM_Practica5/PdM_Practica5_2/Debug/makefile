@@ -61,8 +61,8 @@ all: main-build
 main-build: PdM_Practica0.elf secondary-outputs
 
 # Tool invocations
-PdM_Practica0.elf PdM_Practica0.map: $(OBJS) $(USER_OBJS) /home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica5/PdM_Practica5_1/STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "PdM_Practica0.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica5/PdM_Practica5_1/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PdM_Practica0.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+PdM_Practica0.elf PdM_Practica0.map: $(OBJS) $(USER_OBJS) /home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica5/PdM_Practica5_2/STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "PdM_Practica0.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica5/PdM_Practica5_2/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PdM_Practica0.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

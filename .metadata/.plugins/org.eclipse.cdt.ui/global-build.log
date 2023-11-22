@@ -1,29 +1,14 @@
-16:00:18 **** Incremental Build of configuration Debug for project PdM_Practica0 ****
+13:49:17 **** Incremental Build of configuration Debug for project PdM_Practica0 ****
 make -j8 all 
-arm-none-eabi-gcc "../Drivers/API/Src/API_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica5/PdM_Practica5_1/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica5/PdM_Practica5_1/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica5/PdM_Practica5_1/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_uart.d" -MT"Drivers/API/Src/API_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_uart.o"
-../Drivers/API/Src/API_uart.c: In function 'uartInit':
-../Drivers/API/Src/API_uart.c:42:46: warning: format '%d' expects argument of type 'int', but argument 3 has type 'int32_t' {aka 'long int'} [-Wformat=]
-   42 |                   i=sprintf(BaudRateValue, "%d",BRValue);
-      |                                             ~^  ~~~~~~~
-      |                                              |  |
-      |                                              |  int32_t {aka long int}
-      |                                              int
-      |                                             %ld
-arm-none-eabi-gcc -o "PdM_Practica0.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/PdM_Practica5/PdM_Practica5_1/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PdM_Practica0.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PdM_Practica0.elf
- 
 arm-none-eabi-size   PdM_Practica0.elf 
-arm-none-eabi-objdump -h -S  PdM_Practica0.elf  > "PdM_Practica0.list"
    text	   data	    bss	    dec	    hex	filename
-  11936	    100	   1988	  14024	   36c8	PdM_Practica0.elf
+  12064	    100	   1988	  14152	   3748	PdM_Practica0.elf
 Finished building: default.size.stdout
  
-Finished building: PdM_Practica0.list
- 
-16:00:24 **** Incremental Build of configuration Debug for project PdM_Practica0 ****
+13:49:22 **** Incremental Build of configuration Debug for project PdM_Practica0 ****
 make -j8 all 
 arm-none-eabi-size   PdM_Practica0.elf 
    text	   data	    bss	    dec	    hex	filename
-  11936	    100	   1988	  14024	   36c8	PdM_Practica0.elf
+  12064	    100	   1988	  14152	   3748	PdM_Practica0.elf
 Finished building: default.size.stdout
  

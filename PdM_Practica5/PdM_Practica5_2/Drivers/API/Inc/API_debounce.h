@@ -32,12 +32,18 @@ void debounceFSM_init();
 void debounceFSM_update();
 
 /**********************************************************************
- * readKey Function:
+ * readKeyPosEdge Function:
  * This function sends true if there was a positive edge since the last
  * time it was called, false otherwise.
  *********************************************************************/
-bool_t readKey();
+bool_t readKeyPosEdge();
 
+/**********************************************************************
+ * readKeyRelease Function:
+ * This function sends true if there was a negative edge since the last
+ * time it was called, false otherwise.
+ *********************************************************************/
+bool_t readKeyNegEdge();
 
 
 #endif /* API_INC_API_DEBOUNCE_H_ */

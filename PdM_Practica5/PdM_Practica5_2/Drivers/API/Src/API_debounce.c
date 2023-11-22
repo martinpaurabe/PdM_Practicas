@@ -22,13 +22,14 @@ BUTTON_RAISING,
 } debounceState_t;
 
 static debounceState_t debounceState;  //State variable of the FSM
-static bool_t buttonEdge;			   //Variable that stores if there was or not a positive edge on the button position
+static bool_t buttonPosEdge,buttonNegEdge;			   //Variable that stores if there was or not a positive edge on the button position
 static delay_t debounceDelay;		   //delay variable to manage the time on the FSM changes
 
 
 void debounceFSM_init() {
 	debounceState = BUTTON_UP;					//Initialize the state button like not pressed
-	buttonEdge = false;							//No edge yet (no time)
+	buttonPosEdge = false;							//No edge yet (no time)
+	buttonNegEdge = false;							//No edge yet (no time)
 	tick_t initialDelay = DEBOUNCETIME;         // Set the initial time of the delay (200ms)
 	delayInit(&debounceDelay, initialDelay); 	// Initialize the counter
 
@@ -96,7 +97,8 @@ void debounceFSM_update(){
 
 	default:
 		debounceState = BUTTON_UP;
-		buttonEdge = false;
+		buttonPosEdge = false;
+		buttonNegEdge = false;
 		break;
 
 	}
@@ -106,24 +108,33 @@ void debounceFSM_update(){
 
 void buttonPressed() {
 //	  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
-	  buttonEdge = true;
+	  buttonPosEdge = true;
 }
 
 
 
 void buttonReleased(){
 //	 HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+	  buttonNegEdge = true;
 }
 
-bool_t readKey(){
-	if(buttonEdge){
-		buttonEdge = false;
+bool_t readKeyPosEdge(){
+	if(buttonPosEdge){
+		buttonPosEdge = false;
 		return true;
 	}
 	else
 		return false;
 }
 
+bool_t readKeyNegEdge(){
+	if(buttonNegEdge){
+		buttonNegEdge = false;
+		return true;
+	}
+	else
+		return false;
+}
 
 
 
