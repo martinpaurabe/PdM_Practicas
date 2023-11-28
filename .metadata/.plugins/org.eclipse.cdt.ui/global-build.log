@@ -1,14 +1,309 @@
-13:49:17 **** Incremental Build of configuration Debug for project PdM_Practica0 ****
+11:10:20 **** Build of configuration Debug for project Practica5_RP ****
 make -j8 all 
-arm-none-eabi-size   PdM_Practica0.elf 
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o"
+arm-none-eabi-gcc "../Drivers/API/Src/API_debounce.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_debounce.d" -MT"Drivers/API/Src/API_debounce.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_debounce.o"
+arm-none-eabi-gcc "../Drivers/API/Src/API_delay.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_delay.d" -MT"Drivers/API/Src/API_delay.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_delay.o"
+arm-none-eabi-gcc "../Drivers/API/Src/API_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_uart.d" -MT"Drivers/API/Src/API_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_uart.o"
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -x assembler-with-cpp -MMD -MP -MF"Core/Startup/startup_stm32f401retx.d" -MT"Core/Startup/startup_stm32f401retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Startup/startup_stm32f401retx.o" "../Core/Startup/startup_stm32f401retx.s"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Drivers/API/Src/API_delay.c: In function 'delayRead':
+../Drivers/API/Src/API_delay.c:35:36: warning: implicit declaration of function 'HAL_GetTick' [-Wimplicit-function-declaration]
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"Core/Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_msp.o"
+   35 |                 delay->startTime = HAL_GetTick(); // tomar valor de contador en [ms] actual
+      |                                    ^~~~~~~~~~~
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_it.d" -MT"Core/Src/stm32f4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_it.o"
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
+../Drivers/API/Src/API_debounce.c: In function 'buttonPressed':
+../Drivers/API/Src/API_debounce.c:114:24: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  114 |         uartSendString("\r\nFlanco descendente!\r\n");
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                        |
+      |                        char *
+In file included from /home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc/API_debounce.h:26,
+                 from ../Drivers/API/Src/API_debounce.c:9:
+/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc/API_uart.h:42:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   42 | void uartSendString(uint8_t * pstring);
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_debounce.c: In function 'buttonReleased':
+../Drivers/API/Src/API_debounce.c:121:24: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  121 |         uartSendString("\r\nFlanco ascendente!\r\n");
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                        |
+      |                        char *
+In file included from /home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc/API_debounce.h:26,
+                 from ../Drivers/API/Src/API_debounce.c:9:
+/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc/API_uart.h:42:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   42 | void uartSendString(uint8_t * pstring);
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:13:1: warning: "/*" within comment [-Wcomment]
+   13 | /* DEFINICION DE FUNCIONES */
+      |  
+../Drivers/API/Src/API_uart.c: In function 'print_uart_config':
+../Drivers/API/Src/API_uart.c:97:24: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+   97 |         uartSendString("\r\n**************************** INICIO ****************************\r\n");
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                        |
+      |                        char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:100:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  100 |                 uartSendString("* Instance:             USART1\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:103:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  103 |                 uartSendString("* Instance:             USART2\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:109:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  109 |                 uartSendString("* Instance:             ERROR\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:114:9: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+arm-none-eabi-gcc "../Core/Src/system_stm32f4xx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system_stm32f4xx.d" -MT"Core/Src/system_stm32f4xx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32f4xx.o"
+  114 |         sprintf(br,"* BaudRate:         %d\r\n", uart.Init.BaudRate);
+      |         ^~~~~~~
+../Drivers/API/Src/API_uart.c:9:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+    8 | #include "API_uart.h"
+  +++ |+#include <stdio.h>
+    9 | 
+../Drivers/API/Src/API_uart.c:114:9: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  114 |         sprintf(br,"* BaudRate:         %d\r\n", uart.Init.BaudRate);
+      |         ^~~~~~~
+../Drivers/API/Src/API_uart.c:114:9: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Drivers/API/Src/API_uart.c:114:42: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  114 |         sprintf(br,"* BaudRate:         %d\r\n", uart.Init.BaudRate);
+      |                                         ~^       ~~~~~~~~~~~~~~~~~~
+      |                                          |                |
+      |                                          int              uint32_t {aka long unsigned int}
+      |                                         %ld
+../Drivers/API/Src/API_uart.c:115:24: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  115 |         uartSendString(br);
+      |                        ^~
+      |                        |
+      |                        char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:119:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  119 |                 uartSendString("* WordLength:           UART_WORDLENGTH_8B\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:122:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  122 |                 uartSendString("* WordLength:           UART_WORDLENGTH_9B\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:125:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  125 |                 uartSendString("* WordLength:           ERROR\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:130:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  130 |                 uartSendString("* StopBits:             UART_STOPBITS_1\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:133:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  133 |                 uartSendString("* StopBits:             UART_STOPBITS_2\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:136:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  136 |                 uartSendString("* StopBits:             ERROR\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:141:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  141 |                 uartSendString("* Parity:               UART_PARITY_NONE\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:144:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  144 |                 uartSendString("* Parity:               UART_PARITY_EVEN\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:147:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  147 |                 uartSendString("* Parity:               UART_PARITY_ODD\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:150:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  150 |                 uartSendString("* Parity:               ERROR\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:155:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  155 |                 uartSendString("* Mode:                 UART_MODE_TX_RX\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:158:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  158 |                 uartSendString("* Mode:                 UART_MODE_RX\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:161:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  161 |                 uartSendString("* Mode:                 UART_MODE_TX\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:164:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  164 |                 uartSendString("* Mode:                 ERROR\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:169:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  169 |                 uartSendString("* HwFlowCtl:            UART_HWCONTROL_NONE\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:172:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  172 |                 uartSendString("* HwFlowCtl:            UART_HWCONTROL_RTS\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:175:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  175 |                 uartSendString("* HwFlowCtl:            UART_HWCONTROL_CTS\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:178:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  178 |                 uartSendString("* HwFlowCtl:            UART_HWCONTROL_RTS_CTS\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:181:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  181 |                 uartSendString("* HwFlowCtl:            ERROR\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:186:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  186 |                 uartSendString("* OverSampling:         UART_OVERSAMPLING_16\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:189:32: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  189 |                 uartSendString("* OverSampling:         ERROR\r\n");
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+../Drivers/API/Src/API_uart.c:192:24: warning: pointer targets in passing argument 1 of 'uartSendString' differ in signedness [-Wpointer-sign]
+  192 |         uartSendString("****************************************************************\r\n\r\n");
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                        |
+      |                        char *
+../Drivers/API/Src/API_uart.c:45:31: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   45 | void uartSendString(uint8_t * pstring){
+      |                     ~~~~~~~~~~^~~~~~~
+arm-none-eabi-gcc -o "Practica5_RP.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/Practica5_RP/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica5_RP.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica5_RP.elf
+ 
+arm-none-eabi-size   Practica5_RP.elf 
+arm-none-eabi-objdump -h -S  Practica5_RP.elf  > "Practica5_RP.list"
    text	   data	    bss	    dec	    hex	filename
-  12064	    100	   1988	  14152	   3748	PdM_Practica0.elf
+  13032	    108	   1996	  15136	   3b20	Practica5_RP.elf
 Finished building: default.size.stdout
  
-13:49:22 **** Incremental Build of configuration Debug for project PdM_Practica0 ****
+Finished building: Practica5_RP.list
+ 
+11:10:27 **** Incremental Build of configuration Debug for project Practica5_RP ****
 make -j8 all 
-arm-none-eabi-size   PdM_Practica0.elf 
+arm-none-eabi-size   Practica5_RP.elf 
    text	   data	    bss	    dec	    hex	filename
-  12064	    100	   1988	  14152	   3748	PdM_Practica0.elf
+  13032	    108	   1996	  15136	   3b20	Practica5_RP.elf
 Finished building: default.size.stdout
  

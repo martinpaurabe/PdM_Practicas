@@ -7,4 +7,6 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:PdM_Practica\ 4\ (1)/activeLaun
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:PdM_Practica\ 4\ (1)/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:PdM_Practica0/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:PdM_Practica0/activeLaunchTarget=null\:---
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:PdM_Practica_5_P2/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Practica5_RP/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Practica_3\ Debug/activeLaunchMode=run
