@@ -10526,3 +10526,27 @@ java.io.IOException: Error opening /dev/ttyACM0: No such file or directory
 
 !ENTRY org.eclipse.equinox.p2.repository 2 0 2023-11-28 15:28:54.722
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/release/1.2.2/content.xml.xz, see CVE-2021-41033. Consider using https instead.
+!SESSION 2023-11-29 19:29:43.258 -----------------------------------------------
+eclipse.buildId=Version 1.13.2
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-11-29 19:29:51.144
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-11-29 19:29:51.146
+!MESSAGE Log4j2 initialized with config file /home/martin/Desktop/MESE/PdM_Practicas/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-11-29 19:29:56.706
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-11-29 19:32:06.724
+!MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/updates/release/latest, see CVE-2021-41033. Consider using https instead.
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-11-29 19:32:09.284
+!MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/release/1.2.2/content.xml.xz, see CVE-2021-41033. Consider using https instead.
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-11-29 19:33:06.303
+!MESSAGE Indexed 'PdM_Practica0' (38 sources, 146 headers) in 2.68 sec: 11,680 declarations; 47,440 references; 2 unresolved inclusions; 42 syntax errors; 149 unresolved names (0.25%)
