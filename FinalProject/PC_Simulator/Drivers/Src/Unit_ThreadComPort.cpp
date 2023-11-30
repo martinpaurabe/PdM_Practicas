@@ -1,11 +1,8 @@
-#include <vcl.h>
-#pragma hdrstop
 #include "Unit_ThreadComPort.h"
-#pragma package(smart_init)
 
-#include "Unit_PuertoCom.h"
+#include "Unit_ComPort.h"
 //---------------------------------------------------------------------------
-
+/*
 #define ADQ_TIMEOUT .1 //Segundos
 #define SEC_TO_DOUBLE(T) ((T)/86400.0) //T: Tiempo en segundos
 
@@ -121,4 +118,4 @@ void __fastcall TThreadComPort::OnTerminateFc(TObject *Sender)
 //  ShowMessage("          Captura interrumpida          ");
 }
 //---------------------------------------------------------------------------
-
+*/
