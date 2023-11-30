@@ -2,7 +2,6 @@
 #define Unit_PuertoComH
 //---------------------------------------------------------------------------
 
-#include <Dialogs.hpp>
 
 //#define BAUDRATE 921600
 #define BAUDRATE 115200

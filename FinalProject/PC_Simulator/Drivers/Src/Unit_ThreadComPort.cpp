@@ -38,7 +38,7 @@ __fastcall TThreadComPort::TThreadComPort(bool CreateSuspended)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TThreadComPort::Execute()
+void TThreadComPort()
 {
   DWORD CantBytesReadAnt;
   byte Dato;

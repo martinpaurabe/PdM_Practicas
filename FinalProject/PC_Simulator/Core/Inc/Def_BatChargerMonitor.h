@@ -57,90 +57,51 @@
 //Comandos Sci
 //*********************************
 //Ordenes de habilitacion
-#define CMD_GES_SAVE             0x00
-#define CMD_GES_STATUS           0x01
-#define CMD_GES_STT_AEG_ON       0x02
-#define CMD_GES_STT_AEG_OFF      0x03
-#define CMD_GES_STT_SOL_ON       0x04
-#define CMD_GES_STT_SOL_OFF      0x05
-#define CMD_GES_STT_CBA_ON       0x06
-#define CMD_GES_STT_CBA_OFF      0x07
-#define CMD_GES_STT_CINT_ON      0x08
-#define CMD_GES_STT_CINT_OFF     0x09
-#define CMD_GES_STT_OUT48_ON     0x0A
-#define CMD_GES_STT_OUT48_OFF    0x0B
-#define CMD_GES_STT_BRK_ON       0x0C
-#define CMD_GES_STT_BRK_OFF      0x0D
-#define CMD_GES_STT_IN220_ON     0x0E
-#define CMD_GES_STT_IN220_OFF    0x0F
-#define CMD_GES_STT_OUT220_ON    0x10
-#define CMD_GES_STT_OUT220_OFF   0x11
-#define CMD_GES_STT_ALAUX_ON     0x12
-#define CMD_GES_STT_ALAUX_OFF    0x13
+#define CMD_BCM_SAVE             0x00
+#define CMD_BCM_STATUS           0x01
+#define CMD_BCM_STT_LED2_ON      0x02
+#define CMD_BCM_STT_LED2_OFF     0x03
 
 
 
-//Ordenes para la Carga de Bateria
-#define CMD_GES_CBA            0x20
-#define CMD_GES_CBA_PWM        0x21
-#define CMD_GES_CBA_TEN_DES    0x22
-#define CMD_GES_CBA_COR_DES    0x23
-#define CMD_GES_CBA_SEGUR      0x24
-#define CMD_GES_CBA_CTRL_PID   0x25
-#define CMD_GES_CBA_CTRL_ON    0x26
-#define CMD_GES_CBA_CTRL_OFF   0x27
+//Ordenes para los Módulos de Carga
+#define CMD_BCM_CBA            0x20
+#define CMD_BCM_CBA_PWM        0x21
+#define CMD_BCM_CBA_TEN_DES    0x22
+#define CMD_BCM_CBA_COR_DES    0x23
+#define CMD_BCM_CBA_SEGUR      0x24
+#define CMD_BCM_CBA_CTRL_PID   0x25
+#define CMD_BCM_CBA_CTRL_ON    0x26
+#define CMD_BCM_CBA_CTRL_OFF   0x27
 
 
-//Ordenes para Entrada 220 Linea
-#define CMD_GES_IN220            0x30
-#define CMD_GES_IN220_PWM        0x31
-#define CMD_GES_IN220_TEN_DES    0x32
-#define CMD_GES_IN220_COR_DES    0x33
-#define CMD_GES_IN220_SEGUR      0x34
-#define CMD_GES_IN220_CTRL_PID   0x35
-#define CMD_GES_IN220_CTRL_ON    0x36
-#define CMD_GES_IN220_CTRL_OFF   0x37
+//Ordenes para Modulo de Carga Numero 1
+#define CMD_BCM_CBA1            0x30
+#define CMD_BCM_CBA1_PWM        0x31
+#define CMD_BCM_CBA1_TEN_DES    0x32
+#define CMD_BCM_CBA1_COR_DES    0x33
 
 
-//Ordenes para la salida a 220V
-#define CMD_GES_OUT220              0x40
-#define CMD_GES_OUT220_FREQ         0x41
-#define CMD_GES_OUT220_TEN_DES      0x42
-#define CMD_GES_OUT220_COR_DES      0x43
-#define CMD_GES_OUT220_SEGUR        0x44
-#define CMD_GES_OUT220_CTRL_PID     0x45
-#define CMD_GES_OUT220_CTRL_ON      0x46
-#define CMD_GES_OUT220_CTRL_OFF     0x47
-
-//Ordenes para el Freno
-#define CMD_GES_BRK              0x50
-#define CMD_GES_BRK_FREQ         0x51
-#define CMD_GES_BRK_TEN_DES      0x52
-#define CMD_GES_BRK_COR_DES      0x53
-#define CMD_GES_BRK_SEGUR        0x54
-#define CMD_GES_BRK_CTRL_PID     0x55
-#define CMD_GES_BRK_CTRL_ON      0x56
-#define CMD_GES_BRK_CTRL_OFF     0x57
 
 
-#define CMD_GES_GRAL              0x70
+#define CMD_BCM_GRAL              0x70
 
 
 //Pedido de Datos
 #define DRQ_GES                0x80
-#define DRQ_GES_GRAL           0x81
-#define DRQ_GES_CBA            0x82
-#define DRQ_GES_IN220          0x83
-#define DRQ_GES_OUT220         0x84
-#define DRQ_GES_BRK            0x85
+#define DRQ_BCM_GRAL           0x81
+#define DRQ_BCM_CBA            0x82
+#define DRQ_BCM_IN220          0x83
+#define DRQ_BCM_OUT220         0x84
+#define DRQ_BCM_BRK            0x85
 
 //Datos
-#define DAT_GES_SET            0xA0
-#define DAT_GES_SET_GRAL       0xA1
-#define DAT_GES_SET_CBA        0xA2
-#define DAT_GES_SET_IN220      0xA3
-#define DAT_GES_SET_OUT220     0xA4
-#define DAT_GES_SET_BRK        0xA5
+#define DAT_BCM_SET            0xA0
+#define DAT_BCM_SET_GRAL       0xA1
+#define DAT_BCM_SET_CBA        0xA2
+#define DAT_BCM_SET_IN220      0xA3
+#define DAT_BCM_SET_OUT220     0xA4
+#define DAT_BCM_SET_BRK        0xA5
 
 
 //==============================================================================================================
@@ -245,18 +206,18 @@ typedef struct
   TVac    Brk;
   
 //Definicion de Salidas
-#define STAT_GES_AEG             (0x00000001<<0)
-#define STAT_GES_SOL             (0x00000001<<1)
-#define STAT_GES_CBA             (0x00000001<<2)
-#define STAT_GES_CIN             (0x00000001<<3)
-#define STAT_GES_OUT48           (0x00000001<<4)
-#define STAT_GES_BRK             (0x00000001<<5)
-#define STAT_GES_IN220           (0x00000001<<6)
-#define STAT_GES_OUT220          (0x00000001<<7)
-#define STAT_GES_ALAUX           (0x00000001<<8)
+#define STAT_BCM_AEG             (0x00000001<<0)
+#define STAT_BCM_SOL             (0x00000001<<1)
+#define STAT_BCM_CBA             (0x00000001<<2)
+#define STAT_BCM_CIN             (0x00000001<<3)
+#define STAT_BCM_OUT48           (0x00000001<<4)
+#define STAT_BCM_BRK             (0x00000001<<5)
+#define STAT_BCM_IN220           (0x00000001<<6)
+#define STAT_BCM_OUT220          (0x00000001<<7)
+#define STAT_BCM_ALAUX           (0x00000001<<8)
 
 //Definicion de Estados Internos
-#define STAT_GES_CBA_AUTO        (0x00000001<<10)
+#define STAT_BCM_CBA_AUTO        (0x00000001<<10)
 
 } TGestEnergia;
 
