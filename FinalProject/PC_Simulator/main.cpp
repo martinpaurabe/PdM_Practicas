@@ -1,14 +1,10 @@
-#include <iostream>
-#include <stdio.h>
-// C library headers
-#include <stdio.h>
-#include <string.h>
+//#include <iostream>
+//#include <stdio.h>
 
-// Linux headers
-#include <fcntl.h> // Contains file controls like O_RDWR
-#include <errno.h> // Error integer and strerror() function
-#include <termios.h> // Contains POSIX terminal control definitions
-#include <unistd.h> // write(), read(), close()
+
+//My Libraries
+#include "Drivers/Inc/Unit_ThreadComPort.h"
+
 
 using namespace std;
 
@@ -16,7 +12,7 @@ int main()
 {
     int serial_port = open("/dev/ttyACM0", O_RDWR);
 
-  // Create new termios struct, we call it 'tty' for convention
+  // Create new termios struct, we call it 'tty' for convent2ion
   struct termios tty;
 
   // Read in existing settings, and handle any error
