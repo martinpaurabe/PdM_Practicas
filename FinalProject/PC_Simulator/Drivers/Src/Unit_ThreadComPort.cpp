@@ -1,89 +1,79 @@
 #include "Unit_ThreadComPort.h"
-
 #include "Unit_ComPort.h"
+#include "Unit_Disp.h"
 //---------------------------------------------------------------------------
-/*
-#define ADQ_TIMEOUT .1 //Segundos
+#define ADQ_TIMEOUT 100 //Micro Segundos
 #define SEC_TO_DOUBLE(T) ((T)/86400.0) //T: Tiempo en segundos
+
+#define DIM_ADQ 10000
+//---------------------------------------------------------------------------
+
+#define ERR_PUERTO 0x01
+#define TIMEOUT    0x02
 
 enum {PARSER_PRINC, PARSER_LENGTH, PARSER_DATA, PARSER_EOF};
 
-TThreadComPort *ThreadComPort;
+static TThreadComPort ThreadComPort;
 //---------------------------------------------------------------------------
 
-//   Important: Methods and properties of objects in VCL can only be
-//   used in a method called using Synchronize, for example:
-//
-//      Synchronize(UpdateCaption);
-//
-//   where UpdateCaption could look like:
-//
-//      void __fastcall ThreadComPort::UpdateCaption()
-//      {
-//        Form1->Caption = "Updated in a thread";
-//      }
-//---------------------------------------------------------------------------
 
-__fastcall TThreadComPort::TThreadComPort(bool CreateSuspended)
-        : TThread(CreateSuspended)
+void ThreadComPort_Init(void)
 {
-  OnTerminate = &OnTerminateFc;
-//  Priority = tpTimeCritical;
-  FreeOnTerminate = false;
+  if(0 == OpenCommPort(115200))
 
-  rxParser = PARSER_PRINC;
+  ThreadComPort.rxParser = PARSER_PRINC;
 }
 //---------------------------------------------------------------------------
 
-void TThreadComPort()
+void ThreadComPort_Update(void)
 {
   DWORD CantBytesReadAnt;
-  byte Dato;
+  BYTE Dato;
 
-  while(!Terminated)
+  while(1)
   {
-    Sleep((unsigned int)1);
 
     for(int i = 0; i < 10; i++)
     {
-      ComErr = ComError();
-      CantBytesReadAnt = CantBytesRead;
-      CantBytesRead = BytesDisponibles();
-      if(CantBytesRead > DIM_ADQ)
+      ThreadComPort.ComErr = ComError();
+      CantBytesReadAnt = ThreadComPort.CantBytesRead;
+      ThreadComPort.CantBytesRead = BytesDisponibles();
+      if(ThreadComPort.CantBytesRead  > DIM_ADQ)
       {
         CloseCommPort();
       }
-      if((rxParser == PARSER_PRINC) || (CantBytesRead - CantBytesReadAnt))
+      if((ThreadComPort.rxParser == PARSER_PRINC) || (ThreadComPort.CantBytesRead  - CantBytesReadAnt))
       {
-        Tiempo = Tiempo.CurrentDateTime();
+        ThreadComPort.Tiempo = time(NULL);
       }
-      if((Tiempo.CurrentDateTime() - Tiempo).operator double() >= SEC_TO_DOUBLE(ADQ_TIMEOUT))
+      if(difftime(time(NULL),ThreadComPort.Tiempo)*1000 >= ADQ_TIMEOUT)
       {
-        EstSciRv |= TIMEOUT;
-        rxParser = PARSER_PRINC;
+        ThreadComPort.EstSciRv |= TIMEOUT;
+        ThreadComPort.rxParser = PARSER_PRINC;
       }
 
-      if(CantBytesRead > 0)
+      if(ThreadComPort.CantBytesRead  > 0)
       {
-        switch(rxParser)
+        printf("Llegó dato\r\n");
+        switch(ThreadComPort.rxParser)
         {
         case PARSER_PRINC:
           ReadBytes(&Dato, 1);
           if(Dato == SFD)
           {
-            rxParser = PARSER_LENGTH;
+            ThreadComPort.rxParser = PARSER_LENGTH;
           }
         break;
         case PARSER_LENGTH:
-          ReadBytes(&rxCantBytes, 1);
-          rxParser = PARSER_DATA;
+          ReadBytes(&ThreadComPort.rxCantBytes, 1);
+          ThreadComPort.rxParser = PARSER_DATA;
 
         break;
         case PARSER_DATA:
-          if(CantBytesRead >= rxCantBytes)
+          if(ThreadComPort.CantBytesRead  >= ThreadComPort.rxCantBytes)
           {
-            ReadBytes(rxBuf, rxCantBytes);
-            rxParser = PARSER_EOF;
+            ReadBytes(ThreadComPort.rxBuf, ThreadComPort.rxCantBytes);
+            ThreadComPort.rxParser = PARSER_EOF;
           }
 
         break;
@@ -91,31 +81,31 @@ void TThreadComPort()
           ReadBytes(&Dato, 1);
           if(Dato == EOF)
           {
-            sciDataReceived(rxBuf);
+            sciDataReceived(ThreadComPort.rxBuf);
           }
-          rxParser = PARSER_PRINC;
+          ThreadComPort.rxParser = PARSER_PRINC;
 
         break;
         }
-        EstSciRv &= ~ERR_PUERTO;
+        ThreadComPort.EstSciRv &= ~ERR_PUERTO;
       }
-      else if(CantBytesRead == 0)
+      else if(ThreadComPort.CantBytesRead  == 0)
       {
-        EstSciRv &= ~ERR_PUERTO;
+        ThreadComPort.EstSciRv &= ~ERR_PUERTO;
       }
       else
       {
-        EstSciRv |= ERR_PUERTO;
+        ThreadComPort.EstSciRv |= ERR_PUERTO;
       }
     }
   }
 }
 //---------------------------------------------------------------------------
 
-// Al terminar la tarea
-void __fastcall TThreadComPort::OnTerminateFc(TObject *Sender)
+void ThreadComPort_End(void)
 {
-//  ShowMessage("          Captura interrumpida          ");
+  CloseCommPort();
+  ThreadComPort.rxParser = PARSER_PRINC;
 }
 //---------------------------------------------------------------------------
-*/
+

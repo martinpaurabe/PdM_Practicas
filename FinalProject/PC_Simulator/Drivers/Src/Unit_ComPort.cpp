@@ -52,6 +52,7 @@ int32_t OpenCommPort(unsigned int Baudios)
     return 1;
   }
   
+  usleep(100);
   m_CommOpen = true;
   return 0;
 }
@@ -83,25 +84,6 @@ int32_t ComNum(void)
   return serial_port;
 }
 //---------------------------------------------------------------------------
-
-/*
-void SetBaudRate(uint32_t baud)
-{
-    unsigned int oldBaudRate = m_dcb.BaudRate; // backup
-    m_dcb.BaudRate = baud;
-
-    if(m_CommOpen) //Si el puerto est� abierto actualizar baud rate
-    {
-        if(!SetCommState(m_hCom,&m_dcb))   // trato de setear
-        {                                      // si no
-            m_dcb.BaudRate = oldBaudRate;        // vuelvo al viejo B.rate
-            ShowMessage("Error no se pudo cambiar el BaudRate");
-        }
-    }
-}
-*/
-//---------------------------------------------------------------------------
-
 
 int32_t BytesDisponibles(void)
 {
