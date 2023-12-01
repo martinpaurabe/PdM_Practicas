@@ -11,8 +11,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#include "Def_TipoDatos.h"
+
+
 typedef uint32_t tick_t; // Qué biblioteca se debe incluir para que esto compile? stdin.h
-typedef bool bool_t;	  // Qué biblioteca se debe incluir para que esto compile? stdbool.h
 typedef struct{
    tick_t startTime;
    tick_t duration;

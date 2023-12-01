@@ -17,6 +17,9 @@ typedef char TInt8;
 typedef short TInt16;
 typedef long TInt32;
 
+typedef bool bool_t;	  // Qué biblioteca se debe incluir para que esto compile? stdbool.h
+
+
 typedef union
 {
   TByte byt[2];

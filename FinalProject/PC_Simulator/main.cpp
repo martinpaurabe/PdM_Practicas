@@ -22,7 +22,8 @@ int main()
 
   while(1)
   {
-     ThreadComPort_Update();
+//    usleep(10000);
+    ThreadComPort_Update();
   }  
   
   return 0; // success

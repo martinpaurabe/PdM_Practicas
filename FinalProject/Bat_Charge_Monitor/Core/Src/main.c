@@ -69,8 +69,8 @@ int main(void)
   uint8_t PeriodIndex=0;				     //Pointer to the actual period of cycle
   tick_t Periodos[]={500,100};             //Timers vector in used of period cycle (Maxmum 2000, greater numbers are truncated)
   float	  Duty_ON = 0.5;					 //Duty cycle for the turned on period of led... its range is from 0.0 to 1.0
-  char MSG_PulsadorPosEdge[]="Se pulsó B1\n\r";
-  char MSG_PulsadorNegEdge[]="Se Soltó B1\n\r";
+  //char MSG_PulsadorPosEdge[]="Se pulsó B1\n\r";
+  //char MSG_PulsadorNegEdge[]="Se Soltó B1\n\r";
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -95,8 +95,8 @@ int main(void)
   delayInit(&FSM_Time,FSM_PERIODE);   					//Initialize the delay timer for updating FSM of the debouncing
   delayInit(&LedEdge,Periodos[PeriodIndex]);   			//Initialize the delay timer for the period of the blinking led
   debounceFSM_init();
-  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin,GPIO_PIN_SET );
-  uartInit();
+  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin,GPIO_PIN_SET);
+  ThreadComPort_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -105,18 +105,19 @@ int main(void)
   {
 	  if(delayRead(&FSM_Time))
 	  {
-		  debounceFSM_update();												//Update the FSM for debouncing
+		  debounceFSM_update();
+		  ThreadComPort_Update();//Update the FSM for debouncing
 		  if(readKeyPosEdge())
 		  {
-			  uartSendStringSize(MSG_PulsadorPosEdge,sizeof(MSG_PulsadorPosEdge));  			//Reads if there was a edge on the user button,if so we turn on the LED
+			  sendSciMsg(DRQ_BCM_MOD1, &BatChargeMon.ChargerMod1, sizeof(BatChargeMon.ChargerMod1));  			//Reads if there was a edge on the user button,if so we turn on the LED
 			  PeriodIndex ^= 0x01;                          //if so, it mast switch the period of blinking and send a msg through UART
 		  }
 		  if(readKeyNegEdge())
 		  {
-			  uartSendStringSize(MSG_PulsadorNegEdge,sizeof(MSG_PulsadorNegEdge));  			//Reads if there was a edge on the user button,if so we turn on the LED
+			  sendSciMsg(DRQ_BCM_MOD1, &BatChargeMon.ChargerMod1, sizeof(BatChargeMon.ChargerMod1));  			//Reads if there was a edge on the user button,if so we turn on the LED
                                                                                 //if so, it mast switch the period of blinking and send a msg through UART
 		  }
-		  if(delayRead(&LedEdge)){											//if half time of the blinking period has passed toggle de led and
+		  if(BytesDisponibles()){ //delayRead(&LedEdge)){											//if half time of the blinking period has passed toggle de led and
 			  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);					//update the blinking time
 			  delayWrite(&LedEdge,Periodos[PeriodIndex]*Duty_ON);
 		  }

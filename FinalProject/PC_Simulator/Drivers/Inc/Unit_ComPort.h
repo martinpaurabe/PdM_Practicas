@@ -26,8 +26,8 @@
 //#define BAUDRATE 921600
 #define BAUDRATE 115200
 
-#define SFD  '#'
-//#define EOF  0 VK_RETURN
+#define SFD    '#'
+#define EOFCOM  255
 //---------------------------------------------------------------------------
 
 int32_t OpenCommPort(uint32_t Baudios); //Abre la comunicacion

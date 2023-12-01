@@ -1,21 +1,22 @@
 #ifndef Unit_ThreadComPortH
 #define Unit_ThreadComPortH
 //---------------------------------------------------------------------------
-#include <time.h>
-
 
 //My Libraries
-#include "Unit_ComPort.h"
+#include "API_uart.h"
+#include "Unit_Disp.h"
 
 
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------
+#define ADQ_TIMEOUT 100 //Micro Segundos
+#define SEC_TO_DOUBLE(T) ((T)/86400.0) //T: Tiempo en segundos
 
-
-#define DIM_ADQ 10000
+#define DIM_ADQ 100
 //---------------------------------------------------------------------------
 
 #define ERR_PUERTO 0x01
 #define TIMEOUT    0x02
+//---------------------------------------------------------------------------
 
 typedef struct 
 {

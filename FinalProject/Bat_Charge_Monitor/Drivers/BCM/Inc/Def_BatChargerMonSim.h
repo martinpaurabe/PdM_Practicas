@@ -2,7 +2,6 @@
 #define Unit_BatChargersSimH
 //---------------------------------------------------------------------------
 #include "Unit_ThreadComPort.h"
-#include "Unit_ComPort.h"
 
 
 

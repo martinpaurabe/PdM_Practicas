@@ -36,6 +36,7 @@ extern "C" {
 #include "API_delay.h"
 #include "API_debounce.h"
 #include "API_uart.h"
+#include "Unit_ThreadComPort.h"
 
 /* USER CODE END Includes */
 
