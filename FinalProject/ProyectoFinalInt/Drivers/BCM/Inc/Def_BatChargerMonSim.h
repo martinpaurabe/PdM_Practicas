@@ -103,6 +103,9 @@ typedef struct
 }TBatChargeMon;
 
 
-
+void BcmFsmFuncShowCurrent(void);
+void BcmFsmFuncShowPorcent(void);
+void BcmFsmFuncShowComplet(void);
+bool_t BatPackChrgd(float limit);
 //---------------------------------------------------------------------------
 #endif

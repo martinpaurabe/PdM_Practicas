@@ -31,9 +31,11 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define LED_EDGE_PERIODE 1000  //Amount of miliseconds that will be the led turned on
+#define LED_EDGE_PERIODE 100  //Amount of miliseconds that will be the led turned on
 							   //after a negative edge read on the user button FSM.
-
+enum {BCM_FSM_SHOWPORCENT,BCM_FSM_SHOWCURRENT,BCM_FSM_SHOWCOMPLET};
+uint8_t BcmFsmStt = BCM_FSM_SHOWPORCENT;
+bool_t  BcmFsmSttChgd = true;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -42,7 +44,6 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-I2C_HandleTypeDef hi2c1;
 
 UART_HandleTypeDef huart2;
 
@@ -53,8 +54,8 @@ UART_HandleTypeDef huart2;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_USART2_UART_Init(void);
 static void MX_I2C1_Init(void);
+static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -106,9 +107,8 @@ int main(void)
   debounceFSM_init();
   HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin,GPIO_PIN_SET);
   ThreadComPort_Init();
-
+  LCD_Init();
   /* USER CODE END 2 */
-
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -118,15 +118,58 @@ int main(void)
 	  {
 		  debounceFSM_update();
 		  ThreadComPort_Update();//Update the FSM for debouncing
-		  if(readKeyPosEdge())
+		  switch (BcmFsmStt)
 		  {
-//			  sendSciMsg(DRQ_BCM_MOD1, &BatChargeMon.ChargerMod1, sizeof(BatChargeMon.ChargerMod1));  			//Reads if there was a edge on the user button,if so we turn on the LED
-			  PeriodIndex ^= 0x01;                          //if so, it mast switch the period of blinking and send a msg through UART
-		  }
-		  if(readKeyNegEdge())
-		  {
-			  sendSciMsg(DRQ_BCM_MOD1, &BatChargeMon.ChargerMod1, sizeof(BatChargeMon.ChargerMod1));  			//Reads if there was a edge on the user button,if so we turn on the LED
-                                                                               //if so, it mast switch the period of blinking and send a msg through UART
+		  case BCM_FSM_SHOWPORCENT:
+			  if (BcmFsmSttChgd)
+			  {
+				  BcmFsmSttChgd =false;
+				  LCD_Clr();
+			  }
+			  BcmFsmFuncShowPorcent();
+			  if(readKeyPosEdge())
+			  {
+				  BcmFsmSttChgd = true;
+				  BcmFsmStt = BCM_FSM_SHOWCURRENT;
+
+			  }
+			  if(BatPackChrgd(70))//if so, it mast switch the period of blinking and send a msg through UART
+			  {
+				  BcmFsmSttChgd = true;
+				  BcmFsmStt = BCM_FSM_SHOWCOMPLET;
+
+			  }
+			  break;
+		  case BCM_FSM_SHOWCURRENT:
+			  if (BcmFsmSttChgd)
+			  {
+				  BcmFsmSttChgd =false;
+				  LCD_Clr();
+			  }
+			  BcmFsmFuncShowCurrent();
+			  if(readKeyPosEdge())
+			  {
+				  BcmFsmSttChgd = true;
+				  BcmFsmStt = BCM_FSM_SHOWPORCENT;
+
+			  }//if so, it mast switch the period of blinking and send a msg through UART
+			  break;
+		  case BCM_FSM_SHOWCOMPLET:
+			  if (BcmFsmSttChgd)
+			  {
+				  BcmFsmSttChgd =false;
+				  LCD_Clr();
+			  }
+			  BcmFsmFuncShowComplet();
+			  if(!BatPackChrgd(50))//if so, it mast switch the period of blinking and send a msg through UART
+			  {
+				  BcmFsmSttChgd = true;
+				  BcmFsmStt = BCM_FSM_SHOWPORCENT;
+			  }
+			  break;
+		  default:
+			  BcmFsmStt = BCM_FSM_SHOWCURRENT;
+			  break;
 		  }
 		  if(BatChargeMon.ChargerMod1.Curr != 0)
 		  { 										//if half time of the blinking period has passed toggle de led and
@@ -188,40 +231,6 @@ void SystemClock_Config(void)
 }
 
 /**
-  * @brief I2C1 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_I2C1_Init(void)
-{
-
-  /* USER CODE BEGIN I2C1_Init 0 */
-
-  /* USER CODE END I2C1_Init 0 */
-
-  /* USER CODE BEGIN I2C1_Init 1 */
-
-  /* USER CODE END I2C1_Init 1 */
-  hi2c1.Instance = I2C1;
-  hi2c1.Init.ClockSpeed = 100000;
-  hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
-  hi2c1.Init.OwnAddress1 = 0;
-  hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
-  hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
-  hi2c1.Init.OwnAddress2 = 0;
-  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
-  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
-  if (HAL_I2C_Init(&hi2c1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN I2C1_Init 2 */
-
-  /* USER CODE END I2C1_Init 2 */
-
-}
-
-/**
   * @brief USART2 Initialization Function
   * @param None
   * @retval None
@@ -254,6 +263,12 @@ static void MX_USART2_UART_Init(void)
   /* USER CODE END USART2_Init 2 */
 
 }
+
+/**
+  * @brief I2C1 Initialization Function
+  * @param None
+  * @retval None
+  */
 
 /**
   * @brief GPIO Initialization Function

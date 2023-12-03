@@ -1,6 +1,34 @@
-22:18:03 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
+16:27:56 **** Build of configuration Debug for project ProyectoFinalInt ****
 make -j8 all 
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o"
+arm-none-eabi-gcc "../Drivers/BCM/Src/Unit_BatChargeMonitor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/BCM/Src/Unit_BatChargeMonitor.d" -MT"Drivers/BCM/Src/Unit_BatChargeMonitor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/BCM/Src/Unit_BatChargeMonitor.o"
 arm-none-eabi-gcc "../Drivers/BCM/Src/Unit_ThreadComPort.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/BCM/Src/Unit_ThreadComPort.d" -MT"Drivers/BCM/Src/Unit_ThreadComPort.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/BCM/Src/Unit_ThreadComPort.o"
+arm-none-eabi-gcc "../Drivers/API/Src/API_LCD.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_LCD.d" -MT"Drivers/API/Src/API_LCD.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_LCD.o"
+arm-none-eabi-gcc "../Drivers/API/Src/API_debounce.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_debounce.d" -MT"Drivers/API/Src/API_debounce.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_debounce.o"
+../Drivers/BCM/Src/Unit_BatChargeMonitor.c: In function 'BcmFsmFuncShowCurrent':
+../Drivers/BCM/Src/Unit_BatChargeMonitor.c:110:1: warning: implicit declaration of function 'LCD_SendCmd' [-Wimplicit-function-declaration]
+  110 | LCD_SendCmd (0x80|0x06); //Writing on the first line
+      | ^~~~~~~~~~~
+../Drivers/BCM/Src/Unit_BatChargeMonitor.c:111:1: warning: implicit declaration of function 'LCD_SendStr' [-Wimplicit-function-declaration]
+  111 | LCD_SendStr("CURRENT");
+      | ^~~~~~~~~~~
 ../Drivers/BCM/Src/Unit_ThreadComPort.c: In function 'ThreadComPort_Update':
 ../Drivers/BCM/Src/Unit_ThreadComPort.c:54:19: warning: passing argument 1 of 'GetByte' from incompatible pointer type [-Wincompatible-pointer-types]
    54 |           GetByte(&ThreadComPort.rxCantBytes);
@@ -12,85 +40,165 @@ In file included from /home/martin/Desktop/MESE/PdM_Practicas/FinalProject/Proye
 /home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc/API_uart.h:44:23: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
    44 | int32_t GetByte(BYTE *value); //Lectura un caracter
       |                       ^
+arm-none-eabi-gcc "../Drivers/API/Src/API_delay.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_delay.d" -MT"Drivers/API/Src/API_delay.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_delay.o"
+../Drivers/API/Src/API_LCD.c: In function 'LCD_Init':
+../Drivers/API/Src/API_LCD.c:48:25: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   48 |         uint8_t *Dato = LCD_INT_CMD;
+      |                         ^~~~~~~~~~~
+arm-none-eabi-gcc "../Drivers/API/Src/API_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_uart.d" -MT"Drivers/API/Src/API_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_uart.o"
+../Drivers/API/Src/API_LCD.c:73:17: warning: pointer targets in passing argument 1 of 'LCD_SendStr' differ in signedness [-Wpointer-sign]
+   73 |     LCD_SendStr("INICIANDO");
+      |                 ^~~~~~~~~~~
+      |                 |
+      |                 char *
+../Drivers/API/Src/API_LCD.c:41:27: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   41 | void LCD_SendStr(uint8_t *str);
+      |                  ~~~~~~~~~^~~
+../Drivers/API/Src/API_LCD.c: At top level:
+../Drivers/API/Src/API_LCD.c:160:3: warning: "/*" within comment [-Wcomment]
+  160 |   /* USER CODE BEGIN I2C1_Init 0 */
+      |    
+../Drivers/API/Src/API_LCD.c:180:3: warning: "/*" within comment [-Wcomment]
+  180 |   /* USER CODE BEGIN I2C1_Init 2 */
+      |    
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -x assembler-with-cpp -MMD -MP -MF"Core/Startup/startup_stm32f401retx.d" -MT"Core/Startup/startup_stm32f401retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Startup/startup_stm32f401retx.o" "../Core/Startup/startup_stm32f401retx.s"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"Core/Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_it.d" -MT"Core/Src/stm32f4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_it.o"
+../Drivers/API/Src/API_uart.c: In function 'OpenCommPort':
+../Drivers/API/Src/API_uart.c:52:42: warning: passing argument 2 of 'UART_Start_Receive_IT' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   52 |           UART_Start_Receive_IT(&huart2, rxBuf1, DIM_ADQ);
+      |                                          ^~~~~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from /home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc/API_uart.h:12,
+                 from ../Drivers/API/Src/API_uart.c:7:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:864:77: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  864 | HAL_StatusTypeDef UART_Start_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                    ~~~~~~~~~^~~~~
+../Drivers/API/Src/API_uart.c: In function 'GetByte':
+../Drivers/API/Src/API_uart.c:124:48: warning: passing argument 2 of 'HAL_UART_Receive' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  124 |         if(HAL_OK == HAL_UART_Receive(&huart2, (const uint8_t *)value, 1,10))
+      |                                                ^~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from /home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc/API_uart.h:12,
+                 from ../Drivers/API/Src/API_uart.c:7:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:723:72: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const uint8_t *' {aka 'const unsigned char *'}
+  723 | HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                               ~~~~~~~~~^~~~~
+../Drivers/API/Src/API_uart.c: In function 'ReadBytes':
+../Drivers/API/Src/API_uart.c:134:48: warning: passing argument 2 of 'HAL_UART_Receive' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  134 |         if(HAL_OK == HAL_UART_Receive(&huart2, (const uint8_t *)Buffer, n,n*10))
+      |                                                ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from /home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc/API_uart.h:12,
+                 from ../Drivers/API/Src/API_uart.c:7:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:723:72: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const uint8_t *' {aka 'const unsigned char *'}
+  723 | HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                               ~~~~~~~~~^~~~~
+At top level:
+../Drivers/API/Src/API_uart.c:12:26: warning: 'rxBuf' defined but not used [-Wunused-variable]
+   12 | static volatile uint8_t *rxBuf;
+      |                          ^~~~~
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32f4xx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system_stm32f4xx.d" -MT"Core/Src/system_stm32f4xx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32f4xx.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:110:3: warning: implicit declaration of function 'LCD_Init' [-Wimplicit-function-declaration]
+  110 |   LCD_Init();
+      |   ^~~~~~~~
+../Core/Src/main.c:127:35: warning: implicit declaration of function 'LCD_Clr' [-Wimplicit-function-declaration]
+  127 |                                   LCD_Clr();
+      |                                   ^~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:57:13: warning: 'MX_I2C1_Init' used but never defined
+   57 | static void MX_I2C1_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:238:13: warning: 'MX_USART2_UART_Init' defined but not used [-Wunused-function]
+  238 | static void MX_USART2_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'MX_USART2_UART_Init':
+../Core/Src/main.c:262:4: warning: 'i' is used uninitialized [-Wuninitialized]
+  262 |   i++;
+      |   ~^~
 arm-none-eabi-gcc -o "ProyectoFinalInt.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ProyectoFinalInt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: ProyectoFinalInt.elf
- 
-arm-none-eabi-size   ProyectoFinalInt.elf 
-arm-none-eabi-objdump -h -S  ProyectoFinalInt.elf  > "ProyectoFinalInt.list"
-   text	   data	    bss	    dec	    hex	filename
-  22572	    100	   2608	  25280	   62c0	ProyectoFinalInt.elf
-Finished building: default.size.stdout
- 
-Finished building: ProyectoFinalInt.list
- 
-22:18:13 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
+/opt/st/stm32cubeide_1.13.2/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.linux64_1.1.1.202309131626/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld: ./Core/Src/main.o: in function `main':
+/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Debug/../Core/Src/main.c:103: undefined reference to `MX_I2C1_Init'
+collect2: error: ld returned 1 exit status
+make: *** [makefile:66: ProyectoFinalInt.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+16:29:02 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
 make -j8 all 
-arm-none-eabi-size   ProyectoFinalInt.elf 
-   text	   data	    bss	    dec	    hex	filename
-  22572	    100	   2608	  25280	   62c0	ProyectoFinalInt.elf
-Finished building: default.size.stdout
- 
-22:18:19 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
+arm-none-eabi-gcc "../Drivers/API/Src/API_LCD.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_LCD.d" -MT"Drivers/API/Src/API_LCD.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_LCD.o"
+../Drivers/API/Src/API_LCD.c: In function 'LCD_Init':
+../Drivers/API/Src/API_LCD.c:48:25: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   48 |         uint8_t *Dato = LCD_INT_CMD;
+      |                         ^~~~~~~~~~~
+../Drivers/API/Src/API_LCD.c:73:17: warning: pointer targets in passing argument 1 of 'LCD_SendStr' differ in signedness [-Wpointer-sign]
+   73 |     LCD_SendStr("INICIANDO");
+      |                 ^~~~~~~~~~~
+      |                 |
+      |                 char *
+../Drivers/API/Src/API_LCD.c:41:27: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   41 | void LCD_SendStr(uint8_t *str);
+      |                  ~~~~~~~~~^~~
+../Drivers/API/Src/API_LCD.c: At top level:
+../Drivers/API/Src/API_LCD.c:117:6: error: conflicting types for 'LCD_SendStr'; have 'void(char *)'
+  117 | void LCD_SendStr(char *str)
+      |      ^~~~~~~~~~~
+../Drivers/API/Src/API_LCD.c:41:6: note: previous declaration of 'LCD_SendStr' with type 'void(uint8_t *)' {aka 'void(unsigned char *)'}
+   41 | void LCD_SendStr(uint8_t *str);
+      |      ^~~~~~~~~~~
+../Drivers/API/Src/API_LCD.c:160:3: warning: "/*" within comment [-Wcomment]
+  160 |   /* USER CODE BEGIN I2C1_Init 0 */
+      |    
+../Drivers/API/Src/API_LCD.c:180:3: warning: "/*" within comment [-Wcomment]
+  180 |   /* USER CODE BEGIN I2C1_Init 2 */
+      |    
+make: *** [Drivers/API/Src/subdir.mk:28: Drivers/API/Src/API_LCD.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+16:29:21 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
 make -j8 all 
-arm-none-eabi-size   ProyectoFinalInt.elf 
-   text	   data	    bss	    dec	    hex	filename
-  22572	    100	   2608	  25280	   62c0	ProyectoFinalInt.elf
-Finished building: default.size.stdout
- 
-22:21:18 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
-make -j8 all 
-arm-none-eabi-gcc "../Drivers/BCM/Src/Unit_ThreadComPort.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/BCM/Src/Unit_ThreadComPort.d" -MT"Drivers/BCM/Src/Unit_ThreadComPort.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/BCM/Src/Unit_ThreadComPort.o"
-../Drivers/BCM/Src/Unit_ThreadComPort.c: In function 'ThreadComPort_Update':
-../Drivers/BCM/Src/Unit_ThreadComPort.c:54:19: warning: passing argument 1 of 'GetByte' from incompatible pointer type [-Wincompatible-pointer-types]
-   54 |           GetByte(&ThreadComPort.rxCantBytes);
-      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                   |
-      |                   uint16_t * {aka short unsigned int *}
-In file included from /home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc/Unit_ThreadComPort.h:6,
-                 from ../Drivers/BCM/Src/Unit_ThreadComPort.c:1:
-/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc/API_uart.h:44:23: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
-   44 | int32_t GetByte(BYTE *value); //Lectura un caracter
-      |                       ^
+arm-none-eabi-gcc "../Drivers/API/Src/API_LCD.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_LCD.d" -MT"Drivers/API/Src/API_LCD.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_LCD.o"
+../Drivers/API/Src/API_LCD.c: In function 'LCD_Init':
+../Drivers/API/Src/API_LCD.c:48:25: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   48 |         uint8_t *Dato = LCD_INT_CMD;
+      |                         ^~~~~~~~~~~
+../Drivers/API/Src/API_LCD.c: At top level:
+../Drivers/API/Src/API_LCD.c:160:3: warning: "/*" within comment [-Wcomment]
+  160 |   /* USER CODE BEGIN I2C1_Init 0 */
+      |    
+../Drivers/API/Src/API_LCD.c:180:3: warning: "/*" within comment [-Wcomment]
+  180 |   /* USER CODE BEGIN I2C1_Init 2 */
+      |    
 arm-none-eabi-gcc -o "ProyectoFinalInt.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ProyectoFinalInt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: ProyectoFinalInt.elf
- 
-arm-none-eabi-size   ProyectoFinalInt.elf 
-arm-none-eabi-objdump -h -S  ProyectoFinalInt.elf  > "ProyectoFinalInt.list"
-   text	   data	    bss	    dec	    hex	filename
-  22524	    100	   2608	  25232	   6290	ProyectoFinalInt.elf
-Finished building: default.size.stdout
- 
-Finished building: ProyectoFinalInt.list
- 
-22:23:17 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
+/opt/st/stm32cubeide_1.13.2/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.linux64_1.1.1.202309131626/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld: ./Core/Src/main.o: in function `main':
+/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Debug/../Core/Src/main.c:103: undefined reference to `MX_I2C1_Init'
+collect2: error: ld returned 1 exit status
+make: *** [makefile:66: ProyectoFinalInt.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+16:29:52 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:131:22: error: 'prueba' undeclared (first use in this function)
-  131 |                   if(prueba == SFD){ //delayRead(&LedEdge)){                                                                                    //if half time of the blinking period has passed toggle de led and
-      |                      ^~~~~~
-../Core/Src/main.c:131:22: note: each undeclared identifier is reported only once for each function it appears in
-At top level:
-../Core/Src/main.c:228:13: warning: 'MX_USART2_UART_Init' defined but not used [-Wunused-function]
-  228 | static void MX_USART2_UART_Init(void)
-      |             ^~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:194:13: warning: 'MX_I2C1_Init' defined but not used [-Wunused-function]
-  194 | static void MX_I2C1_Init(void)
+../Core/Src/main.c:110:3: warning: implicit declaration of function 'LCD_Init' [-Wimplicit-function-declaration]
+  110 |   LCD_Init();
+      |   ^~~~~~~~
+../Core/Src/main.c:127:35: warning: implicit declaration of function 'LCD_Clr' [-Wimplicit-function-declaration]
+  127 |                                   LCD_Clr();
+      |                                   ^~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:57:13: warning: 'MX_I2C1_Init' declared 'static' but never defined [-Wunused-function]
+   57 | static void MX_I2C1_Init(void);
       |             ^~~~~~~~~~~~
-make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
-"make -j8 all" terminated with exit code 2. Build might be incomplete.
-22:24:38 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c:229:13: warning: 'MX_USART2_UART_Init' defined but not used [-Wunused-function]
-  229 | static void MX_USART2_UART_Init(void)
+../Core/Src/main.c:238:13: warning: 'MX_USART2_UART_Init' defined but not used [-Wunused-function]
+  238 | static void MX_USART2_UART_Init(void)
       |             ^~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:195:13: warning: 'MX_I2C1_Init' defined but not used [-Wunused-function]
-  195 | static void MX_I2C1_Init(void)
-      |             ^~~~~~~~~~~~
 ../Core/Src/main.c: In function 'MX_USART2_UART_Init':
-../Core/Src/main.c:253:4: warning: 'i' is used uninitialized [-Wuninitialized]
-  253 |   i++;
+../Core/Src/main.c:262:4: warning: 'i' is used uninitialized [-Wuninitialized]
+  262 |   i++;
       |   ~^~
 arm-none-eabi-gcc -o "ProyectoFinalInt.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ProyectoFinalInt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: ProyectoFinalInt.elf
@@ -98,93 +206,33 @@ Finished building target: ProyectoFinalInt.elf
 arm-none-eabi-size   ProyectoFinalInt.elf 
 arm-none-eabi-objdump -h -S  ProyectoFinalInt.elf  > "ProyectoFinalInt.list"
    text	   data	    bss	    dec	    hex	filename
-  22524	    100	   2608	  25232	   6290	ProyectoFinalInt.elf
+  31392	    104	   2624	  34120	   8548	ProyectoFinalInt.elf
 Finished building: default.size.stdout
  
 Finished building: ProyectoFinalInt.list
  
-22:27:21 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
+16:30:39 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
 make -j8 all 
-arm-none-eabi-size   ProyectoFinalInt.elf 
-   text	   data	    bss	    dec	    hex	filename
-  22524	    100	   2608	  25232	   6290	ProyectoFinalInt.elf
-Finished building: default.size.stdout
- 
-22:30:00 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
-make -j8 all 
-arm-none-eabi-size   ProyectoFinalInt.elf 
-   text	   data	    bss	    dec	    hex	filename
-  22524	    100	   2608	  25232	   6290	ProyectoFinalInt.elf
-Finished building: default.size.stdout
- 
-22:33:23 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
-make -j8 all 
-arm-none-eabi-gcc "../Drivers/BCM/Src/Unit_ThreadComPort.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/BCM/Src/Unit_ThreadComPort.d" -MT"Drivers/BCM/Src/Unit_ThreadComPort.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/BCM/Src/Unit_ThreadComPort.o"
-../Drivers/BCM/Src/Unit_ThreadComPort.c: In function 'ThreadComPort_Update':
-../Drivers/BCM/Src/Unit_ThreadComPort.c:54:19: warning: passing argument 1 of 'GetByte' from incompatible pointer type [-Wincompatible-pointer-types]
-   54 |           GetByte(&ThreadComPort.rxCantBytes);
-      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                   |
-      |                   uint16_t * {aka short unsigned int *}
-In file included from /home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc/Unit_ThreadComPort.h:6,
-                 from ../Drivers/BCM/Src/Unit_ThreadComPort.c:1:
-/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc/API_uart.h:44:23: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
-   44 | int32_t GetByte(BYTE *value); //Lectura un caracter
-      |                       ^
+arm-none-eabi-gcc "../Drivers/API/Src/API_LCD.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_LCD.d" -MT"Drivers/API/Src/API_LCD.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_LCD.o"
+../Drivers/API/Src/API_LCD.c: In function 'LCD_Init':
+../Drivers/API/Src/API_LCD.c:48:25: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   48 |         uint8_t *Dato = LCD_INT_CMD;
+      |                         ^~~~~~~~~~~
+../Drivers/API/Src/API_LCD.c: At top level:
+../Drivers/API/Src/API_LCD.c:160:3: warning: "/*" within comment [-Wcomment]
+  160 |   /* USER CODE BEGIN I2C1_Init 0 */
+      |    
+../Drivers/API/Src/API_LCD.c:180:3: warning: "/*" within comment [-Wcomment]
+  180 |   /* USER CODE BEGIN I2C1_Init 2 */
+      |    
 arm-none-eabi-gcc -o "ProyectoFinalInt.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ProyectoFinalInt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: ProyectoFinalInt.elf
  
 arm-none-eabi-size   ProyectoFinalInt.elf 
 arm-none-eabi-objdump -h -S  ProyectoFinalInt.elf  > "ProyectoFinalInt.list"
    text	   data	    bss	    dec	    hex	filename
-  22540	    100	   2608	  25248	   62a0	ProyectoFinalInt.elf
+  31404	    104	   2624	  34132	   8554	ProyectoFinalInt.elf
 Finished building: default.size.stdout
  
 Finished building: ProyectoFinalInt.list
- 
-22:35:59 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
-make -j8 all 
-arm-none-eabi-size   ProyectoFinalInt.elf 
-   text	   data	    bss	    dec	    hex	filename
-  22540	    100	   2608	  25248	   62a0	ProyectoFinalInt.elf
-Finished building: default.size.stdout
- 
-22:37:57 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
-make -j8 all 
-arm-none-eabi-size   ProyectoFinalInt.elf 
-   text	   data	    bss	    dec	    hex	filename
-  22540	    100	   2608	  25248	   62a0	ProyectoFinalInt.elf
-Finished building: default.size.stdout
- 
-22:47:59 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
-make -j8 all 
-arm-none-eabi-gcc "../Drivers/BCM/Src/Unit_ThreadComPort.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/BCM/Src/Unit_ThreadComPort.d" -MT"Drivers/BCM/Src/Unit_ThreadComPort.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/BCM/Src/Unit_ThreadComPort.o"
-../Drivers/BCM/Src/Unit_ThreadComPort.c: In function 'ThreadComPort_Update':
-../Drivers/BCM/Src/Unit_ThreadComPort.c:54:19: warning: passing argument 1 of 'GetByte' from incompatible pointer type [-Wincompatible-pointer-types]
-   54 |           GetByte(&ThreadComPort.rxCantBytes);
-      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                   |
-      |                   uint16_t * {aka short unsigned int *}
-In file included from /home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc/Unit_ThreadComPort.h:6,
-                 from ../Drivers/BCM/Src/Unit_ThreadComPort.c:1:
-/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc/API_uart.h:44:23: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
-   44 | int32_t GetByte(BYTE *value); //Lectura un caracter
-      |                       ^
-arm-none-eabi-gcc -o "ProyectoFinalInt.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ProyectoFinalInt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: ProyectoFinalInt.elf
- 
-arm-none-eabi-size   ProyectoFinalInt.elf 
-arm-none-eabi-objdump -h -S  ProyectoFinalInt.elf  > "ProyectoFinalInt.list"
-   text	   data	    bss	    dec	    hex	filename
-  22748	    100	   2608	  25456	   6370	ProyectoFinalInt.elf
-Finished building: default.size.stdout
- 
-Finished building: ProyectoFinalInt.list
- 
-22:48:11 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
-make -j8 all 
-arm-none-eabi-size   ProyectoFinalInt.elf 
-   text	   data	    bss	    dec	    hex	filename
-  22748	    100	   2608	  25456	   6370	ProyectoFinalInt.elf
-Finished building: default.size.stdout
  
