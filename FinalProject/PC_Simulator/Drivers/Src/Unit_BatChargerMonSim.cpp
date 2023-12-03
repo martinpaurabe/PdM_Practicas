@@ -16,9 +16,17 @@ TBatChargeMon BatChargeMon;
 //const TBatChargeMon BatChargeMonFlash;
 
 
-void Init_Disp(void)
+void BatChargerMonSim_Init(void)
 {
 //  BatChargeMon=BatChargeMonFlash;
+BatChargeMon.ChargerMod1.Porc =10;
+BatChargeMon.ChargerMod2.Porc =20;
+BatChargeMon.ChargerMod3.Porc =30;
+BatChargeMon.ChargerMod4.Porc =40;
+BatChargeMon.ChargerMod5.Porc =50;
+BatChargeMon.ChargerMod6.Porc =60;
+BatChargeMon.ChargerMod7.Porc =70;
+BatChargeMon.ChargerMod8.Porc =80;
 return;
  
 }
@@ -37,10 +45,35 @@ void sciDataReceived(BYTE *buf)
 //Serial Data Request
   case DRQ_BCM_MOD1:
    printf("Llegó DRQ_BCM_MOD1\r\n");
-   sendSciMsg(DRQ_BCM_MOD1, &BatChargeMon.ChargerMod1, sizeof(BatChargeMon.ChargerMod1));
+   sendSciMsg(DAT_BCM_MOD1, &BatChargeMon.ChargerMod1, sizeof(BatChargeMon.ChargerMod1));
   break;
   case DRQ_BCM_MOD2:
-    sendSciMsg(DRQ_BCM_MOD2, &BatChargeMon.ChargerMod2, sizeof(BatChargeMon.ChargerMod2));
+    printf("Llegó DRQ_BCM_MOD2\r\n");
+    sendSciMsg(DAT_BCM_MOD2, &BatChargeMon.ChargerMod2, sizeof(BatChargeMon.ChargerMod2));
+  break;
+  case DRQ_BCM_MOD3:
+    printf("Llegó DRQ_BCM_MOD3\r\n");
+    sendSciMsg(DAT_BCM_MOD3, &BatChargeMon.ChargerMod3, sizeof(BatChargeMon.ChargerMod3));
+  break;
+  case DRQ_BCM_MOD4:
+    printf("Llegó DRQ_BCM_MOD4\r\n");
+    sendSciMsg(DAT_BCM_MOD4, &BatChargeMon.ChargerMod4, sizeof(BatChargeMon.ChargerMod4));
+  break;
+  case DRQ_BCM_MOD5:
+    printf("Llegó DRQ_BCM_MOD5\r\n");
+    sendSciMsg(DAT_BCM_MOD5, &BatChargeMon.ChargerMod5, sizeof(BatChargeMon.ChargerMod5));
+  break;
+  case DRQ_BCM_MOD6:
+    printf("Llegó DRQ_BCM_MOD6\r\n");
+    sendSciMsg(DAT_BCM_MOD6, &BatChargeMon.ChargerMod6, sizeof(BatChargeMon.ChargerMod6));
+  break;
+  case DRQ_BCM_MOD7:
+   printf("Llegó DRQ_BCM_MOD7\r\n");
+   sendSciMsg(DAT_BCM_MOD7, &BatChargeMon.ChargerMod7, sizeof(BatChargeMon.ChargerMod7));
+  break;
+  case DRQ_BCM_MOD8:
+   printf("Llegó DRQ_BCM_MOD8\r\n");
+   sendSciMsg(DAT_BCM_MOD8, &BatChargeMon.ChargerMod8, sizeof(BatChargeMon.ChargerMod8));
   break;
 //Serial Command Recieve
 /*

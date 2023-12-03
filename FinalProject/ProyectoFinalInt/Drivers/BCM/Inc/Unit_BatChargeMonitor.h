@@ -1,8 +1,16 @@
-#ifndef Unit_BatChargersSimH
-#define Unit_BatChargersSimH
+/*
+ * Unit_BatChargeMonitor.h
+ *
+ *  Created on: Dec 3, 2023
+ *      Author: martin
+ */
+
+#ifndef BCM_INC_UNIT_BATCHARGEMONITOR_H_
+#define BCM_INC_UNIT_BATCHARGEMONITOR_H_
+
 //---------------------------------------------------------------------------
 #include "Unit_ThreadComPort.h"
-
+#include "API_LCD.h"
 
 
 #define BC_NUMBERS  8
@@ -80,7 +88,7 @@
 // Variable Types Definitions
 //==============================================================================================================
 
-typedef struct 
+typedef struct
 {
     float   Porc; /* data */
     float   PWM; /* data */
@@ -90,7 +98,7 @@ typedef struct
 
 
 
-typedef struct 
+typedef struct
 {
     TChargerMod  ChargerMod1; /* data */
     TChargerMod  ChargerMod2; /* data */
@@ -102,7 +110,10 @@ typedef struct
     TChargerMod  ChargerMod8; /* data */
 }TBatChargeMon;
 
-
-
+void BatChargMon_Init(void);
+void BatChargMon_Update(void);
+bool_t BatPackChrgd(float limit);
 //---------------------------------------------------------------------------
-#endif
+
+
+#endif /* BCM_INC_UNIT_BATCHARGEMONITOR_H_ */

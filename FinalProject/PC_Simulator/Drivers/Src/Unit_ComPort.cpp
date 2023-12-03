@@ -53,6 +53,9 @@ int32_t OpenCommPort(unsigned int Baudios)
   }
   
   usleep(100);
+  sleep(2); //required to make flush work, for some reason
+  tcflush(serial_port,TCIOFLUSH);
+
   m_CommOpen = true;
   return 0;
 }

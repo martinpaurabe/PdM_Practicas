@@ -28,6 +28,7 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
+#include "Unit_BatChargeMonitor.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -35,8 +36,9 @@ extern "C" {
 #include <stdbool.h>
 #include "API_delay.h"
 #include "API_debounce.h"
-#include "API_uart.h"
-#include "Unit_ThreadComPort.h"
+
+
+
 //#include "API_LCD.h"
 /* USER CODE END Includes */
 

@@ -3,23 +3,104 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "Unit_Disp.h"
+#include "Unit_BatChargeMonitor.h"
 
 
+static void BcmFsmFuncShowCurrent(void);
+static void BcmFsmFuncShowPorcent(void);
+static void BcmFsmFuncShowComplet(void);
+static void BatChargerStt_Update(void);
 
 //--------------------------------------------------------------------------------------------------------------
 
 
-TBatChargeMon BatChargeMon;
+static TBatChargeMon BatChargeMon;
+static delay_t DataUpdate;
 
 
-const TBatChargeMon BatChargeMonFlash;
+static const TBatChargeMon BatChargeMonFlash;
+
+static enum {BCM_FSM_SHOWPORCENT,BCM_FSM_SHOWCURRENT,BCM_FSM_SHOWCOMPLET};
+static uint8_t BcmFsmStt = BCM_FSM_SHOWPORCENT;
+static bool_t  BcmFsmSttChgd = true;
+
+enum {MODULO0,MODULO1,MODULO2,MODULO3,MODULO4,MODULO5,MODULO6,MODULO7,MODULO8};
+
+static uint8_t num_ModuloUD = MODULO1;
 
 
-void Init_Disp(void)
+void BatChargMon_Init(void)
 {
   BatChargeMon=BatChargeMonFlash;
+  debounceFSM_init();
+  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin,GPIO_PIN_SET);
+  ThreadComPort_Init();
+  LCD_Init();
+  delayInit(&DataUpdate,1000);
+
  
+}
+
+void BatChargMon_Update(void)
+{
+	debounceFSM_update();
+	ThreadComPort_Update();//Update the FSM for debouncing
+//	if(delayRead(&DataUpdate))
+//		BatChargerStt_Update();
+
+	switch (BcmFsmStt)
+	{
+	case BCM_FSM_SHOWPORCENT:
+	  if (BcmFsmSttChgd)
+	  {
+		  BcmFsmSttChgd =false;
+		  LCD_Clr();
+	  }
+	  BcmFsmFuncShowPorcent();
+	  if(readKeyPosEdge())
+	  {
+		  BcmFsmSttChgd = true;
+		  BcmFsmStt = BCM_FSM_SHOWCURRENT;
+
+	  }
+	  if(BatPackChrgd(70))//if so, it mast switch the period of blinking and send a msg through UART
+	  {
+		  BcmFsmSttChgd = true;
+		  BcmFsmStt = BCM_FSM_SHOWCOMPLET;
+
+	  }
+	  break;
+	case BCM_FSM_SHOWCURRENT:
+	  if (BcmFsmSttChgd)
+	  {
+		  BcmFsmSttChgd =false;
+		  LCD_Clr();
+	  }
+	  BcmFsmFuncShowCurrent();
+	  if(readKeyPosEdge())
+	  {
+		  BcmFsmSttChgd = true;
+		  BcmFsmStt = BCM_FSM_SHOWPORCENT;
+
+	  }//if so, it mast switch the period of blinking and send a msg through UART
+	  break;
+	case BCM_FSM_SHOWCOMPLET:
+	  if (BcmFsmSttChgd)
+	  {
+		  BcmFsmSttChgd =false;
+		  LCD_Clr();
+	  }
+	  BcmFsmFuncShowComplet();
+	  if(!BatPackChrgd(50))//if so, it mast switch the period of blinking and send a msg through UART
+	  {
+		  BcmFsmSttChgd = true;
+		  BcmFsmStt = BCM_FSM_SHOWPORCENT;
+	  }
+	  break;
+	default:
+	  BcmFsmStt = BCM_FSM_SHOWCURRENT;
+	  break;
+	}
 }
 
 //--------------------------------------------------------------------------------------------------------------
@@ -324,3 +405,49 @@ bool_t BatPackChrgd(float limit)
 		Charged = true;
 	return Charged;
 }
+
+
+
+void BatChargerStt_Update(void)
+{
+  switch (num_ModuloUD)
+  {
+  case MODULO1:
+    sendSciMsg(DRQ_BCM_MOD1, &BatChargeMon.ChargerMod1, sizeof(BatChargeMon.ChargerMod1));
+    num_ModuloUD = MODULO2;
+  break;
+  case MODULO2:
+    sendSciMsg(DRQ_BCM_MOD2, &BatChargeMon.ChargerMod2, sizeof(BatChargeMon.ChargerMod2));
+    num_ModuloUD = MODULO3;
+  break;
+  case MODULO3:
+    sendSciMsg(DRQ_BCM_MOD3, &BatChargeMon.ChargerMod3, sizeof(BatChargeMon.ChargerMod3));
+    num_ModuloUD = MODULO4;
+  break;
+  case MODULO4:
+    sendSciMsg(DRQ_BCM_MOD4, &BatChargeMon.ChargerMod4, sizeof(BatChargeMon.ChargerMod4));
+    num_ModuloUD = MODULO5;
+ break;
+  case MODULO5:
+   sendSciMsg(DRQ_BCM_MOD5, &BatChargeMon.ChargerMod5, sizeof(BatChargeMon.ChargerMod5));
+   num_ModuloUD = MODULO6;
+  break;
+  case MODULO6:
+    sendSciMsg(DRQ_BCM_MOD6, &BatChargeMon.ChargerMod6, sizeof(BatChargeMon.ChargerMod6));
+    num_ModuloUD = MODULO7;
+  break;
+  case MODULO7:
+     sendSciMsg(DRQ_BCM_MOD7, &BatChargeMon.ChargerMod7, sizeof(BatChargeMon.ChargerMod7));
+     num_ModuloUD = MODULO8;
+  break;
+  case MODULO8:
+    sendSciMsg(DRQ_BCM_MOD8, &BatChargeMon.ChargerMod8, sizeof(BatChargeMon.ChargerMod8));
+    num_ModuloUD = MODULO1;
+  break;
+  default:
+	 num_ModuloUD = MODULO1;
+	 break;
+  }
+
+}
+

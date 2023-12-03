@@ -4,7 +4,8 @@
 
 //My Libraries
 #include "API_uart.h"
-#include "Unit_Disp.h"
+#include "main.h"
+#include "stm32f4xx_hal.h"
 
 
 //--------------------------------------------------------------------------
@@ -34,6 +35,6 @@ typedef struct
 //---------------------------------------------------------------------------
 void ThreadComPort_Init(void);
 void ThreadComPort_Update(void);
-
+extern void sciDataReceived(BYTE *buf);
 
 #endif

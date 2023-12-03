@@ -10,7 +10,6 @@
 
 #define MSG_REPLAY_DELAY 900
 
-extern TBatChargeMon BatChargeMon;
 
 
 void Init_Disp(void);

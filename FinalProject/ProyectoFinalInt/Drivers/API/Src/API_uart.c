@@ -9,7 +9,6 @@
 //Rx
 static volatile uint8_t rxBuf1[DIM_ADQ];
 static volatile uint8_t rxBuf2[DIM_ADQ];
-static volatile uint8_t *rxBuf;
 static volatile uint8_t rxBufIdx;
 static volatile uint8_t rxCantBytes;
 
@@ -49,25 +48,9 @@ int32_t OpenCommPort(uint32_t Baudios)
 	  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
 	  huart2.RxXferSize = DIM_ADQ;
 	  huart2.TxXferSize = DIM_ADQ;
-	  UART_Start_Receive_IT(&huart2, rxBuf1, DIM_ADQ);
 	  if (HAL_UART_Init(&huart2) != HAL_OK)
 	  {
 		  PortStatus=1;
-	  }
-	  else
-	  {
-		  char BaudRateMSG[]="Communication Init \n\rBaudrate: ";
-		  while(HAL_BUSY == HAL_UART_Transmit(&huart2, (const uint8_t *) BaudRateMSG, sizeof(BaudRateMSG),100));
-
-		  char BaudRateValue[20];
-		  int32_t BRValue=huart2.Init.BaudRate;
-		  uint8_t i=0;
-		  i=sprintf(BaudRateValue, "%d",(int)BRValue);   //Convert Baudrate value to string to show it on Std IO
-		  BaudRateValue[i++] = 0x0A;
-		  BaudRateValue[i++] = 0x0D;
-		  BaudRateValue[i++] = 0x00;
-		  while(HAL_BUSY == HAL_UART_Transmit(&huart2, (const uint8_t *) BaudRateValue, i,100));
-		  m_CommOpen =true;
 	  }
 
 	  return PortStatus;
@@ -121,7 +104,7 @@ DWORD ComError(void)
 
 int32_t GetByte(BYTE *value)
 {
-	if(HAL_OK == HAL_UART_Receive(&huart2, (const uint8_t *)value, 1,10))
+	if(HAL_OK == HAL_UART_Receive(&huart2, (uint8_t *)value, 1,100))
 		return 1;
 	return 0;
 }
@@ -131,7 +114,7 @@ int32_t GetByte(BYTE *value)
 ********************************************************************/
 int32_t ReadBytes(void *Buffer, int32_t n) //Lectura de n del buffer de entrada
 {
-	if(HAL_OK == HAL_UART_Receive(&huart2, (const uint8_t *)Buffer, n,n*10))
+	if(HAL_OK == HAL_UART_Receive(&huart2, (uint8_t *)Buffer, n,n*100))
 		return 1;
 	return 0;
 }

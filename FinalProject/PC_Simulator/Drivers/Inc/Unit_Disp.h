@@ -13,7 +13,7 @@
 extern TBatChargeMon BatChargeMon;
 
 
-void Init_Disp(void);
+void BatChargerMonSim_Init(void);
 void sciDataReceived(BYTE *buf);
 
 

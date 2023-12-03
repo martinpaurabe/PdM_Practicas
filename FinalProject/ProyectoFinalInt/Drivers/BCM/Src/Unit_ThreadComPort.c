@@ -7,7 +7,6 @@ enum {PARSER_PRINC, PARSER_LENGTH, PARSER_DATA, PARSER_EOF};
 static TThreadComPort ThreadComPort;
 //---------------------------------------------------------------------------
 
-
 void ThreadComPort_Init(void)
 {
   OpenCommPort(115200);
@@ -20,8 +19,9 @@ void ThreadComPort_Update(void)
   DWORD CantBytesReadAnt;
   BYTE Dato;
 
-  for(int i = 0; i < 10; i++)
+  for(int i = 0; i < 20; i++)
   {
+/*
       ThreadComPort.ComErr = ComError();
       CantBytesReadAnt = ThreadComPort.CantBytesRead;
       ThreadComPort.CantBytesRead = BytesDisponibles();
@@ -39,9 +39,10 @@ void ThreadComPort_Update(void)
         ThreadComPort.rxParser = PARSER_PRINC;
       }
 
-//      if(ThreadComPort.CantBytesRead  > 0)
-//      {
-        switch(ThreadComPort.rxParser)
+      if(ThreadComPort.CantBytesRead  > 0)
+      {
+*/
+	  switch(ThreadComPort.rxParser)
         {
         case PARSER_PRINC:
   		  GetByte(&Dato);
@@ -51,33 +52,30 @@ void ThreadComPort_Update(void)
           }
         break;
         case PARSER_LENGTH:
-          GetByte(&ThreadComPort.rxCantBytes);
-          Dato=ThreadComPort.rxCantBytes;
-          ThreadComPort.rxParser = PARSER_DATA;
-
-        break;
+          GetByte(&Dato);
+       	  ThreadComPort.rxCantBytes = Dato;
+       	  ThreadComPort.rxParser = PARSER_DATA;
+       break;
         case PARSER_DATA:
-//          if(ThreadComPort.CantBytesRead  >= ThreadComPort.rxCantBytes)
-//          {
-            Dato=ReadBytes(ThreadComPort.rxBuf, ThreadComPort.rxCantBytes);
-            ThreadComPort.rxParser = PARSER_EOF;
-//          }
-
+          if(1 == ReadBytes(ThreadComPort.rxBuf, ThreadComPort.rxCantBytes))
+           	ThreadComPort.rxParser = PARSER_EOF;
+          else
+            ThreadComPort.rxParser = PARSER_PRINC;
         break;
         case PARSER_EOF:
           ReadBytes(&Dato, 1);
           if(Dato == EOFCOM)
           {
             sciDataReceived(ThreadComPort.rxBuf);
+            HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
           }
           ThreadComPort.rxParser = PARSER_PRINC;
 
         break;
         }
-        ThreadComPort.EstSciRv &= ~ERR_PUERTO;
-//      }
-/*
- *
+
+	  /*ThreadComPort.EstSciRv &= ~ERR_PUERTO;
+      }
       else if(ThreadComPort.CantBytesRead  == 0)
       {
         ThreadComPort.EstSciRv &= ~ERR_PUERTO;
@@ -86,8 +84,9 @@ void ThreadComPort_Update(void)
       {
         ThreadComPort.EstSciRv |= ERR_PUERTO;
       }
-      */
-   }
+
+   }*/
+  }
 }
 //---------------------------------------------------------------------------
 
@@ -97,4 +96,3 @@ void ThreadComPort_End(void)
   ThreadComPort.rxParser = PARSER_PRINC;
 }
 //---------------------------------------------------------------------------
-
