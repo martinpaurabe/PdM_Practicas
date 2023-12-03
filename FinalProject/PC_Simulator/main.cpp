@@ -24,6 +24,17 @@ int main()
   {
 //    usleep(10000);
     ThreadComPort_Update();
+    int i;
+    if(i = getchar())
+    {
+      BatChargeMon.ChargerMod1.Curr = 0.0;
+      sendSciMsg(DAT_BCM_MOD1, &BatChargeMon.ChargerMod1, sizeof(BatChargeMon.ChargerMod1));
+    }
+    if(i = getchar())
+    {
+      BatChargeMon.ChargerMod1.Curr = 100.0;
+      sendSciMsg(DAT_BCM_MOD1, &BatChargeMon.ChargerMod1, sizeof(BatChargeMon.ChargerMod1));
+    }
   }  
   
   return 0; // success

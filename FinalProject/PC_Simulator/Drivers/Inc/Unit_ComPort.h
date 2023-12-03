@@ -25,6 +25,8 @@
 
 //#define BAUDRATE 921600
 #define BAUDRATE 115200
+#define DIM_ADQ 1000
+
 
 #define SFD    '#'
 #define EOFCOM  255

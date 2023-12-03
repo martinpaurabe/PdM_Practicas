@@ -12,7 +12,6 @@
 #define ADQ_TIMEOUT 100 //Micro Segundos
 #define SEC_TO_DOUBLE(T) ((T)/86400.0) //T: Tiempo en segundos
 
-#define DIM_ADQ 1000
 //---------------------------------------------------------------------------
 
 #define ERR_PUERTO 0x01

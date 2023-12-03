@@ -6,6 +6,13 @@
  */
 #include <API_uart.h>
 
+//Rx
+static volatile uint8_t rxBuf1[DIM_ADQ];
+static volatile uint8_t rxBuf2[DIM_ADQ];
+static volatile uint8_t *rxBuf;
+static volatile uint8_t rxBufIdx;
+static volatile uint8_t rxCantBytes;
+
 static UART_HandleTypeDef huart2;
 //static int32_t serial_port = 0;
 static bool_t m_CommOpen = false;
@@ -29,8 +36,9 @@ int32_t OpenCommPort(uint32_t Baudios)
 	  huart2.Init.Mode = UART_MODE_TX_RX;
 	  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
 	  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
-	  huart2.RxXferSize = 256;
-	  huart2.TxXferSize = 256;
+	  huart2.RxXferSize = DIM_ADQ;
+	  huart2.TxXferSize = DIM_ADQ;
+	  UART_Start_Receive_IT(&huart2, rxBuf1, DIM_ADQ);
 	  if (HAL_UART_Init(&huart2) != HAL_OK)
 	  {
 		  PortStatus=1;
@@ -102,7 +110,9 @@ DWORD ComError(void)
 
 int32_t GetByte(BYTE *value)
 {
-	return (int32_t) HAL_UART_Receive(&huart2, value, 1, 10);
+	if(HAL_OK == HAL_UART_Transmit(&huart2, (const uint8_t *)value, 1,10))
+		return 1;
+	return 0;
 }
 
 
@@ -110,7 +120,7 @@ int32_t GetByte(BYTE *value)
 ********************************************************************/
 int32_t ReadBytes(void *Buffer, int32_t n) //Lectura de n del buffer de entrada
 {
-	if(HAL_OK == HAL_UART_Transmit(&huart2, (const uint8_t *)Buffer, n,100))
+	if(HAL_OK == HAL_UART_Transmit(&huart2, (const uint8_t *)Buffer, n,n*10))
 		return 1;
 	return 0;
 }
@@ -143,7 +153,7 @@ int32_t WriteBytes(void *Buffer, int32_t n) //Escritura de n en el buffer de ent
 *********************************************************************/
 int32_t BytesDisponibles(void) //Devuelve la cantidad de Bytes en el buffer de entrada
 {
-	return (int32_t) huart2.RxXferCount;
+	return (int32_t)  (huart2.RxXferCount-huart2.RxXferCount);
 }
 
 /**********************************************************************

@@ -1,56 +1,190 @@
-23:18:25 **** Incremental Build of configuration Debug for project PdM_Practica0 ****
+22:18:03 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
 make -j8 all 
-arm-none-eabi-size   PdM_Practica0.elf 
+arm-none-eabi-gcc "../Drivers/BCM/Src/Unit_ThreadComPort.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/BCM/Src/Unit_ThreadComPort.d" -MT"Drivers/BCM/Src/Unit_ThreadComPort.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/BCM/Src/Unit_ThreadComPort.o"
+../Drivers/BCM/Src/Unit_ThreadComPort.c: In function 'ThreadComPort_Update':
+../Drivers/BCM/Src/Unit_ThreadComPort.c:54:19: warning: passing argument 1 of 'GetByte' from incompatible pointer type [-Wincompatible-pointer-types]
+   54 |           GetByte(&ThreadComPort.rxCantBytes);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                   |
+      |                   uint16_t * {aka short unsigned int *}
+In file included from /home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc/Unit_ThreadComPort.h:6,
+                 from ../Drivers/BCM/Src/Unit_ThreadComPort.c:1:
+/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc/API_uart.h:44:23: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+   44 | int32_t GetByte(BYTE *value); //Lectura un caracter
+      |                       ^
+arm-none-eabi-gcc -o "ProyectoFinalInt.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ProyectoFinalInt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ProyectoFinalInt.elf
+ 
+arm-none-eabi-size   ProyectoFinalInt.elf 
+arm-none-eabi-objdump -h -S  ProyectoFinalInt.elf  > "ProyectoFinalInt.list"
    text	   data	    bss	    dec	    hex	filename
-  15420	    112	   2248	  17780	   4574	PdM_Practica0.elf
+  22572	    100	   2608	  25280	   62c0	ProyectoFinalInt.elf
 Finished building: default.size.stdout
  
-23:18:47 **** Incremental Build of configuration Debug for project PdM_Practica0 ****
+Finished building: ProyectoFinalInt.list
+ 
+22:18:13 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
 make -j8 all 
-arm-none-eabi-size   PdM_Practica0.elf 
+arm-none-eabi-size   ProyectoFinalInt.elf 
    text	   data	    bss	    dec	    hex	filename
-  15420	    112	   2248	  17780	   4574	PdM_Practica0.elf
+  22572	    100	   2608	  25280	   62c0	ProyectoFinalInt.elf
 Finished building: default.size.stdout
  
-23:23:18 **** Incremental Build of configuration Debug for project PdM_Practica0 ****
+22:18:19 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
 make -j8 all 
-arm-none-eabi-size   PdM_Practica0.elf 
+arm-none-eabi-size   ProyectoFinalInt.elf 
    text	   data	    bss	    dec	    hex	filename
-  15420	    112	   2248	  17780	   4574	PdM_Practica0.elf
+  22572	    100	   2608	  25280	   62c0	ProyectoFinalInt.elf
 Finished building: default.size.stdout
  
-23:27:38 **** Incremental Build of configuration Debug for project PdM_Practica0 ****
+22:21:18 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
 make -j8 all 
-arm-none-eabi-size   PdM_Practica0.elf 
+arm-none-eabi-gcc "../Drivers/BCM/Src/Unit_ThreadComPort.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/BCM/Src/Unit_ThreadComPort.d" -MT"Drivers/BCM/Src/Unit_ThreadComPort.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/BCM/Src/Unit_ThreadComPort.o"
+../Drivers/BCM/Src/Unit_ThreadComPort.c: In function 'ThreadComPort_Update':
+../Drivers/BCM/Src/Unit_ThreadComPort.c:54:19: warning: passing argument 1 of 'GetByte' from incompatible pointer type [-Wincompatible-pointer-types]
+   54 |           GetByte(&ThreadComPort.rxCantBytes);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                   |
+      |                   uint16_t * {aka short unsigned int *}
+In file included from /home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc/Unit_ThreadComPort.h:6,
+                 from ../Drivers/BCM/Src/Unit_ThreadComPort.c:1:
+/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc/API_uart.h:44:23: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+   44 | int32_t GetByte(BYTE *value); //Lectura un caracter
+      |                       ^
+arm-none-eabi-gcc -o "ProyectoFinalInt.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ProyectoFinalInt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ProyectoFinalInt.elf
+ 
+arm-none-eabi-size   ProyectoFinalInt.elf 
+arm-none-eabi-objdump -h -S  ProyectoFinalInt.elf  > "ProyectoFinalInt.list"
    text	   data	    bss	    dec	    hex	filename
-  15420	    112	   2248	  17780	   4574	PdM_Practica0.elf
+  22524	    100	   2608	  25232	   6290	ProyectoFinalInt.elf
 Finished building: default.size.stdout
  
-23:33:54 **** Incremental Build of configuration Debug for project PdM_Practica0 ****
-make -j8 all 
-arm-none-eabi-gcc "../Drivers/BCM/Src/Unit_ThreadComPort.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/Bat_Charge_Monitor/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/Bat_Charge_Monitor/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/Bat_Charge_Monitor/Drivers/API/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/Bat_Charge_Monitor/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/Bat_Charge_Monitor/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/Bat_Charge_Monitor/Drivers/BCM/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/BCM/Src/Unit_ThreadComPort.d" -MT"Drivers/BCM/Src/Unit_ThreadComPort.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/BCM/Src/Unit_ThreadComPort.o"
-arm-none-eabi-gcc -o "PdM_Practica0.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/Bat_Charge_Monitor/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PdM_Practica0.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PdM_Practica0.elf
+Finished building: ProyectoFinalInt.list
  
-arm-none-eabi-size   PdM_Practica0.elf 
-arm-none-eabi-objdump -h -S  PdM_Practica0.elf  > "PdM_Practica0.list"
+22:23:17 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:131:22: error: 'prueba' undeclared (first use in this function)
+  131 |                   if(prueba == SFD){ //delayRead(&LedEdge)){                                                                                    //if half time of the blinking period has passed toggle de led and
+      |                      ^~~~~~
+../Core/Src/main.c:131:22: note: each undeclared identifier is reported only once for each function it appears in
+At top level:
+../Core/Src/main.c:228:13: warning: 'MX_USART2_UART_Init' defined but not used [-Wunused-function]
+  228 | static void MX_USART2_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:194:13: warning: 'MX_I2C1_Init' defined but not used [-Wunused-function]
+  194 | static void MX_I2C1_Init(void)
+      |             ^~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+22:24:38 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:229:13: warning: 'MX_USART2_UART_Init' defined but not used [-Wunused-function]
+  229 | static void MX_USART2_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:195:13: warning: 'MX_I2C1_Init' defined but not used [-Wunused-function]
+  195 | static void MX_I2C1_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'MX_USART2_UART_Init':
+../Core/Src/main.c:253:4: warning: 'i' is used uninitialized [-Wuninitialized]
+  253 |   i++;
+      |   ~^~
+arm-none-eabi-gcc -o "ProyectoFinalInt.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ProyectoFinalInt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ProyectoFinalInt.elf
+ 
+arm-none-eabi-size   ProyectoFinalInt.elf 
+arm-none-eabi-objdump -h -S  ProyectoFinalInt.elf  > "ProyectoFinalInt.list"
    text	   data	    bss	    dec	    hex	filename
-  13416	    100	   2248	  15764	   3d94	PdM_Practica0.elf
+  22524	    100	   2608	  25232	   6290	ProyectoFinalInt.elf
 Finished building: default.size.stdout
  
-Finished building: PdM_Practica0.list
+Finished building: ProyectoFinalInt.list
  
-23:40:59 **** Incremental Build of configuration Debug for project PdM_Practica0 ****
+22:27:21 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/Bat_Charge_Monitor/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/Bat_Charge_Monitor/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/Bat_Charge_Monitor/Drivers/API/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/Bat_Charge_Monitor/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/Bat_Charge_Monitor/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/Bat_Charge_Monitor/Drivers/BCM/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "PdM_Practica0.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/Bat_Charge_Monitor/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PdM_Practica0.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PdM_Practica0.elf
- 
-arm-none-eabi-size   PdM_Practica0.elf 
-arm-none-eabi-objdump -h -S  PdM_Practica0.elf  > "PdM_Practica0.list"
+arm-none-eabi-size   ProyectoFinalInt.elf 
    text	   data	    bss	    dec	    hex	filename
-  13412	    100	   2248	  15760	   3d90	PdM_Practica0.elf
+  22524	    100	   2608	  25232	   6290	ProyectoFinalInt.elf
 Finished building: default.size.stdout
  
-Finished building: PdM_Practica0.list
+22:30:00 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
+make -j8 all 
+arm-none-eabi-size   ProyectoFinalInt.elf 
+   text	   data	    bss	    dec	    hex	filename
+  22524	    100	   2608	  25232	   6290	ProyectoFinalInt.elf
+Finished building: default.size.stdout
+ 
+22:33:23 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/BCM/Src/Unit_ThreadComPort.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/BCM/Src/Unit_ThreadComPort.d" -MT"Drivers/BCM/Src/Unit_ThreadComPort.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/BCM/Src/Unit_ThreadComPort.o"
+../Drivers/BCM/Src/Unit_ThreadComPort.c: In function 'ThreadComPort_Update':
+../Drivers/BCM/Src/Unit_ThreadComPort.c:54:19: warning: passing argument 1 of 'GetByte' from incompatible pointer type [-Wincompatible-pointer-types]
+   54 |           GetByte(&ThreadComPort.rxCantBytes);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                   |
+      |                   uint16_t * {aka short unsigned int *}
+In file included from /home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc/Unit_ThreadComPort.h:6,
+                 from ../Drivers/BCM/Src/Unit_ThreadComPort.c:1:
+/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc/API_uart.h:44:23: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+   44 | int32_t GetByte(BYTE *value); //Lectura un caracter
+      |                       ^
+arm-none-eabi-gcc -o "ProyectoFinalInt.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ProyectoFinalInt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ProyectoFinalInt.elf
+ 
+arm-none-eabi-size   ProyectoFinalInt.elf 
+arm-none-eabi-objdump -h -S  ProyectoFinalInt.elf  > "ProyectoFinalInt.list"
+   text	   data	    bss	    dec	    hex	filename
+  22540	    100	   2608	  25248	   62a0	ProyectoFinalInt.elf
+Finished building: default.size.stdout
+ 
+Finished building: ProyectoFinalInt.list
+ 
+22:35:59 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
+make -j8 all 
+arm-none-eabi-size   ProyectoFinalInt.elf 
+   text	   data	    bss	    dec	    hex	filename
+  22540	    100	   2608	  25248	   62a0	ProyectoFinalInt.elf
+Finished building: default.size.stdout
+ 
+22:37:57 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
+make -j8 all 
+arm-none-eabi-size   ProyectoFinalInt.elf 
+   text	   data	    bss	    dec	    hex	filename
+  22540	    100	   2608	  25248	   62a0	ProyectoFinalInt.elf
+Finished building: default.size.stdout
+ 
+22:47:59 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/BCM/Src/Unit_ThreadComPort.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/BCM/Src/Unit_ThreadComPort.d" -MT"Drivers/BCM/Src/Unit_ThreadComPort.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/BCM/Src/Unit_ThreadComPort.o"
+../Drivers/BCM/Src/Unit_ThreadComPort.c: In function 'ThreadComPort_Update':
+../Drivers/BCM/Src/Unit_ThreadComPort.c:54:19: warning: passing argument 1 of 'GetByte' from incompatible pointer type [-Wincompatible-pointer-types]
+   54 |           GetByte(&ThreadComPort.rxCantBytes);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                   |
+      |                   uint16_t * {aka short unsigned int *}
+In file included from /home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/BCM/Inc/Unit_ThreadComPort.h:6,
+                 from ../Drivers/BCM/Src/Unit_ThreadComPort.c:1:
+/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/Drivers/API/Inc/API_uart.h:44:23: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+   44 | int32_t GetByte(BYTE *value); //Lectura un caracter
+      |                       ^
+arm-none-eabi-gcc -o "ProyectoFinalInt.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/ProyectoFinalInt/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ProyectoFinalInt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ProyectoFinalInt.elf
+ 
+arm-none-eabi-size   ProyectoFinalInt.elf 
+arm-none-eabi-objdump -h -S  ProyectoFinalInt.elf  > "ProyectoFinalInt.list"
+   text	   data	    bss	    dec	    hex	filename
+  22748	    100	   2608	  25456	   6370	ProyectoFinalInt.elf
+Finished building: default.size.stdout
+ 
+Finished building: ProyectoFinalInt.list
+ 
+22:48:11 **** Incremental Build of configuration Debug for project ProyectoFinalInt ****
+make -j8 all 
+arm-none-eabi-size   ProyectoFinalInt.elf 
+   text	   data	    bss	    dec	    hex	filename
+  22748	    100	   2608	  25456	   6370	ProyectoFinalInt.elf
+Finished building: default.size.stdout
  
