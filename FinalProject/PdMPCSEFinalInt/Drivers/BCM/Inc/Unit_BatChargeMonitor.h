@@ -12,8 +12,8 @@
 
 
 #define BC_NUMBERS  8
-//#define EOF  VK_RETURN
-
+#define BAT_DISCHRGD 50 //Percentage which define that the batteries need to be charged
+#define BAT_CHRGD 	 80 //Percentage which define that the batteries is charged
 
 //==============================================================================================================
 // Protocol Constant Definition

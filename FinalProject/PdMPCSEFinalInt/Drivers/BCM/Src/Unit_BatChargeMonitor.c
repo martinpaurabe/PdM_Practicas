@@ -80,6 +80,9 @@ enum {BCM_FSM_SHOWPORCENT,BCM_FSM_SHOWPWM,BCM_FSM_SHOWCURR,BCM_FSM_SHOWCOMPLET};
 
 enum {MODULO0,MODULO1,MODULO2,MODULO3,MODULO4,MODULO5,MODULO6,MODULO7,MODULO8};
 
+//==============================================================================================================
+// BatChargMon_Init
+//==============================================================================================================
 
 void BatChargMon_Init(void)
 {
@@ -94,6 +97,11 @@ void BatChargMon_Init(void)
   delayInit(&DataUpdate,BCD_VARIABLE_UD_PER);
   delayInit(&DataUpdate,BCD_VARIABLE_UD_PER);
 }
+
+
+//==============================================================================================================
+// BatChargMon_Init
+//==============================================================================================================
 
 void BatChargMon_Update(void)
 {
@@ -117,7 +125,7 @@ void BatChargMon_Update(void)
 		  BatChargeMon.BcmFsmStt = BCM_FSM_SHOWPWM;
 
 	  }
-	  if(BatPackChrgd(70))//if so, it mast switch the period of blinking and send a msg through UART
+	  if(BatPackChrgd(BAT_CHRGD))//if so, it mast switch the period of blinking and send a msg through UART
 	  {
 		  BatChargeMon.BcmFsmSttChgd = true;
 		  BatChargeMon.BcmFsmStt = BCM_FSM_SHOWCOMPLET;
@@ -137,6 +145,11 @@ void BatChargMon_Update(void)
 		  BatChargeMon.BcmFsmStt = BCM_FSM_SHOWCURR;
 
 	  }//if so, it mast switch the period of blinking and send a msg through UART
+	  if(BatPackChrgd(BAT_CHRGD))//if so, it mast switch the period of blinking and send a msg through UART
+	  {
+		  BatChargeMon.BcmFsmSttChgd = true;
+		  BatChargeMon.BcmFsmStt = BCM_FSM_SHOWCOMPLET;
+	  }
 	  break;
 	case BCM_FSM_SHOWCURR:
 	  if (BatChargeMon.BcmFsmSttChgd)
@@ -151,6 +164,11 @@ void BatChargMon_Update(void)
 		  BatChargeMon.BcmFsmStt = BCM_FSM_SHOWPORCENT;
 
 	  }//if so, it mast switch the period of blinking and send a msg through UART
+	  if(BatPackChrgd(BAT_CHRGD))//if so, it mast switch the period of blinking and send a msg through UART
+	  {
+		  BatChargeMon.BcmFsmSttChgd = true;
+		  BatChargeMon.BcmFsmStt = BCM_FSM_SHOWCOMPLET;
+	  }
 	  break;
 	case BCM_FSM_SHOWCOMPLET:
 	  if (BatChargeMon.BcmFsmSttChgd)
@@ -159,7 +177,7 @@ void BatChargMon_Update(void)
 		  LCD_Clr();
 	  }
 	  BcmFsmFuncShowComplet();
-	  if(!BatPackChrgd(50))//if so, it mast switch the period of blinking and send a msg through UART
+	  if(!BatPackChrgd(BAT_DISCHRGD))//if so, it mast switch the period of blinking and send a msg through UART
 	  {
 		  BatChargeMon.BcmFsmSttChgd = true;
 		  BatChargeMon.BcmFsmStt = BCM_FSM_SHOWPORCENT;
@@ -172,7 +190,9 @@ void BatChargMon_Update(void)
 	}
 }
 
-//--------------------------------------------------------------------------------------------------------------
+//==============================================================================================================
+// BatChargMon_Init
+//==============================================================================================================
 
 void ThreadComPort_RxMsg(uint8_t *buf)
 {
@@ -190,22 +210,8 @@ void ThreadComPort_RxMsg(uint8_t *buf)
   case DRQ_BCM_MOD2:
 	ThreadComPort_SendMsg(DAT_BCM_MOD2, &BatChargeMon.ChargerMod2, sizeof(BatChargeMon.ChargerMod2));
   break;
-//Serial Command Recieve
-/*
-  case CMD_GES_STT_AEG_OFF:
-    HabAeroGenOff;
-    LedAeroGenOff;
-  	GestEnergia.Gral.Status.dwrd &=~ STAT_GES_AEG;
-    sendSciMsg(DRQ_GES_GRAL, &GestEnergia.Gral, sizeof(GestEnergia.Gral));
-  break;
-  case CMD_GES_STT_SOL_ON:
-  	HabPanSolarOn;
-  	LedPanSolarOn;
-  	GestEnergia.Gral.Status.dwrd|=STAT_GES_SOL;
-    sendSciMsg(DRQ_GES_GRAL, &GestEnergia.Gral, sizeof(GestEnergia.Gral));
-  break;
-*/
-//Seria Data Recieve
+
+//Serial Data Recieve
   case DAT_BCM_MOD1:
     dato = (TDato32 *)&BatChargeMon.ChargerMod1;
     dataLen32 = sizeof(BatChargeMon.ChargerMod1)/4;
@@ -242,7 +248,7 @@ void ThreadComPort_RxMsg(uint8_t *buf)
   return;
   }
 
-//If it have recieve new data, it have to reverse de bytes order
+//If it have received new data, it have to reverse the bytes order
   for(i = 0; i < dataLen32; i++)
   {
     dato[i].byt[0] = buf[4*i+1];

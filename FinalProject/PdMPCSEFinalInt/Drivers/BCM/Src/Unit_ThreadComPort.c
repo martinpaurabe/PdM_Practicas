@@ -28,9 +28,8 @@ UART_HandleTypeDef huart2;
   * @param None
   * @retval None
   */
-static uint8_t rxBuffer[50];
+static uint8_t rxBuffer[DIM_ADQ];
 static uint8_t rxbfrcant=0;
-//enum {PARSER_PRINC, PARSER_LENGTH, PARSER_DATA, PARSER_EOF};
 static uint8_t rxStt =PARSER_PRINC;
 static uint8_t NxtRxCant = 1;
 
@@ -40,7 +39,6 @@ static volatile uint8_t txBufIdx;
 static uint8_t txCantBytes; //Cantidad de datos a transmitir en buffer
 
 static void MX_USART2_UART_Init(void);
-
 static int32_t WriteBytes(void *Buffer, int32_t n);
 
 
@@ -170,8 +168,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 *********************************************************************/
 static int32_t WriteBytes(void *Buffer, int32_t n) //Escritura de n en el buffer de entrada
 {
-	if(HAL_OK == HAL_UART_Transmit(&huart2, (const uint8_t *)Buffer,n,n*1))
-		return 1;
+//	if(HAL_OK == HAL_UART_Transmit(&huart2, (const uint8_t *)Buffer,n,n*1))
+	if(HAL_OK == HAL_UART_Transmit_IT(&huart2, (const uint8_t *)Buffer,n))
+			return 1;
 	return 0;
 }
 

@@ -5,8 +5,13 @@
  *      Author: martin
  */
 #include "API_LCD.h"
+#include "API_delay.h"
+#include <stdio.h>
+#include "stm32f4xx_hal.h"
+//#include "main.h"
 
-
+//Private Definitions
+//LCD Initializations
 #define INITIALIZATION_FIRST_WAIT   20
 #define INITIALIZATION_FIRST_BYT    0x03
 #define INITIALIZATION_SECOND_WAIT  10
@@ -15,11 +20,9 @@
 #define INITIALIZATION_THIRD_BYT  	0x03
 #define INITIALIZATION_FOURTH_WAIT 	1
 #define INITIALIZATION_FOURTH_BYT  	0x02
+#define INITIALIZATION_FIFTH_WAIT  	100
+#define INITIALIZATION_MSG_TIME  	1000
 
-I2C_HandleTypeDef hi2c1;
-
-
-delay_t LCD_InitDelay;
 
 #define LCD_ADDRESS	0x4E
 
@@ -37,10 +40,15 @@ static uint8_t LCD_INT_CMD[]={INITIALIZATION_FIRST_BYT,INITIALIZATION_SECOND_BYT
 		INITIALIZATION_THIRD_BYT,INITIALIZATION_FOURTH_BYT,_4BIT_MODE,DISPLAY_CTRL,
 		RETURN_HOME,ENTRY_MODE|AUTOINCREMENT,DISPLAY_CTRL|DISPLAY_ON,CLR_LCD};
 
-void LCD_SendCmd(uint8_t Cmd);
-void LCD_SendChar(uint8_t Data);
-void LCD_SendStr(char *str);
+//Private Variables
+static I2C_HandleTypeDef hi2c1;
+static delay_t LCD_InitDelay;
+
+
+//Private Functions
 static void MX_I2C1_Init(void);
+static void Error_Handler(void);
+
 
 void LCD_Init(void)
 {
@@ -60,7 +68,7 @@ void LCD_Init(void)
 	delayWrite(&LCD_InitDelay,INITIALIZATION_FOURTH_WAIT);
 	while(!delayRead(&LCD_InitDelay));
 	LCD_SendCmd(*Dato++);
-	delayWrite(&LCD_InitDelay,100);
+	delayWrite(&LCD_InitDelay,INITIALIZATION_FIFTH_WAIT);
 	while(!delayRead(&LCD_InitDelay));
 	LCD_SendCmd(*Dato++);
 	LCD_SendCmd(*Dato++);
@@ -72,8 +80,7 @@ void LCD_Init(void)
 
 	LCD_SendCmd(0x80|0x05); //Writing on the first line
     LCD_SendStr("      INICIANDO     ");
-    HAL_Delay(4000);
-
+    HAL_Delay(2000);
 }
 
 
@@ -152,4 +159,15 @@ static void MX_I2C1_Init(void)
 
   /* USER CODE END I2C1_Init 2 */
 
+}
+
+
+static void Error_Handler(void)
+{
+  /* USER CODE BEGIN Error_Handler_Debug */
+  /* User can add his own implementation to report the HAL error return state */
+  while (1)
+  {
+  }
+  /* USER CODE END Error_Handler_Debug */
 }
