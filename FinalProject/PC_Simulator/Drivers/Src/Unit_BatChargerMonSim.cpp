@@ -20,13 +20,30 @@ void BatChargerMonSim_Init(void)
 {
 //  BatChargeMon=BatChargeMonFlash;
 BatChargeMon.ChargerMod1.Porc =10;
+BatChargeMon.ChargerMod1.Curr = 10.0*(100.0-BatChargeMon.ChargerMod1.Porc)/100.0;
+BatChargeMon.ChargerMod1.PWM = (100.0-BatChargeMon.ChargerMod1.Porc)/100.0;
 BatChargeMon.ChargerMod2.Porc =20;
+BatChargeMon.ChargerMod2.Curr = 10.0*(100.0-BatChargeMon.ChargerMod2.Porc)/100.0;
+BatChargeMon.ChargerMod2.PWM = (100.0-BatChargeMon.ChargerMod2.Porc)/100.0;
 BatChargeMon.ChargerMod3.Porc =30;
+BatChargeMon.ChargerMod3.Curr = 10.0*(100.0-BatChargeMon.ChargerMod3.Porc)/100.0;
+BatChargeMon.ChargerMod3.PWM = (100.0-BatChargeMon.ChargerMod3.Porc)/100.0;
 BatChargeMon.ChargerMod4.Porc =40;
+BatChargeMon.ChargerMod4.Curr = 10.0*(100.0-BatChargeMon.ChargerMod4.Porc)/100.0;
+BatChargeMon.ChargerMod4.PWM = (100.0-BatChargeMon.ChargerMod4.Porc)/100.0;
 BatChargeMon.ChargerMod5.Porc =50;
+BatChargeMon.ChargerMod5.Curr = 10.0*(100.0-BatChargeMon.ChargerMod5.Porc)/100.0;
+BatChargeMon.ChargerMod5.PWM = (100.0-BatChargeMon.ChargerMod5.Porc)/100.0;
 BatChargeMon.ChargerMod6.Porc =60;
+BatChargeMon.ChargerMod6.Curr = 10.0*(100.0-BatChargeMon.ChargerMod6.Porc)/100.0;
+BatChargeMon.ChargerMod6.PWM = (100.0-BatChargeMon.ChargerMod6.Porc)/100.0;
 BatChargeMon.ChargerMod7.Porc =70;
+BatChargeMon.ChargerMod7.Curr = 10.0*(100.0-BatChargeMon.ChargerMod7.Porc)/100.0;
+BatChargeMon.ChargerMod7.PWM = (100.0-BatChargeMon.ChargerMod7.Porc)/100.0;
 BatChargeMon.ChargerMod8.Porc =80;
+BatChargeMon.ChargerMod8.Curr = 10.0*(100.0-BatChargeMon.ChargerMod8.Porc)/100.0;
+BatChargeMon.ChargerMod8.PWM = (100.0-BatChargeMon.ChargerMod8.Porc)/100.0;
+
 return;
  
 }

@@ -36,7 +36,7 @@ void BatChargMon_Init(void)
   HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin,GPIO_PIN_SET);
   LCD_Init();
   ThreadComPort_Init();
-  delayInit(&DataUpdate,1000);
+  delayInit(&DataUpdate,10);
   BcmFsmStt = BCM_FSM_SHOWPORCENT;
 
  
