@@ -11,14 +11,6 @@
 //#include "main.h"
 #include "stm32f4xx_hal.h"
 
-// C library headers
-#include <stdio.h>
-#include <string.h>
-#include <stdint.h>
-#include <stdbool.h>
-#include <unistd.h>
-
-#include "Def_TipoDatos.h"
 
 
 //Define my types
@@ -61,10 +53,7 @@ DWORD ComError(void); //Devuelve en una variable de 32 bits los errores del puer
 int32_t GetByte(BYTE *value); //Lectura un caracter
 int32_t ReadBytes(void *Buffer, int32_t n); //Lectura de n del buffer de entrada
 int32_t PutByte(BYTE value); //Envio de un caracter
-int32_t WriteBytes(void *Buffer, int32_t n); //Escritura de n en el buffer de entrada
 
-void MX_USART2_UART_Init(void);
-extern void sciDataReceived(BYTE *buf);
 
 
 
