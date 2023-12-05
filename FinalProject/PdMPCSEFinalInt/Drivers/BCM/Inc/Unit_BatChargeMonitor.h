@@ -9,9 +9,6 @@
 #define BCM_INC_UNIT_BATCHARGEMONITOR_H_
 
 //---------------------------------------------------------------------------
-#include "API_debounce.h"
-#include "Unit_ThreadComPort.h"
-#include "API_LCD.h"
 
 
 #define BC_NUMBERS  8
@@ -75,35 +72,8 @@
 #define DAT_BCM_MOD8           0xA7
 
 
-//==============================================================================================================
-// Variable Types Definitions
-//==============================================================================================================
-
-typedef struct
-{
-    float   Porc; /* data */
-    float   PWM; /* data */
-    float   Curr; /* data */
-    float   Volt; /* data */
-}TChargerMod;
-
-
-
-typedef struct
-{
-    TChargerMod  ChargerMod1; /* data */
-    TChargerMod  ChargerMod2; /* data */
-    TChargerMod  ChargerMod3; /* data */
-    TChargerMod  ChargerMod4; /* data */
-    TChargerMod  ChargerMod5; /* data */
-    TChargerMod  ChargerMod6; /* data */
-    TChargerMod  ChargerMod7; /* data */
-    TChargerMod  ChargerMod8; /* data */
-}TBatChargeMon;
-
 void BatChargMon_Init(void);
 void BatChargMon_Update(void);
-bool_t BatPackChrgd(float limit);
 //---------------------------------------------------------------------------
 
 

@@ -1,45 +1,96 @@
-#include "main.h"
+#include "main.h" //Include just to toggle the LED
 
 #include <stdio.h>
 #include <string.h>
 
 #include "Unit_BatChargeMonitor.h"
+#include "API_debounce.h"
+#include "API_LCD.h"
+#include "Unit_ThreadComPort.h"
 
+//==============================================================================================================
+// Private Definitions
+//==============================================================================================================
+
+#define BCD_VARIABLE_UD_PER  	100  //Period update in milisec
+#define LCD_HOR_DIM  	20
+#define LCD_POS_VARSHOW 0x80|0x06
+#define LCD_POS_MOD1 	0x80|0x00
+#define LCD_POS_MOD2 	0x80|0x0F
+#define LCD_POS_MOD3 	0x80|0x40
+#define LCD_POS_MOD4 	0x80|0x4F
+#define LCD_POS_MOD5 	0x80|0x10|0x04
+#define LCD_POS_MOD6 	0x80|0x20|0x03
+#define LCD_POS_MOD7 	0x80|0x50|0x04
+#define LCD_POS_MOD8 	0x80|0x60|0x03
+
+//==============================================================================================================
+// Private Functions
+//==============================================================================================================
 
 static void BcmFsmFuncShowCurrent(void);
+static void BcmFsmFuncShowPWM(void);
 static void BcmFsmFuncShowPorcent(void);
 static void BcmFsmFuncShowComplet(void);
 static void BatChargerStt_Update(void);
+static bool_t BatPackChrgd(float limit);
 
-//--------------------------------------------------------------------------------------------------------------
+
+//==============================================================================================================
+// Private Variable Types Definitions
+//==============================================================================================================
+
+typedef struct
+{
+    float   Porc; /* data */
+    float   PWM; /* data */
+    float   Curr; /* data */
+    float   Volt; /* data */
+}TChargerMod;
 
 
+
+typedef struct
+{
+    TChargerMod  ChargerMod1; /* data */
+    TChargerMod  ChargerMod2; /* data */
+    TChargerMod  ChargerMod3; /* data */
+    TChargerMod  ChargerMod4; /* data */
+    TChargerMod  ChargerMod5; /* data */
+    TChargerMod  ChargerMod6; /* data */
+    TChargerMod  ChargerMod7; /* data */
+    TChargerMod  ChargerMod8; /* data */
+    uint8_t BcmFsmStt;
+    bool_t  BcmFsmSttChgd;
+    uint8_t num_ModuloUD;
+}TBatChargeMon;
+
+
+//==============================================================================================================
+// Private Variable
+//==============================================================================================================
+
+static const TBatChargeMon BatChargeMonFlash;
 static TBatChargeMon BatChargeMon;
 static delay_t DataUpdate;
 
 
-static const TBatChargeMon BatChargeMonFlash;
-
-static enum {BCM_FSM_SHOWPORCENT,BCM_FSM_SHOWCURRENT,BCM_FSM_SHOWCOMPLET};
-static uint8_t BcmFsmStt = BCM_FSM_SHOWPORCENT;
-static bool_t  BcmFsmSttChgd = true;
+static enum {BCM_FSM_SHOWPORCENT,BCM_FSM_SHOWPWM,BCM_FSM_SHOWCURR,BCM_FSM_SHOWCOMPLET};
 
 enum {MODULO0,MODULO1,MODULO2,MODULO3,MODULO4,MODULO5,MODULO6,MODULO7,MODULO8};
-
-static uint8_t num_ModuloUD = MODULO1;
 
 
 void BatChargMon_Init(void)
 {
   BatChargeMon=BatChargeMonFlash;
+  BatChargeMon.BcmFsmStt  = BCM_FSM_SHOWPORCENT;
+  BatChargeMon.BcmFsmSttChgd  = true;
+  BatChargeMon.num_ModuloUD = MODULO1;
   debounceFSM_init();
   HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin,GPIO_PIN_SET);
   LCD_Init();
   ThreadComPort_Init();
-  delayInit(&DataUpdate,10);
-  BcmFsmStt = BCM_FSM_SHOWPORCENT;
-
- 
+  delayInit(&DataUpdate,BCD_VARIABLE_UD_PER);
 }
 
 void BatChargMon_Update(void)
@@ -49,57 +100,72 @@ void BatChargMon_Update(void)
 	if(delayRead(&DataUpdate))
 		BatChargerStt_Update();
 
-	switch (BcmFsmStt)
+	switch (BatChargeMon.BcmFsmStt)
 	{
 	case BCM_FSM_SHOWPORCENT:
-	  if (BcmFsmSttChgd)
+	  if (BatChargeMon.BcmFsmSttChgd)
 	  {
-		  BcmFsmSttChgd =false;
+		  BatChargeMon.BcmFsmSttChgd =false;
 		  LCD_Clr();
 	  }
 	  BcmFsmFuncShowPorcent();
 	  if(readKeyPosEdge())
 	  {
-		  BcmFsmSttChgd = true;
-		  BcmFsmStt = BCM_FSM_SHOWCURRENT;
+		  BatChargeMon.BcmFsmSttChgd = true;
+		  BatChargeMon.BcmFsmStt = BCM_FSM_SHOWPWM;
 
 	  }
 	  if(BatPackChrgd(70))//if so, it mast switch the period of blinking and send a msg through UART
 	  {
-		  BcmFsmSttChgd = true;
-		  BcmFsmStt = BCM_FSM_SHOWCOMPLET;
+		  BatChargeMon.BcmFsmSttChgd = true;
+		  BatChargeMon.BcmFsmStt = BCM_FSM_SHOWCOMPLET;
 
 	  }
 	  break;
-	case BCM_FSM_SHOWCURRENT:
-	  if (BcmFsmSttChgd)
+	case BCM_FSM_SHOWPWM:
+	  if (BatChargeMon.BcmFsmSttChgd)
 	  {
-		  BcmFsmSttChgd =false;
+		  BatChargeMon.BcmFsmSttChgd =false;
+		  LCD_Clr();
+	  }
+	  BcmFsmFuncShowPWM();
+	  if(readKeyPosEdge())
+	  {
+		  BatChargeMon.BcmFsmSttChgd = true;
+		  BatChargeMon.BcmFsmStt = BCM_FSM_SHOWCURR;
+
+	  }//if so, it mast switch the period of blinking and send a msg through UART
+	  break;
+	case BCM_FSM_SHOWCURR:
+	  if (BatChargeMon.BcmFsmSttChgd)
+	  {
+		  BatChargeMon.BcmFsmSttChgd =false;
 		  LCD_Clr();
 	  }
 	  BcmFsmFuncShowCurrent();
 	  if(readKeyPosEdge())
 	  {
-		  BcmFsmSttChgd = true;
-		  BcmFsmStt = BCM_FSM_SHOWPORCENT;
+		  BatChargeMon.BcmFsmSttChgd = true;
+		  BatChargeMon.BcmFsmStt = BCM_FSM_SHOWPORCENT;
 
 	  }//if so, it mast switch the period of blinking and send a msg through UART
 	  break;
 	case BCM_FSM_SHOWCOMPLET:
-	  if (BcmFsmSttChgd)
+	  if (BatChargeMon.BcmFsmSttChgd)
 	  {
-		  BcmFsmSttChgd =false;
+		  BatChargeMon.BcmFsmSttChgd =false;
 		  LCD_Clr();
 	  }
 	  BcmFsmFuncShowComplet();
 	  if(!BatPackChrgd(50))//if so, it mast switch the period of blinking and send a msg through UART
 	  {
-		  BcmFsmSttChgd = true;
-		  BcmFsmStt = BCM_FSM_SHOWPORCENT;
+		  BatChargeMon.BcmFsmSttChgd = true;
+		  BatChargeMon.BcmFsmStt = BCM_FSM_SHOWPORCENT;
 	  }
 	  break;
 	default:
-	  BcmFsmStt = BCM_FSM_SHOWCURRENT;
+		BatChargeMon.BcmFsmStt = BCM_FSM_SHOWPWM;
+		BatChargeMon.BcmFsmSttChgd = true;
 	  break;
 	}
 }
@@ -185,197 +251,294 @@ void sciDataReceived(BYTE *buf)
 
 }
 //--------------------------------------------------------------------------------------------------------------
-void BcmFsmFuncShowCurrent(void)
+
+static void BcmFsmFuncShowPWM(void)
 {
-char MSG_LCD[20];
-int Current;
-LCD_SendCmd (0x80|0x06); //Writing on the first line
-LCD_SendStr("CURRENT");
-Current = (10.0*BatChargeMon.ChargerMod1.Curr);
+char MSG_LCD[LCD_HOR_DIM];
+int PWM;
+LCD_SendCmd (LCD_POS_VARSHOW); //Writing on the first line
+LCD_SendStr("PWM");
+PWM = (10.0*BatChargeMon.ChargerMod1.PWM);
 MSG_LCD[5]=0;
-MSG_LCD[4]='A';
-MSG_LCD[3]= Current%10 + '0';
-Current/=10;
+MSG_LCD[4]='%';
+MSG_LCD[3]= PWM%10 + '0';
+PWM/=10;
 MSG_LCD[2]='.';
-MSG_LCD[1]= Current%10 + '0';
-Current/=10;
-MSG_LCD[0]= Current%10 + '0';
-LCD_SendCmd (0x80|0x00); //Writing on the first line
+MSG_LCD[1]= PWM%10 + '0';
+PWM/=10;
+MSG_LCD[0]= PWM%10 + '0';
+LCD_SendCmd (LCD_POS_MOD1); //Writing on LCD Module 1 position
 LCD_SendStr(MSG_LCD);
-Current = (10.0*BatChargeMon.ChargerMod2.Curr);
+PWM = (10.0*BatChargeMon.ChargerMod2.PWM);
 MSG_LCD[5]=0;
-MSG_LCD[4]='A';
-MSG_LCD[3]= Current%10 + '0';
-Current/=10;
+MSG_LCD[4]='%';
+MSG_LCD[3]= PWM%10 + '0';
+PWM/=10;
 MSG_LCD[2]='.';
-MSG_LCD[1]= Current%10 + '0';
-Current/=10;
-MSG_LCD[0]= Current%10 + '0';
-LCD_SendCmd (0x80|0x0F); //Writing on the first line
+MSG_LCD[1]= PWM%10 + '0';
+PWM/=10;
+MSG_LCD[0]= PWM%10 + '0';
+LCD_SendCmd (LCD_POS_MOD2); //Writing on LCD Module 3 position
 LCD_SendStr(MSG_LCD);
-Current = (10.0*BatChargeMon.ChargerMod3.Curr);
+PWM = (10.0*BatChargeMon.ChargerMod3.PWM);
 MSG_LCD[5]=0;
-MSG_LCD[4]='A';
-MSG_LCD[3]= Current%10 + '0';
-Current/=10;
+MSG_LCD[4]='%';
+MSG_LCD[3]= PWM%10 + '0';
+PWM/=10;
 MSG_LCD[2]='.';
-MSG_LCD[1]= Current%10 + '0';
-Current/=10;
-MSG_LCD[0]= Current%10 + '0';
-LCD_SendCmd (0x80|0x40); //Writing on the first line
+MSG_LCD[1]= PWM%10 + '0';
+PWM/=10;
+MSG_LCD[0]= PWM%10 + '0';
+LCD_SendCmd (LCD_POS_MOD3); //Writing on LCD Module 3 position
 LCD_SendStr(MSG_LCD);
-Current = (10.0*BatChargeMon.ChargerMod4.Curr);
+PWM = (10.0*BatChargeMon.ChargerMod4.PWM);
 MSG_LCD[5]=0;
-MSG_LCD[4]='A';
-MSG_LCD[3]= Current%10 + '0';
-Current/=10;
+MSG_LCD[4]='%';
+MSG_LCD[3]= PWM%10 + '0';
+PWM/=10;
 MSG_LCD[2]='.';
-MSG_LCD[1]= Current%10 + '0';
-Current/=10;
-MSG_LCD[0]= Current%10 + '0';
-LCD_SendCmd (0x80|0x4F); //Writing on the first line
+MSG_LCD[1]= PWM%10 + '0';
+PWM/=10;
+MSG_LCD[0]= PWM%10 + '0';
+LCD_SendCmd (LCD_POS_MOD4);//Writing on LCD Module 4 position
 LCD_SendStr(MSG_LCD);
-Current = (10.0*BatChargeMon.ChargerMod5.Curr);
+PWM = (10.0*BatChargeMon.ChargerMod5.PWM);
 MSG_LCD[5]=0;
-MSG_LCD[4]='A';
-MSG_LCD[3]= Current%10 + '0';
-Current/=10;
+MSG_LCD[4]='%';
+MSG_LCD[3]= PWM%10 + '0';
+PWM/=10;
 MSG_LCD[2]='.';
-MSG_LCD[1]= Current%10 + '0';
-Current/=10;
-MSG_LCD[0]= Current%10 + '0';
-LCD_SendCmd (0x80|0x10|0x04); //Writing on the first line
+MSG_LCD[1]= PWM%10 + '0';
+PWM/=10;
+MSG_LCD[0]= PWM%10 + '0';
+LCD_SendCmd (LCD_POS_MOD5); //Writing on LCD Module 5 position
 LCD_SendStr(MSG_LCD);
-Current = (10.0*BatChargeMon.ChargerMod6.Curr);
+PWM = (10.0*BatChargeMon.ChargerMod6.PWM);
 MSG_LCD[5]=0;
-MSG_LCD[4]='A';
-MSG_LCD[3]= Current%10 + '0';
-Current/=10;
+MSG_LCD[4]='%';
+MSG_LCD[3]= PWM%10 + '0';
+PWM/=10;
 MSG_LCD[2]='.';
-MSG_LCD[1]= Current%10 + '0';
-Current/=10;
-MSG_LCD[0]= Current%10 + '0';
-LCD_SendCmd (0x80|0x20|0x03); //Writing on the first line
+MSG_LCD[1]= PWM%10 + '0';
+PWM/=10;
+MSG_LCD[0]= PWM%10 + '0';
+LCD_SendCmd (LCD_POS_MOD6); //Writing on LCD Module 6 position
 LCD_SendStr(MSG_LCD);
-Current = (10.0*BatChargeMon.ChargerMod7.Curr);
+PWM = (10.0*BatChargeMon.ChargerMod7.PWM);
 MSG_LCD[5]=0;
-MSG_LCD[4]='A';
-MSG_LCD[3]= Current%10 + '0';
-Current/=10;
+MSG_LCD[4]='%';
+MSG_LCD[3]= PWM%10 + '0';
+PWM/=10;
 MSG_LCD[2]='.';
-MSG_LCD[1]= Current%10 + '0';
-Current/=10;
-MSG_LCD[0]= Current%10 + '0';
-LCD_SendCmd (0x80|0x50|0x04);//Writing on the fourth line
+MSG_LCD[1]= PWM%10 + '0';
+PWM/=10;
+MSG_LCD[0]= PWM%10 + '0';
+LCD_SendCmd (LCD_POS_MOD7);//Writing on LCD Module 7 position
 LCD_SendStr(MSG_LCD);
-Current = (10.0*BatChargeMon.ChargerMod8.Curr);
+PWM = (10.0*BatChargeMon.ChargerMod8.PWM);
 MSG_LCD[5]=0;
-MSG_LCD[4]='A';
-MSG_LCD[3]= Current%10 + '0';
-Current/=10;
+MSG_LCD[4]='%';
+MSG_LCD[3]= PWM%10 + '0';
+PWM/=10;
 MSG_LCD[2]='.';
-MSG_LCD[1]= Current%10 + '0';
-Current/=10;
-MSG_LCD[0]= Current%10 + '0';
-LCD_SendCmd (0x80|0x60|0x03);//Writing on the fourth line
+MSG_LCD[1]= PWM%10 + '0';
+PWM/=10;
+MSG_LCD[0]= PWM%10 + '0';
+LCD_SendCmd (LCD_POS_MOD8);//Writing on LCD Module 8 position
 LCD_SendStr(MSG_LCD);
 }
 
 
 //--------------------------------------------------------------------------------------------------------------
-void BcmFsmFuncShowPorcent(void)
+static void BcmFsmFuncShowPorcent(void)
 {
-char MSG_LCD[20];
-int Porcentaje;
-LCD_SendCmd (0x80|0x06); //Writing on the first line
+char MSG_LCD[LCD_HOR_DIM];
+int Porcent;
+LCD_SendCmd (LCD_POS_VARSHOW); //Writing on the first line
 LCD_SendStr("PORCENT");
-Porcentaje = (10.0*BatChargeMon.ChargerMod1.Porc);
+Porcent = (10.0*BatChargeMon.ChargerMod1.Porc);
 MSG_LCD[5]=0;
-MSG_LCD[4]='%';
-MSG_LCD[3]= Porcentaje%10 + '0';
-Porcentaje/=10;
+MSG_LCD[4]='A';
+MSG_LCD[3]= Porcent%10 + '0';
+Porcent/=10;
 MSG_LCD[2]='.';
-MSG_LCD[1]= Porcentaje%10 + '0';
-Porcentaje/=10;
-MSG_LCD[0]= Porcentaje%10 + '0';
-LCD_SendCmd (0x80|0x00); //Writing on the first line
+MSG_LCD[1]= Porcent%10 + '0';
+Porcent/=10;
+MSG_LCD[0]= Porcent%10 + '0';
+LCD_SendCmd (LCD_POS_MOD1); //Writing on LCD Module 1 position
 LCD_SendStr(MSG_LCD);
-Porcentaje = (10.0*BatChargeMon.ChargerMod2.Porc);
+Porcent = (10.0*BatChargeMon.ChargerMod2.Porc);
 MSG_LCD[5]=0;
-MSG_LCD[4]='%';
-MSG_LCD[3]= Porcentaje%10 + '0';
-Porcentaje/=10;
+MSG_LCD[4]='A';
+MSG_LCD[3]= Porcent%10 + '0';
+Porcent/=10;
 MSG_LCD[2]='.';
-MSG_LCD[1]= Porcentaje%10 + '0';
-Porcentaje/=10;
-MSG_LCD[0]= Porcentaje%10 + '0';
-LCD_SendCmd (0x80|0x0F); //Writing on the first line
+MSG_LCD[1]= Porcent%10 + '0';
+Porcent/=10;
+MSG_LCD[0]= Porcent%10 + '0';
+LCD_SendCmd (LCD_POS_MOD2); //Writing on LCD Module 3 position
 LCD_SendStr(MSG_LCD);
-Porcentaje = (10.0*BatChargeMon.ChargerMod3.Porc);
+Porcent = (10.0*BatChargeMon.ChargerMod3.Porc);
 MSG_LCD[5]=0;
-MSG_LCD[4]='%';
-MSG_LCD[3]= Porcentaje%10 + '0';
-Porcentaje/=10;
+MSG_LCD[4]='A';
+MSG_LCD[3]= Porcent%10 + '0';
+Porcent/=10;
 MSG_LCD[2]='.';
-MSG_LCD[1]= Porcentaje%10 + '0';
-Porcentaje/=10;
-MSG_LCD[0]= Porcentaje%10 + '0';
-LCD_SendCmd (0x80|0x40); //Writing on the first line
+MSG_LCD[1]= Porcent%10 + '0';
+Porcent/=10;
+MSG_LCD[0]= Porcent%10 + '0';
+LCD_SendCmd (LCD_POS_MOD3); //Writing on LCD Module 3 position
 LCD_SendStr(MSG_LCD);
-Porcentaje = (10.0*BatChargeMon.ChargerMod4.Porc);
+Porcent = (10.0*BatChargeMon.ChargerMod4.Porc);
 MSG_LCD[5]=0;
-MSG_LCD[4]='%';
-MSG_LCD[3]= Porcentaje%10 + '0';
-Porcentaje/=10;
+MSG_LCD[4]='A';
+MSG_LCD[3]= Porcent%10 + '0';
+Porcent/=10;
 MSG_LCD[2]='.';
-MSG_LCD[1]= Porcentaje%10 + '0';
-Porcentaje/=10;
-MSG_LCD[0]= Porcentaje%10 + '0';
-LCD_SendCmd (0x80|0x4F); //Writing on the first line
+MSG_LCD[1]= Porcent%10 + '0';
+Porcent/=10;
+MSG_LCD[0]= Porcent%10 + '0';
+LCD_SendCmd (LCD_POS_MOD4);//Writing on LCD Module 4 position
 LCD_SendStr(MSG_LCD);
-Porcentaje = (10.0*BatChargeMon.ChargerMod5.Porc);
+Porcent = (10.0*BatChargeMon.ChargerMod5.Porc);
 MSG_LCD[5]=0;
-MSG_LCD[4]='%';
-MSG_LCD[3]= Porcentaje%10 + '0';
-Porcentaje/=10;
+MSG_LCD[4]='A';
+MSG_LCD[3]= Porcent%10 + '0';
+Porcent/=10;
 MSG_LCD[2]='.';
-MSG_LCD[1]= Porcentaje%10 + '0';
-Porcentaje/=10;
-MSG_LCD[0]= Porcentaje%10 + '0';
-LCD_SendCmd (0x80|0x10|0x04); //Writing on the first line
+MSG_LCD[1]= Porcent%10 + '0';
+Porcent/=10;
+MSG_LCD[0]= Porcent%10 + '0';
+LCD_SendCmd (LCD_POS_MOD5); //Writing on LCD Module 5 position
 LCD_SendStr(MSG_LCD);
-Porcentaje = (10.0*BatChargeMon.ChargerMod6.Porc);
+Porcent = (10.0*BatChargeMon.ChargerMod6.Porc);
 MSG_LCD[5]=0;
-MSG_LCD[4]='%';
-MSG_LCD[3]= Porcentaje%10 + '0';
-Porcentaje/=10;
+MSG_LCD[4]='A';
+MSG_LCD[3]= Porcent%10 + '0';
+Porcent/=10;
 MSG_LCD[2]='.';
-MSG_LCD[1]= Porcentaje%10 + '0';
-Porcentaje/=10;
-MSG_LCD[0]= Porcentaje%10 + '0';
-LCD_SendCmd (0x80|0x20|0x03); //Writing on the first line
+MSG_LCD[1]= Porcent%10 + '0';
+Porcent/=10;
+MSG_LCD[0]= Porcent%10 + '0';
+LCD_SendCmd (LCD_POS_MOD6); //Writing on LCD Module 6 position
 LCD_SendStr(MSG_LCD);
-Porcentaje = (10.0*BatChargeMon.ChargerMod7.Porc);
+Porcent = (10.0*BatChargeMon.ChargerMod7.Porc);
 MSG_LCD[5]=0;
-MSG_LCD[4]='%';
-MSG_LCD[3]= Porcentaje%10 + '0';
-Porcentaje/=10;
+MSG_LCD[4]='A';
+MSG_LCD[3]= Porcent%10 + '0';
+Porcent/=10;
 MSG_LCD[2]='.';
-MSG_LCD[1]= Porcentaje%10 + '0';
-Porcentaje/=10;
-MSG_LCD[0]= Porcentaje%10 + '0';
-LCD_SendCmd (0x80|0x50|0x04);//Writing on the fourth line
+MSG_LCD[1]= Porcent%10 + '0';
+Porcent/=10;
+MSG_LCD[0]= Porcent%10 + '0';
+LCD_SendCmd (LCD_POS_MOD7);//Writing on LCD Module 7 position
 LCD_SendStr(MSG_LCD);
-Porcentaje = (10.0*BatChargeMon.ChargerMod8.Porc);
+Porcent = (10.0*BatChargeMon.ChargerMod8.Porc);
 MSG_LCD[5]=0;
-MSG_LCD[4]='%';
-MSG_LCD[3]= Porcentaje%10 + '0';
-Porcentaje/=10;
+MSG_LCD[4]='A';
+MSG_LCD[3]= Porcent%10 + '0';
+Porcent/=10;
 MSG_LCD[2]='.';
-MSG_LCD[1]= Porcentaje%10 + '0';
-Porcentaje/=10;
-MSG_LCD[0]= Porcentaje%10 + '0';
-LCD_SendCmd (0x80|0x60|0x03);//Writing on the fourth line
+MSG_LCD[1]= Porcent%10 + '0';
+Porcent/=10;
+MSG_LCD[0]= Porcent%10 + '0';
+LCD_SendCmd (LCD_POS_MOD8);//Writing on LCD Module 8 position
+LCD_SendStr(MSG_LCD);
+}
+
+static void BcmFsmFuncShowCurrent(void)
+{
+char MSG_LCD[LCD_HOR_DIM];
+int Current;
+LCD_SendCmd (LCD_POS_VARSHOW); //Writing on the first line
+LCD_SendStr(" Current  ");
+Current = (10.0*BatChargeMon.ChargerMod1.Curr);
+MSG_LCD[5]=0;
+MSG_LCD[4]='A';
+MSG_LCD[3]=Current%10 + '0';
+Current/=10;
+MSG_LCD[2]='.';
+MSG_LCD[1]=Current%10 + '0';
+Current/=10;
+MSG_LCD[0]=Current%10 + '0';
+LCD_SendCmd (LCD_POS_MOD1); //Writing on LCD Module 1 position
+LCD_SendStr(MSG_LCD);
+Current = (10.0*BatChargeMon.ChargerMod2.Curr);
+MSG_LCD[5]=0;
+MSG_LCD[4]='A';
+MSG_LCD[3]=Current%10 + '0';
+Current/=10;
+MSG_LCD[2]='.';
+MSG_LCD[1]=Current%10 + '0';
+Current/=10;
+MSG_LCD[0]=Current%10 + '0';
+LCD_SendCmd (LCD_POS_MOD2); //Writing on LCD Module 3 position
+LCD_SendStr(MSG_LCD);
+Current = (10.0*BatChargeMon.ChargerMod3.Curr);
+MSG_LCD[5]=0;
+MSG_LCD[4]='A';
+MSG_LCD[3]=Current%10 + '0';
+Current/=10;
+MSG_LCD[2]='.';
+MSG_LCD[1]=Current%10 + '0';
+Current/=10;
+MSG_LCD[0]=Current%10 + '0';
+LCD_SendCmd (LCD_POS_MOD3); //Writing on LCD Module 3 position
+LCD_SendStr(MSG_LCD);
+Current = (10.0*BatChargeMon.ChargerMod4.Curr);
+MSG_LCD[5]=0;
+MSG_LCD[4]='A';
+MSG_LCD[3]=Current%10 + '0';
+Current/=10;
+MSG_LCD[2]='.';
+MSG_LCD[1]=Current%10 + '0';
+Current/=10;
+MSG_LCD[0]=Current%10 + '0';
+LCD_SendCmd (LCD_POS_MOD4);//Writing on LCD Module 4 position
+LCD_SendStr(MSG_LCD);
+Current = (10.0*BatChargeMon.ChargerMod5.Curr);
+MSG_LCD[5]=0;
+MSG_LCD[4]='A';
+MSG_LCD[3]=Current%10 + '0';
+Current/=10;
+MSG_LCD[2]='.';
+MSG_LCD[1]=Current%10 + '0';
+Current/=10;
+MSG_LCD[0]=Current%10 + '0';
+LCD_SendCmd (LCD_POS_MOD5); //Writing on LCD Module 5 position
+LCD_SendStr(MSG_LCD);
+Current = (10.0*BatChargeMon.ChargerMod6.Curr);
+MSG_LCD[5]=0;
+MSG_LCD[4]='A';
+MSG_LCD[3]=Current%10 + '0';
+Current/=10;
+MSG_LCD[2]='.';
+MSG_LCD[1]=Current%10 + '0';
+Current/=10;
+MSG_LCD[0]=Current%10 + '0';
+LCD_SendCmd (LCD_POS_MOD6); //Writing on LCD Module 6 position
+LCD_SendStr(MSG_LCD);
+Current = (10.0*BatChargeMon.ChargerMod7.Curr);
+MSG_LCD[5]=0;
+MSG_LCD[4]='A';
+MSG_LCD[3]=Current%10 + '0';
+Current/=10;
+MSG_LCD[2]='.';
+MSG_LCD[1]=Current%10 + '0';
+Current/=10;
+MSG_LCD[0]=Current%10 + '0';
+LCD_SendCmd (LCD_POS_MOD7);//Writing on LCD Module 7 position
+LCD_SendStr(MSG_LCD);
+Current = (10.0*BatChargeMon.ChargerMod8.Curr);
+MSG_LCD[5]=0;
+MSG_LCD[4]='A';
+MSG_LCD[3]=Current%10 + '0';
+Current/=10;
+MSG_LCD[2]='.';
+MSG_LCD[1]=Current%10 + '0';
+Current/=10;
+MSG_LCD[0]=Current%10 + '0';
+LCD_SendCmd (LCD_POS_MOD8);//Writing on LCD Module 8 position
 LCD_SendStr(MSG_LCD);
 }
 
@@ -411,42 +574,42 @@ bool_t BatPackChrgd(float limit)
 
 void BatChargerStt_Update(void)
 {
-  switch (num_ModuloUD)
+  switch (BatChargeMon.num_ModuloUD)
   {
   case MODULO1:
 	ThreadComPort_SendMsg(DRQ_BCM_MOD1, &BatChargeMon.ChargerMod1, sizeof(BatChargeMon.ChargerMod1));
-    num_ModuloUD = MODULO2;
+	BatChargeMon.num_ModuloUD = MODULO2;
   break;
   case MODULO2:
 	ThreadComPort_SendMsg(DRQ_BCM_MOD2, &BatChargeMon.ChargerMod2, sizeof(BatChargeMon.ChargerMod2));
-    num_ModuloUD = MODULO3;
+	BatChargeMon.num_ModuloUD = MODULO3;
   break;
   case MODULO3:
 	ThreadComPort_SendMsg(DRQ_BCM_MOD3, &BatChargeMon.ChargerMod3, sizeof(BatChargeMon.ChargerMod3));
-    num_ModuloUD = MODULO4;
+	BatChargeMon.num_ModuloUD = MODULO4;
   break;
   case MODULO4:
 	ThreadComPort_SendMsg(DRQ_BCM_MOD4, &BatChargeMon.ChargerMod4, sizeof(BatChargeMon.ChargerMod4));
-    num_ModuloUD = MODULO5;
+	BatChargeMon.num_ModuloUD = MODULO5;
  break;
   case MODULO5:
 	ThreadComPort_SendMsg(DRQ_BCM_MOD5, &BatChargeMon.ChargerMod5, sizeof(BatChargeMon.ChargerMod5));
-    num_ModuloUD = MODULO6;
+	BatChargeMon.num_ModuloUD = MODULO6;
   break;
   case MODULO6:
 	ThreadComPort_SendMsg(DRQ_BCM_MOD6, &BatChargeMon.ChargerMod6, sizeof(BatChargeMon.ChargerMod6));
-    num_ModuloUD = MODULO7;
+	BatChargeMon.num_ModuloUD = MODULO7;
   break;
   case MODULO7:
 	ThreadComPort_SendMsg(DRQ_BCM_MOD7, &BatChargeMon.ChargerMod7, sizeof(BatChargeMon.ChargerMod7));
-    num_ModuloUD = MODULO8;
+	BatChargeMon.num_ModuloUD = MODULO8;
   break;
   case MODULO8:
 	ThreadComPort_SendMsg(DRQ_BCM_MOD8, &BatChargeMon.ChargerMod8, sizeof(BatChargeMon.ChargerMod8));
-    num_ModuloUD = MODULO1;
+	BatChargeMon.num_ModuloUD = MODULO1;
   break;
   default:
-	num_ModuloUD = MODULO1;
+	BatChargeMon.num_ModuloUD = MODULO1;
   break;
   }
 
