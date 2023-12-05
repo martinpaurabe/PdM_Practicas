@@ -75,7 +75,8 @@ static TBatChargeMon BatChargeMon;
 static delay_t DataUpdate;
 
 
-static enum {BCM_FSM_SHOWPORCENT,BCM_FSM_SHOWPWM,BCM_FSM_SHOWCURR,BCM_FSM_SHOWCOMPLET};
+
+enum {BCM_FSM_SHOWPORCENT,BCM_FSM_SHOWPWM,BCM_FSM_SHOWCURR,BCM_FSM_SHOWCOMPLET};
 
 enum {MODULO0,MODULO1,MODULO2,MODULO3,MODULO4,MODULO5,MODULO6,MODULO7,MODULO8};
 
@@ -90,6 +91,7 @@ void BatChargMon_Init(void)
   HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin,GPIO_PIN_SET);
   LCD_Init();
   ThreadComPort_Init();
+  delayInit(&DataUpdate,BCD_VARIABLE_UD_PER);
   delayInit(&DataUpdate,BCD_VARIABLE_UD_PER);
 }
 
@@ -257,7 +259,7 @@ static void BcmFsmFuncShowPWM(void)
 char MSG_LCD[LCD_HOR_DIM];
 int PWM;
 LCD_SendCmd (LCD_POS_VARSHOW); //Writing on the first line
-LCD_SendStr("PWM");
+LCD_SendStr("   PWM");
 PWM = (10.0*BatChargeMon.ChargerMod1.PWM);
 MSG_LCD[5]=0;
 MSG_LCD[4]='%';
@@ -355,10 +357,10 @@ static void BcmFsmFuncShowPorcent(void)
 char MSG_LCD[LCD_HOR_DIM];
 int Porcent;
 LCD_SendCmd (LCD_POS_VARSHOW); //Writing on the first line
-LCD_SendStr("PORCENT");
+LCD_SendStr(" PORCENT");
 Porcent = (10.0*BatChargeMon.ChargerMod1.Porc);
 MSG_LCD[5]=0;
-MSG_LCD[4]='A';
+MSG_LCD[4]='%';
 MSG_LCD[3]= Porcent%10 + '0';
 Porcent/=10;
 MSG_LCD[2]='.';
@@ -369,7 +371,7 @@ LCD_SendCmd (LCD_POS_MOD1); //Writing on LCD Module 1 position
 LCD_SendStr(MSG_LCD);
 Porcent = (10.0*BatChargeMon.ChargerMod2.Porc);
 MSG_LCD[5]=0;
-MSG_LCD[4]='A';
+MSG_LCD[4]='%';
 MSG_LCD[3]= Porcent%10 + '0';
 Porcent/=10;
 MSG_LCD[2]='.';
@@ -380,7 +382,7 @@ LCD_SendCmd (LCD_POS_MOD2); //Writing on LCD Module 3 position
 LCD_SendStr(MSG_LCD);
 Porcent = (10.0*BatChargeMon.ChargerMod3.Porc);
 MSG_LCD[5]=0;
-MSG_LCD[4]='A';
+MSG_LCD[4]='%';
 MSG_LCD[3]= Porcent%10 + '0';
 Porcent/=10;
 MSG_LCD[2]='.';
@@ -391,7 +393,7 @@ LCD_SendCmd (LCD_POS_MOD3); //Writing on LCD Module 3 position
 LCD_SendStr(MSG_LCD);
 Porcent = (10.0*BatChargeMon.ChargerMod4.Porc);
 MSG_LCD[5]=0;
-MSG_LCD[4]='A';
+MSG_LCD[4]='%';
 MSG_LCD[3]= Porcent%10 + '0';
 Porcent/=10;
 MSG_LCD[2]='.';
@@ -402,7 +404,7 @@ LCD_SendCmd (LCD_POS_MOD4);//Writing on LCD Module 4 position
 LCD_SendStr(MSG_LCD);
 Porcent = (10.0*BatChargeMon.ChargerMod5.Porc);
 MSG_LCD[5]=0;
-MSG_LCD[4]='A';
+MSG_LCD[4]='%';
 MSG_LCD[3]= Porcent%10 + '0';
 Porcent/=10;
 MSG_LCD[2]='.';
@@ -413,7 +415,7 @@ LCD_SendCmd (LCD_POS_MOD5); //Writing on LCD Module 5 position
 LCD_SendStr(MSG_LCD);
 Porcent = (10.0*BatChargeMon.ChargerMod6.Porc);
 MSG_LCD[5]=0;
-MSG_LCD[4]='A';
+MSG_LCD[4]='%';
 MSG_LCD[3]= Porcent%10 + '0';
 Porcent/=10;
 MSG_LCD[2]='.';
@@ -424,7 +426,7 @@ LCD_SendCmd (LCD_POS_MOD6); //Writing on LCD Module 6 position
 LCD_SendStr(MSG_LCD);
 Porcent = (10.0*BatChargeMon.ChargerMod7.Porc);
 MSG_LCD[5]=0;
-MSG_LCD[4]='A';
+MSG_LCD[4]='%';
 MSG_LCD[3]= Porcent%10 + '0';
 Porcent/=10;
 MSG_LCD[2]='.';
@@ -435,7 +437,7 @@ LCD_SendCmd (LCD_POS_MOD7);//Writing on LCD Module 7 position
 LCD_SendStr(MSG_LCD);
 Porcent = (10.0*BatChargeMon.ChargerMod8.Porc);
 MSG_LCD[5]=0;
-MSG_LCD[4]='A';
+MSG_LCD[4]='%';
 MSG_LCD[3]= Porcent%10 + '0';
 Porcent/=10;
 MSG_LCD[2]='.';

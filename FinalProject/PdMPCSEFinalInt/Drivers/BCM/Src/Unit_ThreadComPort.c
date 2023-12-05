@@ -1,5 +1,6 @@
 #include "Unit_ThreadComPort.h"
 
+
 static uint8_t txBuf[DIM_ADQ];
 static volatile uint8_t txBufIdx;
 static uint8_t txCantBytes; //Cantidad de datos a transmitir en buffer
@@ -14,16 +15,8 @@ void ThreadComPort_Init(void)
 //  ThreadComPort_Update();
 //  GetByte(txBuf);
 }
-//---------------------------------------------------------------------------
 
 
-void ThreadComPort_End(void)
-{
-  CloseCommPort();
-
-  ThreadComPort.rxParser = PARSER_PRINC;
-}
-//---------------------------------------------------------------------------
 /**********************************************************************
 * BytesDisponibles Function:
 * Return the amount of
@@ -42,6 +35,7 @@ bool ThreadComPort_SendMsg(BYTE Comand, void *Data, uint8_t DataLen)
       return false;
 
     uint8_t *buf = ((uint8_t *)txBuf);
+
 
     buf[0] = SFD;
     buf[1] = DataLen+1;

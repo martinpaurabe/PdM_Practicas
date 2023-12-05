@@ -64,24 +64,8 @@ int32_t PutByte(BYTE value); //Envio de un caracter
 int32_t WriteBytes(void *Buffer, int32_t n); //Escritura de n en el buffer de entrada
 
 void MX_USART2_UART_Init(void);
+extern void sciDataReceived(BYTE *buf);
 
 
-
-enum {PARSER_PRINC, PARSER_LENGTH, PARSER_DATA, PARSER_EOF};
-
-typedef struct
-{
-        DWORD ComErr;
-
-        DWORD CantBytesRead;
-        time_t Tiempo;
-
-        BYTE EstSciRv;
-
-        BYTE rxBuf[DIM_ADQ];
-        DWORD rxCantBytes;
-        BYTE rxParser;
-
-}TThreadComPort;
 
 #endif /* API_INC_API_UART_H_ */

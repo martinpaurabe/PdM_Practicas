@@ -15,13 +15,27 @@
 
 #define ERR_PUERTO 0x01
 #define TIMEOUT    0x02
+
+typedef struct
+{
+        DWORD ComErr;
+
+        DWORD CantBytesRead;
+        time_t Tiempo;
+
+        BYTE EstSciRv;
+
+        BYTE rxBuf[DIM_ADQ];
+        DWORD rxCantBytes;
+        BYTE rxParser;
+
+}TThreadComPort;
 //---------------------------------------------------------------------------
 
 extern TThreadComPort ThreadComPort;
 //---------------------------------------------------------------------------
 void ThreadComPort_Init(void);
-//void ThreadComPort_Update(void);
 bool_t ThreadComPort_SendMsg(BYTE Comand, void *Data, uint8_t DataLen);
-extern void sciDataReceived(BYTE *buf);
+
 
 #endif

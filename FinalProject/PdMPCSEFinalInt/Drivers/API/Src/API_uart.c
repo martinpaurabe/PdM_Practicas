@@ -8,6 +8,9 @@
 #include "main.h"
 #include "API_uart.h"
 
+enum {PARSER_PRINC, PARSER_LENGTH, PARSER_DATA, PARSER_EOF};
+
+
 UART_HandleTypeDef huart2;
 
 /**
