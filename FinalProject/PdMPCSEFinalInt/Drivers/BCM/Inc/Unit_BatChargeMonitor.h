@@ -31,17 +31,17 @@
 
 
 //Charger Module 1 Orders
-#define CMD_BCM_CMOD_1            0x20
-#define CMD_BCM_CMOD_1_PWM        0x21
-#define CMD_BCM_CMOD_1_TEN_DES    0x22
-#define CMD_BCM_CMOD_1_COR_DES    0x23
+#define CMD_BCM_MOD1              0x20
+#define CMD_BCM_MOD1_PWM          0x21
+#define CMD_BCM_MOD1_TEN_DES      0x22
+#define CMD_BCM_MOD1_COR_DES      0x23
 
 
 //Charger Module 2 Orders
-#define CMD_BCM_CMOD_2            0x30
-#define CMD_BCM_CMOD_2_PWM        0x31
-#define CMD_BCM_CMOD_2_TEN_DES    0x32
-#define CMD_BCM_CMOD_2_COR_DES    0x33
+#define CMD_BCM_MOD2              0x30
+#define CMD_BCM_MOD2_PWM          0x31
+#define CMD_BCM_MOD2_TEN_DES      0x32
+#define CMD_BCM_MOD2_COR_DES      0x33
 
 
 

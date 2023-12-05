@@ -24,7 +24,7 @@
 //---------------------------------------------------------------------------
 void ThreadComPort_Init(void);
 bool_t ThreadComPort_SendMsg(uint8_t Comand, void *Data, uint8_t DataLen);
-extern void ThreadComPort_RxMsg(uint8_t *buf);
+extern void ThreadComPort_RxMsg(uint8_t Comand, uint8_t *Data, uint8_t DataLen);
 
 
 #endif

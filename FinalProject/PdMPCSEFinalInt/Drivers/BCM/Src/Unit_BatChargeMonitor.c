@@ -194,14 +194,14 @@ void BatChargMon_Update(void)
 // BatChargMon_Init
 //==============================================================================================================
 
-void ThreadComPort_RxMsg(uint8_t *buf)
+void ThreadComPort_RxMsg(uint8_t Comand, uint8_t *Data, uint8_t DataLen)
 {
   TDato32 *dato;
   uint8_t dataLen32=0;
   int i;
 
 
-  switch(buf[0])
+  switch(Comand)
   {
 //Serial Data Request
   case DRQ_BCM_MOD1:
@@ -209,6 +209,10 @@ void ThreadComPort_RxMsg(uint8_t *buf)
   break;
   case DRQ_BCM_MOD2:
 	ThreadComPort_SendMsg(DAT_BCM_MOD2, &BatChargeMon.ChargerMod2, sizeof(BatChargeMon.ChargerMod2));
+  break;
+
+  case CMD_BCM_MOD1:
+	ThreadComPort_SendMsg(DAT_BCM_MOD1, &BatChargeMon.ChargerMod1, sizeof(BatChargeMon.ChargerMod1));
   break;
 
 //Serial Data Recieve
@@ -251,10 +255,10 @@ void ThreadComPort_RxMsg(uint8_t *buf)
 //If it have received new data, it have to reverse the bytes order
   for(i = 0; i < dataLen32; i++)
   {
-    dato[i].byt[0] = buf[4*i+1];
-    dato[i].byt[1] = buf[4*i+2];
-    dato[i].byt[2] = buf[4*i+3];
-    dato[i].byt[3] = buf[4*i+4];
+    dato[i].byt[0] = Data[4*i+0];
+    dato[i].byt[1] = Data[4*i+1];
+    dato[i].byt[2] = Data[4*i+2];
+    dato[i].byt[3] = Data[4*i+3];
   }
 
 }
@@ -459,7 +463,7 @@ static void BcmFsmFuncShowCurrent(void)
 char MSG_LCD[LCD_HOR_DIM];
 int Current;
 LCD_SendCmd (LCD_POS_VARSHOW); //Writing on the first line
-LCD_SendStr(" Current  ");
+LCD_SendStr(" CURRENT  ");
 Current = (10.0*BatChargeMon.ChargerMod1.Curr);
 MSG_LCD[5]=0;
 MSG_LCD[4]='A';

@@ -1,6 +1,8 @@
 #ifndef UNIT_TIPO_DATOS_H
 #define UNIT_TIPO_DATOS_H
 //==============================================================================================================
+#include <stdint.h>
+#include <stdbool.h>
 
 
 #define ROUND(x)   ((double)((long)((x) + .5)))

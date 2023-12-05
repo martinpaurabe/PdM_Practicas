@@ -150,7 +150,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
       if(rxBuffer[rxbfrcant] == EOFCOM)
       {
     	  HAL_GPIO_TogglePin(LD2_GPIO_Port,LD2_Pin);
-    	  ThreadComPort_RxMsg(rxBuffer+2);
+ //   	  ThreadComPort_RxMsg(rxBuffer+2);
+       	  ThreadComPort_RxMsg(rxBuffer[2],rxBuffer+3,rxBuffer[1]);
+
       }
       rxStt = PARSER_PRINC;
 	  NxtRxCant = 1;

@@ -8,8 +8,6 @@
 #ifndef API_INC_API_LCD_H_
 #define API_INC_API_LCD_H_
 
-#include <stdint.h>
-#include <stdbool.h>
 #include "Def_TipoDatos.h"
 
 
