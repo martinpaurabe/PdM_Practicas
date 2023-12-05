@@ -1,23 +1,14 @@
 #ifndef Unit_ThreadComPortH
 #define Unit_ThreadComPortH
 //---------------------------------------------------------------------------
-
-//My Libraries
-//#include "API_uart.h"
-#include "main.h" //Just to toggle the LED on debbugging state
-#include "stm32f4xx_hal.h"
-
-// C library headers
-#include <stdio.h>
-#include <string.h>
 #include <stdint.h>
 #include <stdbool.h>
-#include <unistd.h>
+
 
 #include "Def_TipoDatos.h"
 
 //Define my types
-#define BYTE uint8_t
+#define BYTE
 #define DWORD uint16_t
 
 //#define BAUDRATE 921600
@@ -36,8 +27,8 @@
 //extern TThreadComPort ThreadComPort;
 //---------------------------------------------------------------------------
 void ThreadComPort_Init(void);
-bool_t ThreadComPort_SendMsg(BYTE Comand, void *Data, uint8_t DataLen);
-extern void sciDataReceived(BYTE *buf);
+bool_t ThreadComPort_SendMsg(uint8_t Comand, void *Data, uint8_t DataLen);
+extern void ThreadComPort_RxMsg(uint8_t *buf);
 
 
 #endif

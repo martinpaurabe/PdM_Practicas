@@ -174,10 +174,10 @@ void BatChargMon_Update(void)
 
 //--------------------------------------------------------------------------------------------------------------
 
-void sciDataReceived(BYTE *buf)
+void ThreadComPort_RxMsg(uint8_t *buf)
 {
   TDato32 *dato;
-  BYTE dataLen32=0;
+  uint8_t dataLen32=0;
   int i;
 
 

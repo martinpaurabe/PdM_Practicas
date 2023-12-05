@@ -1,13 +1,22 @@
 #include "Unit_ThreadComPort.h"
+
+//My Libraries
+//#include "API_uart.h"
+#include "main.h" //Just to toggle the LED on debbugging state
+#include "stm32f4xx_hal.h"
+
+// C library headers
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+
+
 /*
  * API_uart.c
  *
  *  Created on: Dec 5, 2023
  *      Author: martin
  */
-
-#include "main.h"
-//#include "API_uart.h"
 
 enum {PARSER_PRINC, PARSER_LENGTH, PARSER_DATA, PARSER_EOF};
 
@@ -50,7 +59,7 @@ void ThreadComPort_Init(void)
 * Return the amount of
 *********************************************************************/
 
-bool ThreadComPort_SendMsg(BYTE Comand, void *Data, uint8_t DataLen)
+bool_t ThreadComPort_SendMsg(uint8_t Comand, void *Data, uint8_t DataLen)
 {
 //    DWORD cantWritten = 0;
 
@@ -143,7 +152,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
       if(rxBuffer[rxbfrcant] == EOFCOM)
       {
     	  HAL_GPIO_TogglePin(LD2_GPIO_Port,LD2_Pin);
-    	  sciDataReceived(rxBuffer+2);
+    	  ThreadComPort_RxMsg(rxBuffer+2);
       }
       rxStt = PARSER_PRINC;
 	  NxtRxCant = 1;
