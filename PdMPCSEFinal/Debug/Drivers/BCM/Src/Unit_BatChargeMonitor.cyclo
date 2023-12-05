@@ -1,0 +1,8 @@
+../Drivers/BCM/Src/Unit_BatChargeMonitor.c:32:6:BatChargMon_Init	1
+../Drivers/BCM/Src/Unit_BatChargeMonitor.c:45:6:BatChargMon_Update	12
+../Drivers/BCM/Src/Unit_BatChargeMonitor.c:109:6:sciDataReceived	12
+../Drivers/BCM/Src/Unit_BatChargeMonitor.c:188:6:BcmFsmFuncShowCurrent	1
+../Drivers/BCM/Src/Unit_BatChargeMonitor.c:286:6:BcmFsmFuncShowPorcent	1
+../Drivers/BCM/Src/Unit_BatChargeMonitor.c:383:6:BcmFsmFuncShowComplet	1
+../Drivers/BCM/Src/Unit_BatChargeMonitor.c:395:8:BatPackChrgd	9
+../Drivers/BCM/Src/Unit_BatChargeMonitor.c:412:6:BatChargerStt_Update	9

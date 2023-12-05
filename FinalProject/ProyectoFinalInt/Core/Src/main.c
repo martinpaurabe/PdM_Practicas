@@ -31,8 +31,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define LED_EDGE_PERIODE 100  //Amount of miliseconds that will be the led turned on
-							   //after a negative edge read on the user button FSM.
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -69,7 +68,7 @@ static void MX_GPIO_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  delay_t FSM_Time;                 //Declare my Time Delay Structure
+  delay_t BCM_FSM_Time;                 //Declare my Time Delay Structure
   //char MSG_PulsadorPosEdge[]="Se pulsó B1\n\r";
   //char MSG_PulsadorNegEdge[]="Se Soltó B1\n\r";
 
@@ -96,14 +95,14 @@ int main(void)
 //  MX_USART2_UART_Init();
 //  MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
-  delayInit(&FSM_Time,FSM_PERIODE);   					//Initialize the delay timer for updating FSM of the debouncing
+  delayInit(&BCM_FSM_Time,BCM_FSM_PERIODE);   					//Initialize the delay timer for updating FSM of the debouncing
   BatChargMon_Init();
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
-	  if(delayRead(&FSM_Time))
+	  if(delayRead(&BCM_FSM_Time))
 	  {
 		  BatChargMon_Update();  /* USER CODE END 2 */
 	  }

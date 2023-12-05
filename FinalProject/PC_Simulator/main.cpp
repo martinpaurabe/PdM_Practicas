@@ -29,8 +29,8 @@ int main()
   {
 //    usleep(10000);
     ThreadComPort_Update();
- 
-    switch (STT)
+/*
+   switch (STT)
     {
     case PARSER_DIRECTION:
       if(IsFirst)
@@ -125,7 +125,7 @@ int main()
 
     default:
     break;
-    }
+    }*/
   }    
        
   return 0; // success

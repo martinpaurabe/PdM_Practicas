@@ -12,26 +12,25 @@ static volatile uint8_t rxBuf2[DIM_ADQ];
 static volatile uint8_t rxBufIdx;
 static volatile uint8_t rxCantBytes;
 
-enum {PARSER_PRINC, PARSER_LENGTH, PARSER_DATA, PARSER_EOF};
+
+
 static volatile uint8_t rxParser;
 
 volatile uint8_t *sciRxBuf;
 
 
 //Tx
-static uint8_t txBuf[DIM_ADQ];
-static volatile uint8_t txBufIdx;
-static uint8_t txCantBytes; //Cantidad de datos a transmitir en buffer
+TThreadComPort ThreadComPort;
 
 static UART_HandleTypeDef huart2;
 //static int32_t serial_port = 0;
 static bool_t m_CommOpen = false;
 
 /**********************************************************************
- * uartInit Function :
+ * OpenCommPort Function :
  * Function that initialize the UART periferial, and send the initialization
  * parameter through the port.
- * It devolve TRUE if the port is initialized correctly and false otherwise.
+ * It devolve One if the port was opened correctly and zero otherwise.
  *********************************************************************/
 int32_t OpenCommPort(uint32_t Baudios)
 {
@@ -48,6 +47,8 @@ int32_t OpenCommPort(uint32_t Baudios)
 	  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
 	  huart2.RxXferSize = DIM_ADQ;
 	  huart2.TxXferSize = DIM_ADQ;
+	  ThreadComPort.rxParser = PARSER_PRINC;
+	  GetByte(rxBuf1);
 	  if (HAL_UART_Init(&huart2) != HAL_OK)
 	  {
 		  PortStatus=1;
@@ -58,6 +59,8 @@ int32_t OpenCommPort(uint32_t Baudios)
 }
 
 /**********************************************************************
+*CloseCommPort Function:
+*Close the open port.*
 *********************************************************************/
 
 void CloseCommPort(void)
@@ -68,9 +71,11 @@ void CloseCommPort(void)
 }
 
 /**********************************************************************
-*********************************************************************/
+*ComOpened Function:
+*Devolve true if there is a opened com port, false otherwise*
+***********************************************************************/
 
-bool_t ComAbierto(void)
+bool_t ComOpened(void)
 {
 	bool_t PortState = false;
 
@@ -91,6 +96,7 @@ int32_t ComNum(void)
 }
 
 /**********************************************************************
+*ComError Function
 *********************************************************************/
 
 DWORD ComError(void)
@@ -100,11 +106,13 @@ DWORD ComError(void)
 
 
 /**********************************************************************
+*GetByute Function:
+*Send a byte through de com port
 *********************************************************************/
 
 int32_t GetByte(BYTE *value)
 {
-	if(HAL_OK == HAL_UART_Receive(&huart2, (uint8_t *)value, 1,100))
+	if(HAL_OK == HAL_UART_Receive_IT(&huart2, value,1))
 		return 1;
 	return 0;
 }
@@ -114,74 +122,122 @@ int32_t GetByte(BYTE *value)
 ********************************************************************/
 int32_t ReadBytes(void *Buffer, int32_t n) //Lectura de n del buffer de entrada
 {
-	if(HAL_OK == HAL_UART_Receive(&huart2, (uint8_t *)Buffer, n,n*100))
+	if(HAL_OK == HAL_UART_Receive_IT(&huart2, Buffer,n))
 		return 1;
 	return 0;
 }
 
 /**********************************************************************
-* uartSendString Function:
-* Send through the UART port the elements pointed for *pstring.
-* @param pstring is a pointer to the first element to be send.
-* @param size the amount of element to be send.
+* PutByte Function:
+* Send through the UART port an element.
+* @param value, byte to be send
+* Send back a one if value was send correctly and zero otherwise
 *********************************************************************/
-int32_t PutByte(BYTE value) //Envio de un caracter
+int32_t PutByte(BYTE value)
 {
-	if(HAL_OK == HAL_UART_Transmit(&huart2, (const uint8_t *)&value, 1,10))
+	if(HAL_OK == HAL_UART_Transmit(&huart2, (const uint8_t *)&value, 1,1))
 		return 1;
 	return 0;
 
 }
 /**********************************************************************
+*WriteBytes Function: send the amount of bytes especified by @param n
 *********************************************************************/
 int32_t WriteBytes(void *Buffer, int32_t n) //Escritura de n en el buffer de entrada
 {
-	if(HAL_OK == HAL_UART_Transmit(&huart2, (const uint8_t *)Buffer,n,n*10))
+	if(HAL_OK == HAL_UART_Transmit(&huart2, (const uint8_t *)Buffer,n,n*1))
 		return 1;
 	return 0;
 }
 
 /**********************************************************************
 * BytesDisponibles Function:
-* Return the amount of
+* Return the amount of bytes available. (It doesn´t work)
 *********************************************************************/
-int32_t BytesDisponibles(void) //Devuelve la cantidad de Bytes en el buffer de entrada
+int32_t BytesDisponibles(void)
 {
 	return (int32_t)  (huart2.RxXferCount-huart2.RxXferCount);
 }
 
-/**********************************************************************
-* BytesDisponibles Function:
-* Return the amount of
-*********************************************************************/
 
-bool sendSciMsg(BYTE Comand, void *Data, uint8_t DataLen)
+//---------------------------------------------------------------------------
+uint8_t Dato;
+
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-//    DWORD cantWritten = 0;
+  DWORD CantBytesReadAnt;
 
+  HAL_UART_Receive_IT(&huart2, &Dato,1);
+
+//  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+
+//  for(int i = 0; i < 20; i++)
+  {
 /*
-     if(!m_CommOpen) //Verifica si el puerto esta abierto
-      return false;
-*/
+      ThreadComPort.ComErr = ComError();
+      CantBytesReadAnt = ThreadComPort.CantBytesRead;
+      ThreadComPort.CantBytesRead = BytesDisponibles();
+      if(ThreadComPort.CantBytesRead  > DIM_ADQ)
+      {
+        CloseCommPort();
+      }
+      if((ThreadComPort.rxParser == PARSER_PRINC) || (ThreadComPort.CantBytesRead  - CantBytesReadAnt))
+      {
+        ThreadComPort.Tiempo = HAL_GetTick();
+      }
+      if(HAL_GetTick()-ThreadComPort.Tiempo >= ADQ_TIMEOUT)
+      {
+        ThreadComPort.EstSciRv |= TIMEOUT;
+        ThreadComPort.rxParser = PARSER_PRINC;
+      }
 
-    if((Data == NULL) && DataLen)
-      return false;
+      if(ThreadComPort.CantBytesRead  > 0)
+      {
+	  switch(ThreadComPort.rxParser)
+        {
+        case PARSER_PRINC:
+  		  GetByte(&Dato);
+          if(Dato == SFD)
+          {
+            ThreadComPort.rxParser = PARSER_LENGTH;
+          }
+        break;
+        case PARSER_LENGTH:
+          GetByte(&Dato);
+       	  ThreadComPort.rxCantBytes = Dato;
+       	  ThreadComPort.rxParser = PARSER_DATA;
+       break;
+        case PARSER_DATA:
+          if(1 == ReadBytes(ThreadComPort.rxBuf, ThreadComPort.rxCantBytes))
+           	ThreadComPort.rxParser = PARSER_EOF;
+          else
+            ThreadComPort.rxParser = PARSER_PRINC;
+        break;
+        case PARSER_EOF:
+          ReadBytes(&Dato, 1);
+          if(Dato == EOFCOM)
+          {
+            sciDataReceived(ThreadComPort.rxBuf);
+          }
+          ThreadComPort.rxParser = PARSER_PRINC;
 
-    uint8_t *buf = ((uint8_t *)txBuf);
+        break;
+        }
 
-    buf[0] = SFD;
-    buf[1] = DataLen+1;
-    buf[2] = Comand;
-    (void)memcpy(&buf[3], Data, DataLen);
-    buf[3+DataLen] = EOFCOM;
+	  /*ThreadComPort.EstSciRv &= ~ERR_PUERTO;
+      }
+      else if(ThreadComPort.CantBytesRead  == 0)
+      {
+        ThreadComPort.EstSciRv &= ~ERR_PUERTO;
+      }
+      else
+      {
+        ThreadComPort.EstSciRv |= ERR_PUERTO;
+      }
 
-    txCantBytes = 4 + DataLen;
-    txBufIdx = 0;
-
-    WriteBytes(buf,txCantBytes);
-
-    return true;
-
+   }*/
+  }
 }
-
+//---------------------------------------------------------------------------
 

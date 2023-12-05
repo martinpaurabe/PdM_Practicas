@@ -1,0 +1,6 @@
+../Drivers/API/Src/API_LCD.c:44:6:LCD_Init	6
+../Drivers/API/Src/API_LCD.c:80:6:LCD_SendCmd	1
+../Drivers/API/Src/API_LCD.c:93:6:LCD_SendChar	1
+../Drivers/API/Src/API_LCD.c:107:6:LCD_Clr	2
+../Drivers/API/Src/API_LCD.c:117:6:LCD_SendStr	2
+../Drivers/API/Src/API_LCD.c:127:13:MX_I2C1_Init	2
