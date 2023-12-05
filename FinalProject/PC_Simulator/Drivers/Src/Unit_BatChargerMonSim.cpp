@@ -19,7 +19,7 @@ TBatChargeMon BatChargeMon;
 void BatChargerMonSim_Init(void)
 {
 //  BatChargeMon=BatChargeMonFlash;
-BatChargeMon.ChargerMod1.Porc =90;
+BatChargeMon.ChargerMod1.Porc =10;
 BatChargeMon.ChargerMod1.Curr = 10.0*(100.0-BatChargeMon.ChargerMod1.Porc)/100.0;
 BatChargeMon.ChargerMod1.PWM = (100.0-BatChargeMon.ChargerMod1.Porc);
 BatChargeMon.ChargerMod2.Porc =90;

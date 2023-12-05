@@ -8,23 +8,22 @@
 #ifndef BCM_INC_UNIT_BATCHARGEMONITOR_H_
 #define BCM_INC_UNIT_BATCHARGEMONITOR_H_
 
-//---------------------------------------------------------------------------
-
-
-#define BC_NUMBERS  8
+//==============================================================================================================
+// Update FSM Constant Definition
+//==============================================================================================================
+#define BC_NUMBERS   8	//Number of Battery Chargers on system
 #define BAT_DISCHRGD 50 //Percentage which define that the batteries need to be charged
 #define BAT_CHRGD 	 80 //Percentage which define that the batteries is charged
 
 //==============================================================================================================
-// Protocol Constant Definition
+// Update FSM Constant Definition
 //==============================================================================================================
-#define BCM_FSM_PERIODE 100
+#define BCM_FSM_PERIODE 100  //Period of execution of Finit State Machine
 
 
 
-//Comandos Sci
+//Protoco Commands
 //*********************************
-//Ordenes de habilitacion
 #define CMD_BCM_SAVE             0x00
 #define CMD_BCM_STATUS           0x01
 
@@ -61,7 +60,6 @@
 
 
 //Data Send
-//Pedido de Datos
 #define DAT_BCM_MOD1           0xA0
 #define DAT_BCM_MOD2           0xA1
 #define DAT_BCM_MOD3           0xA2
@@ -71,10 +69,9 @@
 #define DAT_BCM_MOD7           0xA6
 #define DAT_BCM_MOD8           0xA7
 
-
+//Public Functions
 void BatChargMon_Init(void);
 void BatChargMon_Update(void);
-//---------------------------------------------------------------------------
 
 
 #endif /* BCM_INC_UNIT_BATCHARGEMONITOR_H_ */

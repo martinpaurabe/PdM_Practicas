@@ -11,7 +11,7 @@
 //#include "main.h"
 
 //Private Definitions
-//LCD Initializations
+//LCD Initialize
 #define INITIALIZATION_FIRST_WAIT   20
 #define INITIALIZATION_FIRST_BYT    0x03
 #define INITIALIZATION_SECOND_WAIT  10
@@ -21,19 +21,20 @@
 #define INITIALIZATION_FOURTH_WAIT 	1
 #define INITIALIZATION_FOURTH_BYT  	0x02
 #define INITIALIZATION_FIFTH_WAIT  	100
-#define INITIALIZATION_MSG_TIME  	1000
+#define LCD_POS_INIT_MSG            0x80|0x05
+#define INITIALIZATION_MSG_TIME  	2000
 
 
-#define LCD_ADDRESS	0x4E
+#define LCD_ADDRESS	  0x4E
 
-#define _4BIT_MODE	0x28
-#define DISPLAY_CTRL (1<<3)
-#define RETURN_HOME  (1<<1)
-#define ENTRY_MODE 	 (1<<2)
+#define _4BIT_MODE	  0x28
+#define DISPLAY_CTRL  (1<<3)
+#define RETURN_HOME   (1<<1)
+#define ENTRY_MODE 	  (1<<2)
 #define AUTOINCREMENT (1<<1)
-#define DISPLAY_CTRL (1<<3)
-#define DISPLAY_ON   (1<<2)
-#define CLR_LCD		(1<<0)
+#define DISPLAY_CTRL  (1<<3)
+#define DISPLAY_ON    (1<<2)
+#define CLR_LCD		  (1<<0)
 
 
 static uint8_t LCD_INT_CMD[]={INITIALIZATION_FIRST_BYT,INITIALIZATION_SECOND_BYT,
@@ -78,9 +79,15 @@ void LCD_Init(void)
 	LCD_SendCmd(*Dato++);
 
 
-	LCD_SendCmd(0x80|0x05); //Writing on the first line
-    LCD_SendStr("      INICIANDO     ");
-    HAL_Delay(2000);
+	LCD_SendCmd(LCD_POS_LINE1); //Writing on the first line
+    LCD_SendStr("                    ");
+	LCD_SendCmd(LCD_POS_LINE2); //Writing on the SECOND line
+    LCD_SendStr("       DEVICE       ");
+	LCD_SendCmd(LCD_POS_LINE3); //Writing on the THIRD line
+    LCD_SendStr("        INIT        ");
+	LCD_SendCmd(LCD_POS_LINE4); //Writing on the FOURTH line
+    LCD_SendStr("                    ");
+    HAL_Delay(INITIALIZATION_MSG_TIME);
 }
 
 
@@ -91,11 +98,11 @@ void LCD_SendCmd(uint8_t Cmd)
 	uint8_t data_t[4];
 	data_u = (Cmd&0xf0);
 	data_l = ((Cmd<<4)&0xf0);
-	data_t[0] = data_u|0x0C;  //en=1, rs=0
-	data_t[1] = data_u|0x08;  //en=0, rs=0
-	data_t[2] = data_l|0x0C;  //en=1, rs=0
-	data_t[3] = data_l|0x08;  //en=0, rs=0
-	HAL_I2C_Master_Transmit (&hi2c1, LCD_ADDRESS,(uint8_t *) data_t, 4, 100);
+	data_t[0] = data_u|0x0C;  //send High and low through enable pin
+	data_t[1] = data_u|0x08;  //twice to send upper and lower nible
+	data_t[2] = data_l|0x0C;  //RS in zero to send command
+	data_t[3] = data_l|0x08;
+	HAL_I2C_Master_Transmit(&hi2c1, LCD_ADDRESS,(uint8_t *) data_t, 4, 100);
 }
 
 void LCD_SendChar(uint8_t Data)
@@ -104,10 +111,10 @@ void LCD_SendChar(uint8_t Data)
 	uint8_t data_t[4];
 	data_u = (Data&0xf0);
 	data_l = ((Data<<4)&0xf0);
-	data_t[0] = data_u|0x0D;  //en=1, rs=1
-	data_t[1] = data_u|0x09;  //en=0, rs=1
-	data_t[2] = data_l|0x0D;  //en=1, rs=1
-	data_t[3] = data_l|0x09;  //en=0, rs=1
+	data_t[0] = data_u|0x0D;  //send High and low through enable pin
+	data_t[1] = data_u|0x09;  //twice to send upper and lower nibble
+	data_t[2] = data_l|0x0D;  //RS in one to send DAta
+	data_t[3] = data_l|0x09;
 	HAL_I2C_Master_Transmit (&hi2c1, LCD_ADDRESS,(uint8_t *) data_t, 4, 100);
 }
 

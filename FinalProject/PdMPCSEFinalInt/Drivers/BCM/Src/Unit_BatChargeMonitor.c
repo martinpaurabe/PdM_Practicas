@@ -13,16 +13,17 @@
 //==============================================================================================================
 
 #define BCD_VARIABLE_UD_PER  	100  //Period update in milisec
-#define LCD_HOR_DIM  	20
-#define LCD_POS_VARSHOW 0x80|0x06
-#define LCD_POS_MOD1 	0x80|0x00
-#define LCD_POS_MOD2 	0x80|0x0F
-#define LCD_POS_MOD3 	0x80|0x40
-#define LCD_POS_MOD4 	0x80|0x4F
-#define LCD_POS_MOD5 	0x80|0x10|0x04
-#define LCD_POS_MOD6 	0x80|0x20|0x03
-#define LCD_POS_MOD7 	0x80|0x50|0x04
-#define LCD_POS_MOD8 	0x80|0x60|0x03
+#define LCD_HOR_DIM  			20
+#define LCD_POS_VARSHOW 		0x80|0x06
+#define LCD_POS_MOD1 			0x80|0x00
+#define LCD_POS_MOD2 			0x80|0x0F
+#define LCD_POS_MOD3 			0x80|0x40
+#define LCD_POS_MOD4 			0x80|0x4F
+#define LCD_POS_MOD5 			0x80|0x10|0x04
+#define LCD_POS_MOD6 			0x80|0x20|0x03
+#define LCD_POS_MOD7 			0x80|0x50|0x04
+#define LCD_POS_MOD8 			0x80|0x60|0x03
+
 
 //==============================================================================================================
 // Private Functions

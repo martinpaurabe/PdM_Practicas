@@ -1,3 +1,9 @@
+/*
+ * Unit_ThreadComPort.c
+ *
+ *  Created on: Dec 5, 2023
+ *      Author: martin
+ */
 #include "Unit_ThreadComPort.h"
 
 //My Libraries
@@ -11,23 +17,12 @@
 #include <unistd.h>
 
 
-/*
- * API_uart.c
- *
- *  Created on: Dec 5, 2023
- *      Author: martin
- */
 
 enum {PARSER_PRINC, PARSER_LENGTH, PARSER_DATA, PARSER_EOF};
 
 
 UART_HandleTypeDef huart2;
 
-/**
-  * @brief USART2 Initialization Function
-  * @param None
-  * @retval None
-  */
 static uint8_t rxBuffer[DIM_ADQ];
 static uint8_t rxbfrcant=0;
 static uint8_t rxStt =PARSER_PRINC;
