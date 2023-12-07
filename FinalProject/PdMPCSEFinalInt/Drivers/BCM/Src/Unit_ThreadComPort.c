@@ -111,16 +111,15 @@ void MX_USART2_UART_Init(void)
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-  /* Prevent unused argument(s) compilation warning */
-  UNUSED(huart);
-  switch(rxStt)
+
+	switch(rxStt)
     {
-    case PARSER_PRINC:
-      if(rxBuffer[rxbfrcant] == SFD)
-      {
-    	  rxbfrcant++;
-    	  rxStt = PARSER_LENGTH;
-    	  NxtRxCant = 1;
+    case PARSER_PRINC:						//Verifico el estado de la FSM de recepción
+      if(rxBuffer[rxbfrcant] == SFD)		//Los paquetes de informacion deben tener la
+      {										// ! SFD ! CANTIDAD DE DATOS ! DATOS ! EOFM !
+    	  rxbfrcant++;						//Si el formato es correcto envio los datos al
+    	  rxStt = PARSER_LENGTH;			//Layer superior del protocolo, si no descarto
+    	  NxtRxCant = 1;					//e inicio nuevamente
       }
     break;
     case PARSER_LENGTH:
@@ -147,6 +146,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	  NxtRxCant = 1;
 	  rxbfrcant =0;
     break;
+    default:
+      rxStt = PARSER_PRINC;
+      NxtRxCant = 1;
+      rxbfrcant =0;
+      break;
     }
     HAL_UART_Receive_IT(huart, rxBuffer+rxbfrcant,NxtRxCant);
    /* NOTE: This function should not be modified, when the callback is needed,
