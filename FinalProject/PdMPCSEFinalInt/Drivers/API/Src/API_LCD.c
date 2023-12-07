@@ -112,7 +112,7 @@ void LCD_SendChar(uint8_t Data)
 	data_u = (Data&0xf0);
 	data_l = ((Data<<4)&0xf0);
 	data_t[0] = data_u|0x0D;  //send High and low through enable pin
-	data_t[1] = data_u|0x09;  //twice to send upper and lower nibble
+	data_t[1] = data_u|0x09;  //twice to send upper and lower nible
 	data_t[2] = data_l|0x0D;  //RS in one to send DAta
 	data_t[3] = data_l|0x09;
 	HAL_I2C_Master_Transmit (&hi2c1, LCD_ADDRESS,(uint8_t *) data_t, 4, 100);
