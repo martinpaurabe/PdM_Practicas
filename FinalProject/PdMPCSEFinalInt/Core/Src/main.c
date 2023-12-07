@@ -21,6 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "API_LCD.h"
 
 /* USER CODE END Includes */
 
@@ -215,8 +216,19 @@ void Error_Handler(void)
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
   __disable_irq();
+
+	LCD_SendCmd (LCD_POS_LINE1); //Writing on the first line
+	LCD_SendStr("                     ");
+	LCD_SendCmd (LCD_POS_LINE2); //Writing on the Second line
+	LCD_SendStr("     SYSTEM ERROR    ");
+	LCD_SendCmd (LCD_POS_LINE3); //Writing on the first line
+	LCD_SendStr("        REBOOT       ");
+	LCD_SendCmd (LCD_POS_LINE4); //Writing on the first line
+	LCD_SendStr("                     ");
+
   while (1)
   {
+
   }
   /* USER CODE END Error_Handler_Debug */
 }

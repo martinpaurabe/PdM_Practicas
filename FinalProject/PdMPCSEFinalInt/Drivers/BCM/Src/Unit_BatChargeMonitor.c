@@ -558,13 +558,13 @@ static void BcmFsmFuncShowCurrent(void)
 //--------------------------------------------------------------------------------------------------------------
 void BcmFsmFuncShowComplet(void)
 {
-	LCD_SendCmd (0x80|0x00); //Writing on the first line
+	LCD_SendCmd (LCD_POS_LINE1); //Writing on the first line
 	LCD_SendStr("                     ");
-	LCD_SendCmd (0x80|0x40); //Writing on the Second line
+	LCD_SendCmd (LCD_POS_LINE2); //Writing on the Second line
 	LCD_SendStr("        CARGA        ");
-	LCD_SendCmd (0x80|0x10|0x04); //Writing on the first line
+	LCD_SendCmd (LCD_POS_LINE3); //Writing on the first line
 	LCD_SendStr("       COMPLETA      ");
-	LCD_SendCmd (0x80|0x50|0x04); //Writing on the first line
+	LCD_SendCmd (LCD_POS_LINE4); //Writing on the first line
 	LCD_SendStr("                     ");
 }
 

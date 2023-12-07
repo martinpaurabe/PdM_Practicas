@@ -54,14 +54,8 @@ void ThreadComPort_Init(void)
 
 bool_t ThreadComPort_SendMsg(uint8_t Comand, void *Data, uint8_t DataLen)
 {
-//    DWORD cantWritten = 0;
 
-/*
-     if(!m_CommOpen) //Verifica si el puerto esta abierto
-      return false;
-*/
-
-    if((Data == NULL) && DataLen)
+	if((Data == NULL) && DataLen)
       return false;
 
     uint8_t *buf = ((uint8_t *)txBuf);
@@ -76,7 +70,9 @@ bool_t ThreadComPort_SendMsg(uint8_t Comand, void *Data, uint8_t DataLen)
     txCantBytes = 4 + DataLen;
     txBufIdx = 0;
 
-    WriteBytes(buf,txCantBytes);
+    if(0 == WriteBytes(buf,txCantBytes))
+    	Error_Handler();
+
 
     return true;
 
@@ -145,9 +141,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
       if(rxBuffer[rxbfrcant] == EOFCOM)
       {
     	  HAL_GPIO_TogglePin(LD2_GPIO_Port,LD2_Pin);
- //   	  ThreadComPort_RxMsg(rxBuffer+2);
        	  ThreadComPort_RxMsg(rxBuffer[2],rxBuffer+3,rxBuffer[1]);
-
       }
       rxStt = PARSER_PRINC;
 	  NxtRxCant = 1;
@@ -165,7 +159,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 *********************************************************************/
 static int32_t WriteBytes(void *Buffer, int32_t n) //Escritura de n en el buffer de entrada
 {
-//	if(HAL_OK == HAL_UART_Transmit(&huart2, (const uint8_t *)Buffer,n,n*1))
 	if(HAL_OK == HAL_UART_Transmit_IT(&huart2, (const uint8_t *)Buffer,n))
 			return 1;
 	return 0;
