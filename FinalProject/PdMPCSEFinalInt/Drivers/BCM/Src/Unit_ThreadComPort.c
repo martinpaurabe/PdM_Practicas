@@ -56,7 +56,7 @@ bool_t ThreadComPort_SendMsg(uint8_t Comand, void *Data, uint8_t DataLen)
 {
 
 	if((Data == NULL) && DataLen)
-      return false;
+      return (false);
 
     uint8_t *buf = ((uint8_t *)txBuf);
 
@@ -74,7 +74,7 @@ bool_t ThreadComPort_SendMsg(uint8_t Comand, void *Data, uint8_t DataLen)
     	Error_Handler();
 
 
-    return true;
+    return (true);
 
 }
 
@@ -123,7 +123,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
       }
     break;
     case PARSER_LENGTH:
-        if(rxBuffer[rxbfrcant] <20)
+        if(rxBuffer[rxbfrcant] < MAX_MSG_LEGTH)
         {
           NxtRxCant = rxBuffer[rxbfrcant];
       	  rxbfrcant++;
@@ -164,8 +164,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 static int32_t WriteBytes(void *Buffer, int32_t n) //Escritura de n en el buffer de entrada
 {
 	if(HAL_OK == HAL_UART_Transmit_IT(&huart2, (const uint8_t *)Buffer,n))
-			return 1;
-	return 0;
+			return (1);
+	return (0);
 }
 
 

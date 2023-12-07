@@ -1,21 +1,14 @@
-15:47:17 **** Incremental Build of configuration Debug for project PdMPCSEFinalInt ****
+18:18:46 **** Incremental Build of configuration Debug for project PdMPCSEFinalInt ****
 make -j8 all 
-arm-none-eabi-gcc "../Drivers/BCM/Src/Unit_ThreadComPort.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/Drivers/API/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/Drivers/BCM" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/BCM/Src/Unit_ThreadComPort.d" -MT"Drivers/BCM/Src/Unit_ThreadComPort.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/BCM/Src/Unit_ThreadComPort.o"
-arm-none-eabi-gcc -o "PdMPCSEFinalInt.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PdMPCSEFinalInt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PdMPCSEFinalInt.elf
- 
 arm-none-eabi-size   PdMPCSEFinalInt.elf 
-arm-none-eabi-objdump -h -S  PdMPCSEFinalInt.elf  > "PdMPCSEFinalInt.list"
    text	   data	    bss	    dec	    hex	filename
-  23344	     32	   2104	  25480	   6388	PdMPCSEFinalInt.elf
+  23336	     32	   2104	  25472	   6380	PdMPCSEFinalInt.elf
 Finished building: default.size.stdout
  
-Finished building: PdMPCSEFinalInt.list
- 
-15:47:19 **** Incremental Build of configuration Debug for project PdMPCSEFinalInt ****
+18:19:43 **** Incremental Build of configuration Debug for project PdMPCSEFinalInt ****
 make -j8 all 
 arm-none-eabi-size   PdMPCSEFinalInt.elf 
    text	   data	    bss	    dec	    hex	filename
-  23344	     32	   2104	  25480	   6388	PdMPCSEFinalInt.elf
+  23336	     32	   2104	  25472	   6380	PdMPCSEFinalInt.elf
 Finished building: default.size.stdout
  
