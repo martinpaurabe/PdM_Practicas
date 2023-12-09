@@ -12,3 +12,43 @@ arm-none-eabi-size   PdMPCSEFinalInt.elf
   23336	     32	   2104	  25472	   6380	PdMPCSEFinalInt.elf
 Finished building: default.size.stdout
  
+11:11:50 **** Incremental Build of configuration Debug for project PdMPCSEFinalInt ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/BCM/Src/Unit_BatChargeMonitor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/Drivers/API/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/Drivers/BCM" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/BCM/Src/Unit_BatChargeMonitor.d" -MT"Drivers/BCM/Src/Unit_BatChargeMonitor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/BCM/Src/Unit_BatChargeMonitor.o"
+arm-none-eabi-gcc -o "PdMPCSEFinalInt.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PdMPCSEFinalInt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PdMPCSEFinalInt.elf
+ 
+arm-none-eabi-size   PdMPCSEFinalInt.elf 
+arm-none-eabi-objdump -h -S  PdMPCSEFinalInt.elf  > "PdMPCSEFinalInt.list"
+   text	   data	    bss	    dec	    hex	filename
+  23100	     32	   2104	  25236	   6294	PdMPCSEFinalInt.elf
+Finished building: default.size.stdout
+ 
+Finished building: PdMPCSEFinalInt.list
+ 
+11:18:34 **** Incremental Build of configuration Debug for project PdMPCSEFinalInt ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/BCM/Src/Unit_BatChargeMonitor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/Drivers/API/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/Drivers/API/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/Drivers/BCM/Inc" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/Drivers/BCM/Src" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/Drivers/API" -I"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/Drivers/BCM" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/BCM/Src/Unit_BatChargeMonitor.d" -MT"Drivers/BCM/Src/Unit_BatChargeMonitor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/BCM/Src/Unit_BatChargeMonitor.o"
+../Drivers/BCM/Src/Unit_BatChargeMonitor.c: In function 'BcmFsmFuncShowPWM':
+../Drivers/BCM/Src/Unit_BatChargeMonitor.c:287:13: warning: unused variable 'PWM' [-Wunused-variable]
+  287 |         int PWM;
+      |             ^~~
+../Drivers/BCM/Src/Unit_BatChargeMonitor.c: In function 'BcmFsmFuncShowPorcent':
+../Drivers/BCM/Src/Unit_BatChargeMonitor.c:321:13: warning: unused variable 'Porcent' [-Wunused-variable]
+  321 |         int Porcent;
+      |             ^~~~~~~
+../Drivers/BCM/Src/Unit_BatChargeMonitor.c: In function 'BcmFsmFuncShowCurrent':
+../Drivers/BCM/Src/Unit_BatChargeMonitor.c:353:13: warning: unused variable 'Current' [-Wunused-variable]
+  353 |         int Current;
+      |             ^~~~~~~
+arm-none-eabi-gcc -o "PdMPCSEFinalInt.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/martin/Desktop/MESE/PdM_Practicas/FinalProject/PdMPCSEFinalInt/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PdMPCSEFinalInt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PdMPCSEFinalInt.elf
+ 
+arm-none-eabi-size   PdMPCSEFinalInt.elf 
+arm-none-eabi-objdump -h -S  PdMPCSEFinalInt.elf  > "PdMPCSEFinalInt.list"
+   text	   data	    bss	    dec	    hex	filename
+  19752	     32	   2104	  21888	   5580	PdMPCSEFinalInt.elf
+Finished building: default.size.stdout
+ 
+Finished building: PdMPCSEFinalInt.list
+ 
